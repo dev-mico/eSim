@@ -2,7 +2,7 @@
 //@author Marcos Lacouture
 //Alarm 0 will initialize the creature, this is where all the "fields" are declared but not defined.
 
-showPerceptionView = true; //Debug code: When set to true, every creature's view range will be displayed in a red box.
+showPerceptionView = false; //Debug code: When set to true, every creature's view range will be displayed in a red box.
 
 species = "";
 

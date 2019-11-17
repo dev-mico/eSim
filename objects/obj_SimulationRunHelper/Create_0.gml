@@ -3,6 +3,8 @@
 
 //Anything in the "Create" event will occur once the simulation is initially created.
 
+global.foodBushList = ds_list_create(); //List of all food bushes, for findFood code.
+
 foodBushCount = 75 * (5/global.foodScarcity) * (global.worldSize/1500);
 initialCreatureAmount = global.initialCreatureAmount * (global.worldSize/1500);
 
@@ -40,7 +42,8 @@ for (var i = 0; i < foodBushCount; i++) { //Distribute food bushes
 		Y = random(room_height - sprite_get_height(Vegetation));
 	}
 	
-	instance_create_layer(X, Y, "FoodBushLayer", foodBush);	
+	var newBush = instance_create_layer(X, Y, "FoodBushLayer", foodBush);	
+	ds_list_add(global.foodBushList, newBush);
 }
 
 
