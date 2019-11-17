@@ -6,6 +6,8 @@
 //Postcondition: The nearest instance of herbivorous food (the nearest food bush) within the creature's range of perception will be returned.
 // If the creature does not perceieve any food within its range, return null.
 
+//ERROR: It's finding things outside of the creature's sight range and then going for them? This bug perplexes me.
+
 var creature = argument[0];
 var sightRange = argument[1];
 
@@ -31,31 +33,30 @@ if (viewYBottom > room_height - (creature.creatureHeight/8)) {
 
 var checkX = viewXLeft; //Start checking at the top left point of the creature's view range.
 var checkY = viewYTop;
-var foundFood = false; //This will be set true if a food bush is within the creature's view
 
-foodFound = pointer_null; //this will be returned at the end. If food is found, then this will be a pointer to the foodBush object that was found.
+closestFoodBush = pointer_null; //The closest food bush will be here
+closestDistance = 99999999999; //Set this to a high value to avoid unnecessary fringe cases. Slight performance improvement
 
 var searchingX = true;
 while (searchingX == true) { //Check every X position
 	var searchingY = true;
+	checkY = viewYTop;
 	while (searchingY == true) { //Check every Y position at each individual X position, like a grid
+		//instance_create_layer(checkX, checkY, "GUILayer", obj_circleDrawer); //draw a circle at every point you check. This is only to be done for development purposes.
+		
 		if (position_meeting(checkX, checkY, foodBush) == true) { //If you find a food bush
-			foodFound = instance_position(checkX, checkY, foodBush);
+			var foodFound = instance_position(checkX, checkY, foodBush);
 			
 			if ((foodFound.x <  (room_width - (creature.creatureWidth/8)) and foodFound.x > (creature.creatureWidth/8))) {
 				if ((foodFound.y < room_height - (creature.creatureHeight/8)) and (foodFound.y > creature.creatureHeight/8)) {
 					if (foodFound.currentFood > 0) { //If the food bush has food in it.
-						foundFood = true;
-						searchingX = false;
-						searchingY = false; //Stop searching for food
-					} else {
-						foodFound = pointer_null;	
-					}
-				} else {
-					foodFound = pointer_null;	
-				}
-			} else {
-				foodFound = pointer_null;	
+						var distanceFromBush = sqrt(sqr(creature.x - foodFound.x) + sqr(creature.y - foodFound.y)); //Use the distance formula to calculate the distance of the creature from the bush
+						if (distanceFromBush < closestDistance) { //If you found the new closest bush
+							closestFoodBush = foodFound;
+							closestDistance = distanceFromBush;
+						}
+					} 
+				} 
 			}
 		} else if (checkY + 1 > viewYBottom) { //If you have checked every Y position at the given X, stop checking the Ys. 
 			searchingY = false;
@@ -71,8 +72,4 @@ while (searchingX == true) { //Check every X position
 	}
 }
 
-if (foundFood == true) { //If you found a food bush, return the bush's ID.
-	return foodFound;
-} else { //Otherwise, return a null pointer.
-	return pointer_null;
-}
+return closestFoodBush;

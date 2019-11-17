@@ -9,6 +9,9 @@ initialCreatureAmount = global.initialCreatureAmount * (global.worldSize/1500);
 room_height = global.worldSize;
 room_width = global.worldSize;
 
+inst_PLAYERCAMERA.x = room_width/2;
+inst_PLAYERCAMERA.y = room_height/2;
+
 //Tile we want is 55.
 groundLayer = layer_get_id("Ground");
 ground_tilemap_grass = layer_tilemap_get_id(groundLayer);

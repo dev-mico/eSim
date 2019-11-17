@@ -149,7 +149,7 @@ if (initialized == true) and (global.paused == false) {
 				newAction.arg1 = foodFound;
 				newAction.priority = actionToUndergo.priority; //Since there are findFood events of varying priorities, set this priority equal to the findFood action's priority.
 				ds_list_add(actionsQueue, newAction);
-				
+		
 			}
 			ds_list_delete(actionsQueue, 0);
 			instance_destroy(actionToUndergo);

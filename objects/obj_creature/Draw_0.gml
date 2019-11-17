@@ -164,7 +164,7 @@ if (dead == false) { //If the creature is alive you have to draw it differently 
 		draw_rectangle(x - viewRange, y - viewRange, x + viewRange, y + viewRange,true);
 		draw_set_colour(c_white);
 	}
-		
+	
 } else { //If the creature's dead
 	draw_sprite_ext(bodySprite, sprite_body, x, y, localScaleFactor, (scaleFactor*-1), 0, c_gray, 1);
 	draw_sprite_ext(headSprite, sprite_head, (x +headOffsetX), (y - headOffsetY), localScaleFactor * headScaleX, (scaleFactor*-1) * headScaleY, 0, c_gray, 1);
