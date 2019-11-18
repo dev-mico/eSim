@@ -3,11 +3,15 @@
 var scaleX = camera_get_view_width(view_camera[0])/1500;
 var scaleY = camera_get_view_width(view_camera[0])/1500;
 
-X1 = x1 * scaleX;
-X2 = x2 * scaleX;
-Y2 = y2 * scaleY;
+var viewPortLeftX = inst_PLAYERCAMERA.x - (camera_get_view_width(view_camera[0])/2);
+var viewPortTopY = inst_PLAYERCAMERA.y - (camera_get_view_height(view_camera[0])/2);
 
-if (point_in_rectangle(mouse_x, mouse_y, X1, y*scaleY, X2, Y2) == true) {
+var leftBorderX = viewPortLeftX + (x1*scaleX);
+var rightBorderX = x2*scaleX + viewPortLeftX;
+var topBorderY = y*scaleY + viewPortTopY;
+var bottomBorderY = y2*scaleY + viewPortTopY;
+
+if (point_in_rectangle(mouse_x, mouse_y, leftBorderX, topBorderY, rightBorderX, bottomBorderY) == true) {
 	hovered = true;
 } else {
 	hovered = false;	

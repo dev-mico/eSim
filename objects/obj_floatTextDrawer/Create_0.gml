@@ -3,9 +3,10 @@
 
 font = fontMainMenuSubheader;
 
-origFadeInSteps = 40;
-origHoldSteps = 5;
-origFadeOutSteps = 80;
+previousTimeScale = global.timeScale; //Keep track of the time scale so you can actively re-scale the speed at which text fades.
+origFadeInSteps = 40/global.timeScale;
+origHoldSteps = 5/global.timeScale;
+origFadeOutSteps = 80/global.timeScale;
 
 scaleX = 1;
 scaleY = 1;
@@ -22,4 +23,9 @@ alpha = 0;
 
 initialized = true; // Set this to true when you create this in another script
 
+yAdjust = 0;
+xAdjust = 0;
 currentY = y;
+
+origViewportX = camera_get_view_x(view_camera[0]);
+prevViewportY = camera_get_view_y(view_camera[0]); //Use this to fix scaling issues with camera zoom

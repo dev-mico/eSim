@@ -2,9 +2,11 @@
 //@author Marcos Lacouture
 //Alarm 0 will initialize the creature, this is where all the "fields" are declared but not defined.
 
-showPerceptionView = true; //Debug code: When set to true, every creature's view range will be displayed in a red box.
+showPerceptionView = false; //Debug code: When set to true, every creature's view range will be displayed in a red box.
 
 species = "";
+
+creatureListReference = pointer_null; //Reference to the "creature" list in the species object.
 
 scaleFactor = 0.75; //1 = 100% size, 0.9 is 90%. The sprites are generally too big, so 0.75 is considered a medium-sized creature, 0.5 is small-ish, 0.35 is small, 1 is big-ish, and anything above one is generally big.
 
@@ -32,6 +34,7 @@ aggressivity = 0;
 mutated = false;
 
 actionsQueue = ds_list_create();
+
 movementSpeed = 0;
 facing = 1; //1 means facing right, -1 means facing left
 
