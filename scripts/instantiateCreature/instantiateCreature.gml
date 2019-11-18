@@ -85,7 +85,7 @@ if (species.object_index == Species) { //First, check you actually have a specie
 		}
 		creature.mutated = true;
 		var textColor = make_colour_rgb(0, 255, 0);
-		drawFloatingText("Mutation!", creatureX, creatureY, textColor, -5000, 1, 1); //Draw the floating "Mutation!" text that shows up when a mutant creature is born.
+		drawFloatingText("Mutation!", creatureX, creatureY, textColor, 1, 1); //Draw the floating "Mutation!" text that shows up when a mutant creature is born.
 		
 		var red = colour_get_red(creature.sprite_color);
 		var blue = colour_get_blue(creature.sprite_color);
@@ -95,6 +95,8 @@ if (species.object_index == Species) { //First, check you actually have a specie
 	}
 
 	ds_list_add(species.creatures, creature); //Must add the instantiated creature to the list of creatures in the Species object.
+	creature.creatureListReference = species.creatures; //Add the reference to the species' list, so that when the creature dies, you can remove it from the list of creatures.
+	show_debug_message("Reference: " + string(creature.creatureListReference));
 	recalculateSpeciesAverages(species); //Recalculate species' avg values, taking in account the new creature.
 
 	creature.alarm[0] = 1; //Initialization of creature occurs in obj_creature's alarm 0 event.

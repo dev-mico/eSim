@@ -6,8 +6,6 @@
 //Postcondition: The nearest instance of herbivorous food (the nearest food bush) within the creature's range of perception will be returned.
 // If the creature does not perceieve any food within its range, return null.
 
-//ERROR: It's finding things outside of the creature's sight range and then going for them? This bug perplexes me.
-
 var creature = argument[0];
 var sightRange = argument[1];
 
@@ -48,12 +46,5 @@ for (var i = 0; i < ds_list_size(global.foodBushList); i++) { //Check every food
 			}
 	}
 }
-
-/*
-if ((foodFound.x <  (room_width - (creature.creatureWidth/8)) and foodFound.x > (creature.creatureWidth/8))) {
-				if ((foodFound.y < room_height - (creature.creatureHeight/8)) and (foodFound.y > creature.creatureHeight/8)) {
-					if (foodFound.currentFood > 0) { //If the food bush has food in it.
-
-*/
 
 return closestFoodBush;

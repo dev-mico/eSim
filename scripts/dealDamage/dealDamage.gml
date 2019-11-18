@@ -11,8 +11,8 @@ var hungerDamage = argument[2];
 
 creature.creatureHealth -= damage;
 if (hungerDamage == true) { //If the creature is taking damage from hunger, draw orange text.
-	drawFloatingText(string(damage), creature.x, creature.y, c_orange, -5000, 1, 1);
+	drawFloatingText(string(damage), creature.x, creature.y, c_orange, 1, 1);
 } else {
-	drawFloatingText(string(damage), creature.x, creature.y, c_red, -5000, 1, 1);
+	drawFloatingText(string(damage), creature.x, creature.y, c_red, 1, 1);
 }
 creature.flashingRed = true; //Make the creature flash red.

@@ -11,13 +11,12 @@ var text = argument0;
 var X = argument1;
 var Y = argument2;
 var color = argument3;
-var Depth = argument4;
-var scaleX = argument5;
-var scaleY = argument6;
+var scaleX = argument4;
+var scaleY = argument5;
 
 var font = fontFloatingText;
 
-var textDrawer = instance_create_depth(X, Y, Depth, obj_floatTextDrawer);
+var textDrawer = instance_create_layer(X, Y, "GUILayer", obj_floatTextDrawer);
 
 textDrawer.text = text;
 textDrawer.x = X;

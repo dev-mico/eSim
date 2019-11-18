@@ -6,6 +6,8 @@ showPerceptionView = false; //Debug code: When set to true, every creature's vie
 
 species = "";
 
+creatureListReference = pointer_null; //Reference to the "creature" list in the species object.
+
 scaleFactor = 0.75; //1 = 100% size, 0.9 is 90%. The sprites are generally too big, so 0.75 is considered a medium-sized creature, 0.5 is small-ish, 0.35 is small, 1 is big-ish, and anything above one is generally big.
 
 dead = false;

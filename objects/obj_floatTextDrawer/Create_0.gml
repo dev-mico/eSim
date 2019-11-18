@@ -22,4 +22,9 @@ alpha = 0;
 
 initialized = true; // Set this to true when you create this in another script
 
+yAdjust = 0;
+xAdjust = 0;
 currentY = y;
+
+origViewportX = camera_get_view_x(view_camera[0]);
+prevViewportY = camera_get_view_y(view_camera[0]); //Use this to fix scaling issues with camera zoom

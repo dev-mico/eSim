@@ -8,6 +8,10 @@
 
 // Whenever you complete an action, you MUST remember to delete the instance of the action in the game world. Otherwise, performance will decay over time.
 
+if (x < 0) or (x > room_width) or (y < 0) or (y > room_height) { //Failsafe: If a creature is for some reason leaving the room, just remove it.
+	instance_destroy(id);
+}
+
 if (initialized == true) and (global.paused == false) {
 	if (creatureHealth > 0) { //Check if creature is alive
 		if (creatureHealth < creatureMaxHealth) and (hunger > (maxHunger/100 * 60)){ //If the creature has above 60% hunger and the creature is hurt, heal the creature by 2% of its max health each step.
@@ -236,7 +240,8 @@ if (initialized == true) and (global.paused == false) {
 			show_error("Action '" + actionToUndergo.action + "' is not an action with behavior.", true);	
 		}
 		
-	} else if (dead == false) { //If the creature is dead, set dead to true.
+	} else if (dead == false) { //If the creature is dead, set dead to true. Remove the creature from the species' "creature" list.
 		dead = true;
-	}
+		ds_list_delete(creatureListReference, ds_list_find_index(creatureListReference, id)); //Delete the creature from the "species" list, since it's dead and its averages should no longer be taken account for in reproduction.
+	} 
 }

@@ -407,6 +407,14 @@
             }
         },
         {
+            "Key": "a7ff2143-1cde-4655-aa63-8561e674fca2",
+            "Value": {
+                "id": "8abcfe62-8377-49f7-86c4-b0b5d27c2cd4",
+                "resourcePath": "sprites\\textBoxSprite\\textBoxSprite.yy",
+                "resourceType": "GMSprite"
+            }
+        },
+        {
             "Key": "a9188620-a624-4a5a-83ae-a1b53faf038b",
             "Value": {
                 "id": "aece07c9-78e3-4ae3-aeb9-309aa4ce0069",
@@ -540,6 +548,14 @@
                 "id": "7fde3147-66cb-4dd3-a5ce-169d826b5d0a",
                 "resourcePath": "fonts\\fontMainMenuSubSubheader\\fontMainMenuSubSubheader.yy",
                 "resourceType": "GMFont"
+            }
+        },
+        {
+            "Key": "d5897f4f-ffd8-42e4-9d25-41757cd83e67",
+            "Value": {
+                "id": "1c4fb28e-219d-4bd1-b68a-d6dc6da1da7e",
+                "resourcePath": "objects\\obj_scalableTextBox\\obj_scalableTextBox.yy",
+                "resourceType": "GMObject"
             }
         },
         {

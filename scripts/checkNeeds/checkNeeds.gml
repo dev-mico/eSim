@@ -9,6 +9,10 @@
 
 var creature = argument[0];
 
+if (instance_exists(creature) == false) {
+	show_error("CREATURE UNDEFINED", false);	
+}
+
 var highestPriorityAction = instance_create_depth(0, 0, 5000, obj_action);
 
 if (creature.hunger < (creature.maxHunger/100 * 60)) { //Low-priority search for food: If hunger hits 60% threshold
