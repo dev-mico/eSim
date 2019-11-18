@@ -34,6 +34,7 @@ aggressivity = 0;
 mutated = false;
 
 actionsQueue = ds_list_create();
+
 movementSpeed = 0;
 facing = 1; //1 means facing right, -1 means facing left
 

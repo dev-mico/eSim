@@ -9,18 +9,16 @@
 
 var creature = argument[0];
 
-if (instance_exists(creature) == false) {
-	show_error("CREATURE UNDEFINED", false);	
+if (instance_exists(creature) == true) { //Failsafe, in case a creature is deleted while this runs.
+	var highestPriorityAction = instance_create_depth(0, 0, 5000, obj_action);
+
+	if (creature.hunger < (creature.maxHunger/100 * 60)) { //Low-priority search for food: If hunger hits 60% threshold
+		highestPriorityAction.action = "findFood";
+		highestPriorityAction.priority = 10;
+	} else {
+		highestPriorityAction.action = "idle";
+		highestPriorityAction.priority = 0;
+	}
+
+	return highestPriorityAction;
 }
-
-var highestPriorityAction = instance_create_depth(0, 0, 5000, obj_action);
-
-if (creature.hunger < (creature.maxHunger/100 * 60)) { //Low-priority search for food: If hunger hits 60% threshold
-	highestPriorityAction.action = "findFood";
-	highestPriorityAction.priority = 10;
-} else {
-	highestPriorityAction.action = "idle";
-	highestPriorityAction.priority = 0;
-}
-
-return highestPriorityAction;

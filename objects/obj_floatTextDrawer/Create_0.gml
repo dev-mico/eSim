@@ -3,9 +3,10 @@
 
 font = fontMainMenuSubheader;
 
-origFadeInSteps = 40;
-origHoldSteps = 5;
-origFadeOutSteps = 80;
+previousTimeScale = global.timeScale; //Keep track of the time scale so you can actively re-scale the speed at which text fades.
+origFadeInSteps = 40/global.timeScale;
+origHoldSteps = 5/global.timeScale;
+origFadeOutSteps = 80/global.timeScale;
 
 scaleX = 1;
 scaleY = 1;

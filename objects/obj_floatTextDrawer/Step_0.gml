@@ -4,7 +4,12 @@ yAdjust = 0;//camera_get_view_y(view_camera[0]) - prevViewportY;
 xAdjust = 0; //origViewportX - camera_get_view_x(view_camera[0]);
 prevViewportY = camera_get_view_y(view_camera[0]);
 
-
+if (global.timeScale != previousTimeScale) {  //Actively re-scale the speed at which text fades depending on if the time scale changed.
+	previousTimeScale = global.timeScale;
+	origFadeInSteps = 40/global.timeScale;
+	origHoldSteps = 5/global.timeScale;
+	origFadeOutSteps = 80/global.timeScale;
+}
 
 if (initialized == true) {
 	if (fadeInSteps == -1) { //Start the count
