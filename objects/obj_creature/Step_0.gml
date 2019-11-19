@@ -244,14 +244,15 @@ if (initialized == true) and (global.paused == false) {
 					show_error("Action '" + actionToUndergo.action + "' is not an action with behavior.", true);	
 				}
 		
-			} else if (dead == false) { //If the creature is dead, set dead to true. Remove the creature from the species' "creature" list.
-				dead = true;
-				ds_list_delete(creatureListReference, ds_list_find_index(creatureListReference, id)); //Delete the creature from the "species" list, since it's dead and its averages should no longer be taken account for in reproduction.
 			} 
 		} 
 		
 		else { //Failsafe: Remove mis-generated action
 			ds_list_delete(actionsQueue, ds_list_find_index(actionsQueue, actionToUndergo));	
 		}
-	}
+		
+	} else if (dead == false) { //If the creature is dead, set dead to true. Remove the creature from the species' "creature" list.
+		ds_list_delete(creatureListReference, ds_list_find_index(creatureListReference, id)); //Delete the creature from the "species" list, since it's dead and its averages should no longer be taken account for in reproduction.
+		dead = true;
+	} 
 }

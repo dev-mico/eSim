@@ -61,6 +61,11 @@ if (sprite_body == 0) {
 			headScaleY = 1.2;
 			headOffsetX = 33;
 			headOffsetY = -13;
+		} else if (sprite_head ==7) { //Duck head
+			headScaleX = 1.2;
+			headScaleY = 1.2;
+			headOffsetX = 30;
+			headOffsetY = -9;
 		}
 } else if (sprite_body == 1) {
 	sprite_arm = -1; //Failsafe: This body cannot have an arm as it is a quadripedal body.
@@ -98,7 +103,12 @@ if (sprite_body == 0) {
 			headScaleX = 1.80;
 			headOffsetX = 25;
 			headOffsetY = -9;
-		}
+		} else if (sprite_head == 7) {
+			headScaleY= 1.65;
+			headScaleX = 1.5;
+			headOffsetX = 28;
+			headOffsetY = -10;
+		} 
 } else if (sprite_body == 2) {
 	if (sprite_head == 0) {
 			headOffsetX = 5;
@@ -134,6 +144,11 @@ if (sprite_body == 0) {
 			headOffsetY = -32;
 			headScaleX = 1.25;
 			headScaleY = 1.1;
+		} else if (sprite_head == 7) {
+			headOffsetX = 6.5;
+			headOffsetY = -26;
+			headScaleX = 1;
+			headScaleY = 1;
 		}
 		
 		//Second if statements for drawing arms below
@@ -152,6 +167,7 @@ headOffsetY *= scaleFactor;
 //Finally, draw everything.
 
 if (dead == false) { //If the creature is alive you have to draw it differently than if its dead.
+	show_debug_message("still not dead");
 	draw_sprite_ext(bodySprite, sprite_body, x, y, localScaleFactor, scaleFactor, 0, localSpriteColor, 1);
 	draw_sprite_ext(headSprite, sprite_head, (x +headOffsetX), (y + headOffsetY), localScaleFactor * headScaleX, scaleFactor * headScaleY, 0, localSpriteColor, 1);
 

@@ -14,9 +14,9 @@ dead = false;
 
 //All variables below are defined in instantiateCreature.
 
-sprite_body = 0;
-sprite_head = 1;
-sprite_arm = 0;
+sprite_body = 2;
+sprite_head = 7;
+sprite_arm = 1;
 sprite_color = make_colour_rgb(255, 160, 100) 
 
 creatureWidth = sprite_get_width(sprite_body);
