@@ -32,7 +32,7 @@ if (aggressivity < 0) { //changeFactor math uses absolute values so the same equ
 	changeFactor *= -1;	
 }
 
-changeAmount = 50 * changeFactor;
+changeAmount = 75 * changeFactor;
 
 fightOdds += changeAmount;
 

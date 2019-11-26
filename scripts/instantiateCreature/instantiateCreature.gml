@@ -12,6 +12,7 @@ if (species.object_index == Species) { //First, check you actually have a specie
 	//Set the base values below
 	creature = instance_create_layer(creatureX, creatureY, "CreatureLayer", obj_creature);
 	creature.species = species.name;
+	creature.speciesReference = species;
 	creature.sprite_body = species.avg_sprite_body;
 	creature.sprite_head = species.avg_sprite_head;
 	creature.sprite_arm = species.avg_sprite_arm;

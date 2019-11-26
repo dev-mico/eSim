@@ -3,7 +3,8 @@
 
 //Anything in the "Create" event will occur once the simulation is initially created.
 
-
+show_debug_message("New simulation initialized");
+show_debug_message("--------------------------");
 
 global.foodBushList = ds_list_create(); //List of all food bushes, for findFood code.
 global.corpseList = ds_list_create(); //List of all obj_creatures who are dead and can be eaten, for findFoodCarnivore code.
@@ -58,7 +59,14 @@ for (var i = 0; i < ds_list_size(global.speciesList); i++) { //Create the initia
 	
 	startX = random(room_width);
 	startY = random(room_height);
-	for (var j = 0; j < initialCreatureAmount; j++) {
+	
+	var creatureSpawnAmount = initialCreatureAmount;
+	
+	if (creatureSpawnAmount < 1) {
+		creatureSpawnAmount = irandom_range(7, 9);
+	}
+	
+	for (var j = 0; j < creatureSpawnAmount; j++) {
 		instantiateCreature(species, (startX + (30 * random_range(-1, 1))), (startY + (30 * random_range(-1, 1))) );
 	}
 }

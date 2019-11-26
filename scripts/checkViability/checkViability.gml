@@ -5,15 +5,6 @@
 // An optional third argument may also be passed, beingAttacked, which is used strictly in the fightOrFlight() script.
 //Postcondition: Return a numerical value with how viable a creature is for attacking. If beingAttacked is passed in, then don't take in account the target's likelihood to attack (as you are under attack by the target)
 
-
-//TO BE TAKEN IN ACCOUNT: RUNNING LIKELIHOOD (IN DEXERITY CATEGORY), LIKELIHOOD OF DETECTION BY TARGET (IN PERCEPTION CATEGORY), CREATURE AGGRESSIVITY
-//TO BE TAKEN IN ACCOUNT: RUNNING LIKELIHOOD (IN DEXERITY CATEGORY), LIKELIHOOD OF DETECTION BY TARGET (IN PERCEPTION CATEGORY), CREATURE AGGRESSIVITY
-//TO BE TAKEN IN ACCOUNT: RUNNING LIKELIHOOD (IN DEXERITY CATEGORY), LIKELIHOOD OF DETECTION BY TARGET (IN PERCEPTION CATEGORY), CREATURE AGGRESSIVITY
-//TO BE TAKEN IN ACCOUNT: RUNNING LIKELIHOOD (IN DEXERITY CATEGORY), LIKELIHOOD OF DETECTION BY TARGET (IN PERCEPTION CATEGORY), CREATURE AGGRESSIVITY
-//TO BE TAKEN IN ACCOUNT: RUNNING LIKELIHOOD (IN DEXERITY CATEGORY), LIKELIHOOD OF DETECTION BY TARGET (IN PERCEPTION CATEGORY), CREATURE AGGRESSIVITY
-
-
-
 var creature = argument[0]; //The creature doing the hunting
 var targetCreature = argument[1]; //The creature to compare "creature" to.
 
@@ -29,25 +20,26 @@ var targetCreatureAmount = ds_list_size(targetCreature.creatureListReference);
 
 var viability = 0; //Default is 0: At 0 viability, the creatures are considered equivalent.
 
-var diffAttack = (creature.attack*currentCreatureAmount) - (targetCreature.attack*targetCreatureAmount); //Multiply by the number of creatures as well every time to take population in account
-viability += diffAttack; //Attack has 100% weight
+var diffAttack = (creature.attack + (creature.speciesReference.avg_attack * (currentCreatureAmount - 1) ))/targetCreatureAmount - (targetCreature.attack + (targetCreature.speciesReference.avg_attack* (targetCreatureAmount-1) ))/currentCreatureAmount; //Multiply by the number of creatures as well every time to take population in account
+//Use "avg_attack" since you are using the population average to approximate the pack's strength. The reason you divide by the opposite (i.e: targetCreatureAmount for the first one) is to have differences in population be more heavily weighted.
 
-var diffDefense = (creature.defense*currentCreatureAmount) - (targetCreature.defense*targetCreatureAmount);
+viability += diffAttack; //Attack has 100% weight
+ 
+var diffDefense = (creature.defense + (creature.speciesReference.avg_defense * (currentCreatureAmount - 1) ))/targetCreatureAmount - (targetCreature.defense + (targetCreature.speciesReference.avg_defense * (targetCreatureAmount-1)))/currentCreatureAmount;
 viability += ( (diffDefense * 80)/100); //Defense has 80% weight
 
 var diffDexerity = creature.dexerity - targetCreature.dexerity;
 //This will be utilized in code below, as dexerity's weight depends on the target's aggressivity.
 
-var diffPerception = creature.perception - targetCreature.perception;
-//This will be utilized in code below, as perception's weight depends on the target's aggressivity.
-
-
-//Stamina does not need to be taken in account
+//Stamina and perception do not need to be taken in account
 
 
 viability -= ( (viability * 3 / 100) * (distance/50)); //Give distance some weight, but not a whole lot. Every 50 units away will subtract 3% viability.
 
-if (beingAttacked == false) { //If the creature isn't being attacked by the target, take in account the target's likelihood to fight back and their likelihood to run.
+//Take in account the target's probability of fighting back below.
+
+if (beingAttacked == false) { //If the creature isn't being attacked by the target (at least hypothetically), take in account the target's likelihood to fight back and their likelihood to run.
+	//This is essentially a recursive base case of sorts, since this function calls fightLikelihood which calls this function again.
 	
 	var fightChance = fightLikelihood(targetCreature, creature); //Get the likelihood of the target fighting back against the creature.
 	var flightChance = 100 - fightChance;
@@ -55,39 +47,25 @@ if (beingAttacked == false) { //If the creature isn't being attacked by the targ
 	show_debug_message("Well, the fight chance for " + targetCreature.species + " against " + creature.species + " is " + string(fightChance));
 	
 	//Now, factor in the chance of running vs. fighting below.
+	
+	viability -= (diffDexerity*flightChance/100);
+	
+	//Dexerity matters ONLY if the creature's likely to run.	
 }
 
 //Next, take in account the creature's aggressivity
 
+var aggressivity = creature.aggressivity;
 
+var changeFactorAggressivity = power(abs(aggressivity), ( (1/abs(aggressivity)) + 1) );
 
-/*if (targetCreature.aggressivity < 0) { //If the creature isn't aggressive, then factor how passive it is into how viable it is for hunting.
-	
-	//Essentially, what the calculations below do is that even if a creature is significantly more powerful, if it's really passive then it's more viable.
-	//Low amounts of passivity have little to no impact. Pronounced impact begins at ~-0.6 aggressivity.
-	
-	var targetPass = -1 * targetCreature.aggressivity; //Multiply by negative one simply for the math, which uses passivity rather than aggressivity
+if (aggressivity < 0) { //Account for the usage of absolute value. Absolute value is used so we don't need two different equations.
+	changeFactorAggressivity *= -1;	
+}
 
-	var viabilityChangeFactor =	power(targetPass, ( (1/targetPass) + 1) ); //Make the creature more likely to hunt a passive creature, more and more likely the closer the target's aggressivity is to -1
-	//This equation above was determined in desmos. I looked at the graph, and essentially you will start to see an impact after aggressivity hits 0.3. 
-	//25% impact at ~ -0.6, 50% impact at ~ -0.75, 75% imapct at ~ -0.88, and 100% impact at -1.
+viability += (viability * changeFactorAggressivity);
 
-	viabilityChangeFactor *= 2.5; // multiply by 2.5 to give the target's passivity a LOT more weight.
-
-	var tempViability = viability;
-	
-	if (tempViability < 0) { 
-		tempViability *= -1; //Make the tempViability for the comparison positive, in all cases.
-		//This is so you don't decrease viability rather than increase it if viability is negative.
-	}
-	
-	viability += (tempViability * viabilityChangeFactor); //Add viability to itself, multiplied by the change factor (which is generally smaller than 1, depending on the case).
-
-}*/
-
-
-
-
+//Take in account if the creature won't be satisfied by eating its target below.
 
 var targetFood = targetCreature.currentFood;
 

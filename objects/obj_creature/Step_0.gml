@@ -9,6 +9,7 @@
 // Whenever you complete an action, you MUST remember to delete the instance of the action in the game world. Otherwise, performance will decay over time due to a memory leak.
 
 if (x < 0) or (x > room_width) or (y < 0) or (y > room_height) { //Failsafe: If a creature is for some reason leaving the room, just remove it.
+	ds_list_delete(creatureListReference, ds_list_find_index(creatureListReference, id)); //Creature must be removed from the creature list as well. 
 	instance_destroy(id);
 }
 
