@@ -127,6 +127,14 @@
             }
         },
         {
+            "Key": "25c288c1-a125-43a1-8116-d511761f2fa2",
+            "Value": {
+                "id": "a0942244-7e90-431b-a7db-1d3c8a44d2ba",
+                "resourcePath": "scripts\\checkViability\\checkViability.yy",
+                "resourceType": "GMScript"
+            }
+        },
+        {
             "Key": "287afd2a-84c8-4991-8da1-3e1e6b1a3d25",
             "Value": {
                 "id": "0137a000-7ce6-49ef-8877-5ae544d30143",
@@ -164,6 +172,14 @@
                 "id": "13812d7a-3559-4ec1-b35c-8b7f22ca0cf8",
                 "resourcePath": "sprites\\pauseButtonSprite\\pauseButtonSprite.yy",
                 "resourceType": "GMSprite"
+            }
+        },
+        {
+            "Key": "3c0fd2bd-2a09-4839-a692-5f8754506655",
+            "Value": {
+                "id": "12d92b2a-31aa-48eb-9b8b-da2928f71ebc",
+                "resourcePath": "scripts\\findFoodCarnivore\\findFoodCarnivore.yy",
+                "resourceType": "GMScript"
             }
         },
         {
@@ -751,7 +767,9 @@
         "2e636253-3311-4513-a3b0-51fa8a27ebe8",
         "ede1546b-3684-47d2-97f2-9a172d79359f",
         "92f3dc5d-e27d-4482-9196-318f6d80f3ef",
-        "ab7bff32-55b8-40ef-a273-762e32bdd186"
+        "ab7bff32-55b8-40ef-a273-762e32bdd186",
+        "3c0fd2bd-2a09-4839-a692-5f8754506655",
+        "25c288c1-a125-43a1-8116-d511761f2fa2"
     ],
     "tutorial": ""
 }

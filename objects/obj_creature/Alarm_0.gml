@@ -20,4 +20,6 @@ viewRange = perception * 25; //How far the creature can see, including perceivin
 maxHunger = scaleFactor* 200; //Hunger is based on size.
 hunger = maxHunger; 
 
+currentFood = maxHunger * 5; //One dead creature will be able to feed 5 of itself.
+
 initialized = true;

@@ -240,6 +240,8 @@ if (initialized == true) and (global.paused == false) {
 						ds_list_delete(actionsQueue, 0);
 						instance_destroy(actionToUndergo); //After you eat, remove the 'eat' function.
 					}			
+				} else if (actionToUndergo.action == "findFoodCarnivore") {
+					findFoodCarnivore(id, viewRange);	
 				} else {
 					show_error("Action '" + actionToUndergo.action + "' is not an action with behavior.", true);	
 				}
@@ -251,8 +253,9 @@ if (initialized == true) and (global.paused == false) {
 			ds_list_delete(actionsQueue, ds_list_find_index(actionsQueue, actionToUndergo));	
 		}
 		
-	} else if (dead == false) { //If the creature is dead, set dead to true. Remove the creature from the species' "creature" list.
+	} else if (dead == false) { //If the creature is dead, set dead to true. Remove the creature from the species' "creature" list, and add it to the global corpseList.
 		ds_list_delete(creatureListReference, ds_list_find_index(creatureListReference, id)); //Delete the creature from the "species" list, since it's dead and its averages should no longer be taken account for in reproduction.
+		ds_list_add(global.corpseList, id); 
 		dead = true;
 	} 
 }

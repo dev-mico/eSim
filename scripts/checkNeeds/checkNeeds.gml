@@ -20,7 +20,7 @@ if (instance_exists(creature) == true) { //Failsafe, in case a creature is delet
 
 	if (creature.hunger < (creature.maxHunger/10)) { //Maximum priority search for food once hunger hits 20% threshold
 		
-		if (creature.diet == herbivore or omnivore) {
+		if (creature.diet == herbivore or creature.diet == omnivore) {
 			highestPriorityAction.action = "findFood";	
 			highestPriorityAction.priority = 100;
 		} else {
@@ -29,7 +29,7 @@ if (instance_exists(creature) == true) { //Failsafe, in case a creature is delet
 		}
 		
 	} else if (creature.hunger < (creature.maxHunger/100 * 80)) { //Low-priority search for food: If hunger hits 80% threshold
-		if (creature.diet == herbivore or omnivore) { //Find herbivorous food
+		if (creature.diet == herbivore or creature.diet == omnivore) { //Find herbivorous food
 			
 			if (creature.hunger < creature.maxHunger/100 * 60) { //Herbivorous creatures will start searching for food later than carnivorous ones, so the actual threshold is 60% hunger.
 				highestPriorityAction.action = "findFood";

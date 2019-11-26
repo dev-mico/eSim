@@ -2,7 +2,9 @@
 //@author Marcos Lacouture
 //Alarm 0 will initialize the creature, this is where all the "fields" are declared but not defined.
 
-showPerceptionView = false; //Debug code: When set to true, every creature's view range will be displayed in a red box.
+showPerceptionView = true; //Debug code: When set to true, every creature's view range will be displayed in a red box.
+
+//All variables below are defined in instantiateCreature.
 
 species = "";
 
@@ -11,8 +13,6 @@ creatureListReference = pointer_null; //Reference to the "creature" list in the 
 scaleFactor = 0.75; //1 = 100% size, 0.9 is 90%. The sprites are generally too big, so 0.75 is considered a medium-sized creature, 0.5 is small-ish, 0.35 is small, 1 is big-ish, and anything above one is generally big.
 
 dead = false;
-
-//All variables below are defined in instantiateCreature.
 
 sprite_body = 2;
 sprite_head = 7;
@@ -43,6 +43,8 @@ creatureMaxHealth = 0;
 
 starvationSeconds = 1; //This is the amount of seconds that it takes for the creature's hunger to reduce by 1%, which will be scaled in code to adjust for the time scale.
 starveCountingDown = false;
+
+currentFood = 0; //Amount of food on the creature (if it were a dead corpse that could be eaten). This depends on the creature's size.
 
 viewRange = 0;
 

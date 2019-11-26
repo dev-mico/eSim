@@ -3,7 +3,10 @@
 
 //Anything in the "Create" event will occur once the simulation is initially created.
 
+
+
 global.foodBushList = ds_list_create(); //List of all food bushes, for findFood code.
+global.corpseList = ds_list_create(); //List of all obj_creatures who are dead and can be eaten, for findFoodCarnivore code.
 
 foodBushCount = 75 * (5/global.foodScarcity) * (global.worldSize/1500);
 initialCreatureAmount = global.initialCreatureAmount * (global.worldSize/1500);

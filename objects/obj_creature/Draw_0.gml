@@ -167,7 +167,6 @@ headOffsetY *= scaleFactor;
 //Finally, draw everything.
 
 if (dead == false) { //If the creature is alive you have to draw it differently than if its dead.
-	show_debug_message("still not dead");
 	draw_sprite_ext(bodySprite, sprite_body, x, y, localScaleFactor, scaleFactor, 0, localSpriteColor, 1);
 	draw_sprite_ext(headSprite, sprite_head, (x +headOffsetX), (y + headOffsetY), localScaleFactor * headScaleX, scaleFactor * headScaleY, 0, localSpriteColor, 1);
 

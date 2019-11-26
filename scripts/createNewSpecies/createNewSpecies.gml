@@ -86,5 +86,7 @@ show_debug_message("Head: " + string(bodyParts[0]));
 show_debug_message("Body: " + string(bodyParts[1]));
 show_debug_message("Arms: " + string(bodyParts[2]));*/
 
+
 newSpecies.persistent = true; //Temporarily make it persistent so it isn't deleted upon room change
 ds_list_add(global.speciesList, newSpecies);
+show_debug_message("Species list size: " + string(ds_list_size(global.speciesList)));

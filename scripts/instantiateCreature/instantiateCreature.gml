@@ -103,15 +103,17 @@ if (species.object_index == Species) { //First, check you actually have a specie
 
 	/*
 	Debugging code below (show all characteristics of each creature)
-	show_debug_message(creature.species);
-	show_debug_message("---------");
+	*/
+	show_debug_message("Creature of " + creature.species + " species.");
+	show_debug_message("--------------------");
 	show_debug_message("Attack: " + string(creature.attack));
 	show_debug_message("Defense: " + string(creature.defense));
 	show_debug_message("Dexerity: " + string(creature.dexerity));
 	show_debug_message("Perception: " + string(creature.perception));
 	show_debug_message("Stamina: " + string(creature.stamina));
+	show_debug_message("Aggressivity: " + string(creature.aggressivity));
 	show_debug_message("");
-	*/
+
 } else { //If what is passed in is not a species
 	show_error("Argument passed into instantiateCreature is not a creature, it is a " + object_get_name(species.object_index), true);
 }
