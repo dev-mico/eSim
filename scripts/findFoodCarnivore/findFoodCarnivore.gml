@@ -53,7 +53,7 @@ if (closestCorpseFound == pointer_null) { // If no corpses are found or the crea
 					if (targetCreature.x <  (room_width - (creature.creatureWidth/8))) and (targetCreature.x > (creature.creatureWidth/8)) {
 				
 						if (targetCreature.y < room_height - (creature.creatureHeight/8)) and (targetCreature.y > (creature.creatureHeight/8))  { //If the creature can access the target
-							show_debug_message(creature.species + " viability when hunting " + targetCreature.species + ":" +  string(checkViability(creature, targetCreature, distanceFromCreature))); //checkViability will get how viable a target is for hunting based on a variety of factors.
+							show_debug_message(creature.species + " viability when hunting " + targetCreature.species + ":" +  string(checkViability(creature, targetCreature))); //checkViability will get how viable a target is for hunting based on a variety of factors.
 							//var viability = 0;
 							
 							/*if (viability > highestViability) { //If you find a more viable target for hunting, set that target as priority.

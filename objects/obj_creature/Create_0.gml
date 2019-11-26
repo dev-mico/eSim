@@ -54,3 +54,7 @@ flashingRed = false;
 
 initialized = false; //This is set to true in alarm[0], which is called after instantiateCreature finishes setting all of the creature's characteristics.
 //Until initialized, the creature will have no behavior.
+
+
+
+	

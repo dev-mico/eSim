@@ -1,19 +1,28 @@
 //@author Marcos Lacouture
 //@description: checkViability will return a numerical value for how viable a creature is for another creature to hunt, based on differences in characteristics, pack size, and more.
 
-//Precondition: Two arguments are passed: Creature (the creature who is hunting), targetCreature (the creature that the viability is being checked for), and distance (the distance between the two creatures).
-//Postcondition: Return a numerical value with how viable a creature is for hunting.
+//Precondition: Two arguments are passed: Creature (the creature who is hunting), and targetCreature (the creature that the viability is being checked for).
+// An optional third argument may also be passed, beingAttacked, which is used strictly in the fightOrFlight() script.
+//Postcondition: Return a numerical value with how viable a creature is for attacking. If beingAttacked is passed in, then don't take in account the target's likelihood to attack (as you are under attack by the target)
 
-//TO BE TAKEN IN ACCOUNT: RUNNING LIKELIHOOD (IN DEXERITY CATEGORY), LIKELIHOOD OF DETECTION BY TARGET (IN PERCEPTION CATEGORY)
-//TO BE TAKEN IN ACCOUNT: RUNNING LIKELIHOOD (IN DEXERITY CATEGORY), LIKELIHOOD OF DETECTION BY TARGET (IN PERCEPTION CATEGORY)
-//TO BE TAKEN IN ACCOUNT: RUNNING LIKELIHOOD (IN DEXERITY CATEGORY), LIKELIHOOD OF DETECTION BY TARGET (IN PERCEPTION CATEGORY)
-//TO BE TAKEN IN ACCOUNT: RUNNING LIKELIHOOD (IN DEXERITY CATEGORY), LIKELIHOOD OF DETECTION BY TARGET (IN PERCEPTION CATEGORY)
-//TO BE TAKEN IN ACCOUNT: RUNNING LIKELIHOOD (IN DEXERITY CATEGORY), LIKELIHOOD OF DETECTION BY TARGET (IN PERCEPTION CATEGORY)
+
+//TO BE TAKEN IN ACCOUNT: RUNNING LIKELIHOOD (IN DEXERITY CATEGORY), LIKELIHOOD OF DETECTION BY TARGET (IN PERCEPTION CATEGORY), CREATURE AGGRESSIVITY
+//TO BE TAKEN IN ACCOUNT: RUNNING LIKELIHOOD (IN DEXERITY CATEGORY), LIKELIHOOD OF DETECTION BY TARGET (IN PERCEPTION CATEGORY), CREATURE AGGRESSIVITY
+//TO BE TAKEN IN ACCOUNT: RUNNING LIKELIHOOD (IN DEXERITY CATEGORY), LIKELIHOOD OF DETECTION BY TARGET (IN PERCEPTION CATEGORY), CREATURE AGGRESSIVITY
+//TO BE TAKEN IN ACCOUNT: RUNNING LIKELIHOOD (IN DEXERITY CATEGORY), LIKELIHOOD OF DETECTION BY TARGET (IN PERCEPTION CATEGORY), CREATURE AGGRESSIVITY
+//TO BE TAKEN IN ACCOUNT: RUNNING LIKELIHOOD (IN DEXERITY CATEGORY), LIKELIHOOD OF DETECTION BY TARGET (IN PERCEPTION CATEGORY), CREATURE AGGRESSIVITY
+
 
 
 var creature = argument[0]; //The creature doing the hunting
 var targetCreature = argument[1]; //The creature to compare "creature" to.
-var distance = argument[2]; //The only reason this is required is to perform one less operation: When this script is called, a distance will always already have been calculated to make sure the creature is within the sight range.
+
+var distance = sqrt(sqr(creature.x - targetCreature.x) + sqr(creature.y - targetCreature.y));
+var beingAttacked = false;
+
+if (argument_count > 2) { //Optional argument: When set to true, the creature is being attacked (at least, hypothetically) by the target, which means the code will take in account the target's likelihood to be fight back in viability calculations.
+	beingAttacked = argument[2]; 
+} 
 
 var currentCreatureAmount = ds_list_size(creature.creatureListReference);
 var targetCreatureAmount = ds_list_size(targetCreature.creatureListReference);
@@ -38,9 +47,21 @@ var diffPerception = creature.perception - targetCreature.perception;
 
 viability -= ( (viability * 3 / 100) * (distance/50)); //Give distance some weight, but not a whole lot. Every 50 units away will subtract 3% viability.
 
-//BASE CALCULATIONS FOR FIGHT VS. FLIGHT ON THE CODE BELOW
+if (beingAttacked == false) { //If the creature isn't being attacked by the target, take in account the target's likelihood to fight back and their likelihood to run.
+	
+	var fightChance = fightLikelihood(targetCreature, creature); //Get the likelihood of the target fighting back against the creature.
+	var flightChance = 100 - fightChance;
+	
+	show_debug_message("Well, the fight chance for " + targetCreature.species + " against " + creature.species + " is " + string(fightChance));
+	
+	//Now, factor in the chance of running vs. fighting below.
+}
 
-if (targetCreature.aggressivity < 0) { //If the creature isn't aggressive, then factor how passive it is into how viable it is for hunting.
+//Next, take in account the creature's aggressivity
+
+
+
+/*if (targetCreature.aggressivity < 0) { //If the creature isn't aggressive, then factor how passive it is into how viable it is for hunting.
 	
 	//Essentially, what the calculations below do is that even if a creature is significantly more powerful, if it's really passive then it's more viable.
 	//Low amounts of passivity have little to no impact. Pronounced impact begins at ~-0.6 aggressivity.
@@ -62,7 +83,11 @@ if (targetCreature.aggressivity < 0) { //If the creature isn't aggressive, then 
 	
 	viability += (tempViability * viabilityChangeFactor); //Add viability to itself, multiplied by the change factor (which is generally smaller than 1, depending on the case).
 
-}
+}*/
+
+
+
+
 
 var targetFood = targetCreature.currentFood;
 
