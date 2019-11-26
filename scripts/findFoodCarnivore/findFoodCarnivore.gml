@@ -53,11 +53,18 @@ if (closestCorpseFound == pointer_null) { // If no corpses are found or the crea
 					if (targetCreature.x <  (room_width - (creature.creatureWidth/8))) and (targetCreature.x > (creature.creatureWidth/8)) {
 				
 						if (targetCreature.y < room_height - (creature.creatureHeight/8)) and (targetCreature.y > (creature.creatureHeight/8))  { //If the creature can access the target
-							var targetViability = checkViability(creature, targetCreature); //checkViability will get how viable a target is for hunting based on a variety of factors.
 							
-							if (targetViability > highestViability) { //If you find a more viable target for hunting, set that target as priority.
-								highestViability = targetViability;
-								mostViableCreature = targetCreature;
+							if (detectsCreature(creature, targetCreature) == true) { //If you successfully detect the target creature
+								
+								var targetViability = checkViability(creature, targetCreature); //checkViability will get how viable a target is for hunting based on a variety of factors.
+							
+								if (targetViability > highestViability) { //If you find a more viable target for hunting, set that target as priority.
+									highestViability = targetViability;
+									mostViableCreature = targetCreature;
+								}
+								
+							} else {
+								show_debug_message("Target creature " + targetCreature.species + " avoided detection.");	
 							}
 							
 						}

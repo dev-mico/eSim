@@ -1,7 +1,7 @@
 //Precondition: fightLikelihood is called with two creatures as the arguments.
 //Postcondition: The likelihood of creature1 fighting back against creature2 is returned, depending on factors which are mostly determined in checkViability.
 
-var creature1 = argument[0]
+var creature1 = argument[0];
 var creature2 = argument[1];
 
 var guaranteedFightViability = 10; //This is to be tweaked throughout testing. Essentially, if the viability is this or higher, you will guaranteed fight back.

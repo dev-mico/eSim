@@ -16,7 +16,7 @@ global.speciesList = ds_list_create(); //Creates a 'dslist,' which has all the f
 
 for (var i = 0; i < speciesAmount; i++) { 
 	if (global.initialDevelopmentAmount < 1) {
-		initialDevelopment = irandom_range(25, 100);
+		initialDevelopment = irandom_range(10, 100);
 	}
 	createNewSpecies(initialDevelopment, global.initialDiet); 
 }
