@@ -1,6 +1,9 @@
 /// @description Draw the creature based on its characteristics
 //@author Marcos Lacouture
 
+/// @description Draw the creature based on its characteristics
+//@author Marcos Lacouture
+	
 var headOffsetX = 0;
 var headOffsetY = 0;
 var headScaleX = 1; //Some heads need to be rescaled to fit their bodies.
@@ -15,7 +18,7 @@ var localScaleFactor = scaleFactor;
 localScaleFactor *= facing; //Use a local scale factor so you can change direction if facing is -1.
 //Local scale factor will only be applied to any X-scaling, as you only want to flip the sprite horizontally.
 
-localSpriteColor = sprite_color; //Use a local sprite color so that you can paint the creature as red when it is damaged.
+var localSpriteColor = sprite_color; //Use a local sprite color so that you can paint the creature as red when it is damaged.
 
 if (flashingRed == true) {
 	localSpriteColor = c_red;
@@ -180,7 +183,7 @@ if (dead == false) { //If the creature is alive you have to draw it differently 
 		draw_set_colour(c_white);
 	}
 	
-} else { //If the creature's dead
+} else {
 	draw_sprite_ext(bodySprite, sprite_body, x, y, localScaleFactor, (scaleFactor*-1), 0, c_gray, 1);
 	draw_sprite_ext(headSprite, sprite_head, (x +headOffsetX), (y - headOffsetY), localScaleFactor * headScaleX, (scaleFactor*-1) * headScaleY, 0, c_gray, 1);
 

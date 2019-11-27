@@ -380,6 +380,7 @@ if (initialized == true) and (global.paused == false) {
 	} else if (dead == false) { //If the creature is dead, set dead to true. Remove the creature from the species' "creature" list, and add it to the global corpseList.
 		ds_list_delete(creatureListReference, ds_list_find_index(creatureListReference, id)); //Delete the creature from the "species" list, since it's dead and its averages should no longer be taken account for in reproduction.
 		ds_list_add(global.corpseList, id); 
+		layer_element_move(id, "CorpseLayer"); //Move it to the corpse layer so that creatures will be drawn over corpses.
 		
 		if (ds_list_size(creatureListReference) == 0) {
 			show_debug_message("species went extinct: " + string(speciesReference.name));
