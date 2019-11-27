@@ -162,7 +162,7 @@ if (initialized == true) and (global.paused == false) {
 				
 						var newAction = instance_create_depth(0, 0, 5000, obj_action);
 						newAction.action = "findFoodMoveTo"; //findFoodMoveTo is a moveTo that occurs either until you get to a certain point, or you find food on the way.
-						var searchRange = (300 * room_width/1500); //The lengths creatures will look continuously for food should depend on the room size.
+						var searchRange = (searchWidth * room_width/1500); //The lengths creatures will look continuously for food should depend on the room size.
 				
 						targetX = x + random_range(-1 * searchRange, searchRange);
 						targetY = y + random_range(-1 * searchRange, searchRange);
@@ -240,7 +240,7 @@ if (initialized == true) and (global.paused == false) {
 						if (floor(x) == floor(targetX)) and (floor(y) == floor(targetY)) { //If no food is found on the way and you reach the target coordinates, keep searching.
 							var newAction = instance_create_depth(0, 0, 5000, obj_action);
 							newAction.action = "findFoodMoveTo"; 
-							var searchRange = (300 * room_width/1500); //The lengths creatures will look continuously for food should depend on the room size.
+							var searchRange = (searchWidth * room_width/1500); //The lengths creatures will look continuously for food should depend on the room size.
 				
 							targetX =  x + random_range(-1 * searchRange, searchRange);
 							targetY = y + random_range(-1* searchRange, searchRange);
@@ -268,7 +268,7 @@ if (initialized == true) and (global.paused == false) {
 					toEat = actionToUndergo.arg1;
 			
 					
-					if (diet == 1) or (instance_exists(toEat) == true){
+					if (instance_exists(toEat) == true){
 						var distanceFromToEat = sqrt(sqr(x - toEat.x) + sqr(y - toEat.y));
 						
 						if (distanceFromToEat <= viewRange) {
@@ -276,20 +276,43 @@ if (initialized == true) and (global.paused == false) {
 							if (x != toEat.x) or (y != toEat.y) {//Move towards your eating target
 								moveTowards(id, movementSpeed, toEat.x, toEat.y);	
 								
-								if (toEat.object_index == obj_creature.object_index) {  //What this chain of if statements does is allow a predator to attack a creature even if its moving, so long as the predator within 5 units of the target.
-									if (point_in_rectangle(x, y, toEat.x - 5, toEat.y - 5, toEat.x + 5, toEat.y + 5) == true) {
+								if (toEat.object_index == obj_creature.object_index) {  //This code allows moving targets to be attacked, and will create the target's fight or flight action.
+									
+									if (point_in_rectangle(x, y, toEat.x - 5, toEat.y - 5, toEat.x + 5, toEat.y + 5) == true) { //This block allows moving targets to be hit
 										if (toEat.dead == false) {
 											
 											attackCreature(id, toEat);
 											
 										}
 									}
+									
+									//This block creates a fightOrFlight action on the target creature.
+									var containsFightOrFlight = false;
+									
+									for (var i = 0; i < ds_list_size(toEat.actionsQueue); i++) { //Check if a fightOrFlight event exists, and if the fightOrFlight event is about this creature; i.e, if there's another fightOrFlight event for another creature, still make this one..
+										var currentAction = ds_list_find_value(toEat.actionsQueue, i);
+										
+										if (currentAction.action == "fightOrFlight") { //If the fightOrFlight event exists 
+											if (currentAction.arg1 == id) { //If the existing fightOrFlight event is about this creature, don't create a new one.
+												containsFightOrFlight = true;	
+											}
+										}
+									}
+									
+									if (containsFightOrFlight = false) { //If you didn't find a fightOrFlight event about this creature, create one.
+										var newAction = instance_create_depth(0, 0, 5000, obj_action);
+										newAction.action = "fightOrFlight";
+										newAction.arg1 = id;
+										newAction.arg2 = -1; //-1 so that the creature runs fightOrFlight calculations, and decide if it wants to fight or flee.
+										newAction.priority = 95; //Second-highest priority action of all actions: fight or flight.
+										ds_list_add(toEat.actionsQueue, newAction);
+									}
 								}
 								
 							} else {//If you are at your target, eat.
 								var hungerToBeFilled = maxHunger - hunger; //How hungry the creature is
 								
-								if (toEat.object_index == foodBush.object_index) { 
+								if (toEat.object_index == foodBush.object_index) { //If your target is a food bush
 								
 									if (hungerToBeFilled > toEat.currentFood) { //If there is less food on the bush than how hungry the creature is
 										hunger += toEat.currentFood;
@@ -302,7 +325,7 @@ if (initialized == true) and (global.paused == false) {
 									ds_list_delete(actionsQueue, 0);
 									instance_destroy(actionToUndergo); //After you eat, remove the 'eat' function.
 									
-								} else {
+								} else { //If your target is a creature
 									
 									if (toEat.dead == true) {
 										
@@ -342,11 +365,10 @@ if (initialized == true) and (global.paused == false) {
 					var newAction = instance_create_depth(0, 0, 5000, obj_action);
 
 					
-					if (foodFound == pointer_null) { //If you found no food, create a findFoodMoveTo_C event (carnivore)
-						var newAction = instance_create_depth(0, 0, 5000, obj_action);
+					if (foodFound == pointer_null) { //If you found no food, create a findFoodMoveTo event
 						newAction.action = "findFoodMoveTo"; 
-						var searchRange = (300 * room_width/1500); //The lengths creatures will look continuously for food should depend on the room size.
-				
+						var searchRange = (searchWidth * room_width/1500); //The lengths creatures will look continuously for food should depend on the room size.
+
 						targetX =  x + random_range(-1 * searchRange, searchRange);
 						targetY = y + random_range(-1* searchRange, searchRange);
 				
@@ -374,6 +396,31 @@ if (initialized == true) and (global.paused == false) {
 					
 					ds_list_delete(actionsQueue, 0);
 					instance_destroy(actionToUndergo);
+					
+				} else if (actionToUndergo.action == "fightOrFlight") {
+					
+					var attacker = actionToUndergo.arg1;
+					var fightOrFlee = actionToUndergo.arg2;
+					
+					var fight = 0;
+					var flee = 1;
+					
+					if (attacker.dead == false) { //If the attacker is alive and hunting the creature
+						//ADD THE CHECK FOR IF THE ATTACKER IS STILL HUNTING YOU
+					
+						if (fightOrFlee == fight) {
+							show_debug_message("the creature of " + attacker.species + " can catch da smoke no cap on my momma.");	
+						} else if (fightOrFlee == flee) {
+							show_debug_message("shiiit, im gonna get my ass whooped. i'd rather run from " + attacker.species);
+						} else { //If you haven't run the fight or flight calculations yet, run them and then change the action accordingly.
+							fightOrFlee = fightOrFlight(id, attacker);
+							actionToUndergo.arg2 = fightOrFlee; //Update the action
+						}
+						
+					} else { //Either the attacker is dead, or you have escaped the attacker. Either way, remove the fightOrFlight action.
+						ds_list_delete(actionsQueue, 0);
+						instance_destroy(actionToUndergo);
+					}
 					
 				} else {
 					show_error("Action '" + actionToUndergo.action + "' is not an action with behavior.", true);	

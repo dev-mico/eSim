@@ -35,4 +35,11 @@ initialized = true;
 	show_debug_message("Perception: " + string(perception));
 	show_debug_message("Stamina: " + string(stamina));
 	show_debug_message("Aggressivity: " + string(aggressivity));
+	if (diet == 0) {
+		show_debug_message("Diet: Omnivore");
+	} else if (diet == -1) {
+		show_debug_message("Diet: Carnivore");
+	} else {
+		show_debug_message("Diet: Herbivore");
+	}
 	show_debug_message(" ");

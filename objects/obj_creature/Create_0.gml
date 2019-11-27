@@ -58,6 +58,8 @@ attackCooldownSteps = 50; //rough amount of steps of cooldown between attacks (p
 attackCooldownOrigSteps = 0; //amount of steps of cooldown between an attack, with the plus or minus 30% taken in account.
 xOffset = 0; //Offset of drawing from x-coordinate. This is used for attack animation.
 
+searchWidth = 500; //How wide a search for food will be (in a 1500x1500 room).
+
 initialized = false; //This is set to true in alarm[0], which is called after instantiateCreature finishes setting all of the creature's characteristics.
 //Until initialized, the creature will have no behavior.
 
