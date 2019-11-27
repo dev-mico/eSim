@@ -275,6 +275,17 @@ if (initialized == true) and (global.paused == false) {
 						
 							if (x != toEat.x) or (y != toEat.y) {//Move towards your eating target
 								moveTowards(id, movementSpeed, toEat.x, toEat.y);	
+								
+								if (toEat.object_index == obj_creature.object_index) {  //What this chain of if statements does is allow a predator to attack a creature even if its moving, so long as the predator within 5 units of the target.
+									if (point_in_rectangle(x, y, toEat.x - 5, toEat.y - 5, toEat.x + 5, toEat.y + 5) == true) {
+										if (toEat.dead == false) {
+											
+											attackCreature(id, toEat);
+											
+										}
+									}
+								}
+								
 							} else {//If you are at your target, eat.
 								var hungerToBeFilled = maxHunger - hunger; //How hungry the creature is
 								
