@@ -14,7 +14,7 @@ if (x < 0) or (x > room_width) or (y < 0) or (y > room_height) { //Failsafe: If 
 }
 
 if (initialized == true) and (global.paused == false) {
-	if (creatureHealth > 0) { //Check if creature is alive
+	if (creatureHealth > 0) and (dead == false) { //Check if creature is alive
 		if (creatureHealth < creatureMaxHealth) and (hunger > (maxHunger/100 * 60)){ //If the creature has above 60% hunger and the creature is hurt, heal the creature by 2% of its max health each step.
 			if (!alarm[3]) {
 				alarm[3] = room_speed*starvationSeconds/global.timeScale; //use the same values as the starvation speed, for balance
@@ -198,6 +198,7 @@ if (initialized == true) and (global.paused == false) {
 					//findFoodMoveTo differs from moveTo in that it checks for food on the way to its targetX and targetY.
 					// If food is found on the way, it aborts the current findFoodMoveTo and replaces it with an 'eat' action.
 					// If no food is found on the way, it creates another 'findFoodMoveTo' action.
+					// This code functions for herbivores, omnivores, AND carnivores
 					var targetX = actionToUndergo.arg1;
 					var targetY = actionToUndergo.arg2; 
 			
@@ -215,7 +216,14 @@ if (initialized == true) and (global.paused == false) {
 						actionToUndergo.arg2 = targetY;
 					}
 			
-					foodFound = findFood(id, viewRange);
+					var foodFound = pointer_null;
+					
+					if (diet == 1) or (diet == 0) { //If creature is a herbivore or omnivore (change this later)
+						foodFound = findFood(id, viewRange);
+					} else { //Creature is neither an omnivore nor a herbivore; It's a carnivore, find food for a carnivore.
+						foodFound = findFoodCarnivore(id, viewRange);
+					}
+					
 					moveTowards(id, movementSpeed, targetX, targetY); 	
 			
 					if (foodFound != pointer_null) { //If the creature finds food on the way, abort the current action and create an eat action with the necessary arguments.
@@ -228,32 +236,33 @@ if (initialized == true) and (global.paused == false) {
 						ds_list_delete(actionsQueue, 0);
 						instance_destroy(actionToUndergo);
 
-					} else if (floor(x) == floor(targetX)) and (floor(y) == floor(targetY)) { //If no food is found on the way and you reach the target coordinates, keep searching.
-						var newAction = instance_create_depth(0, 0, 5000, obj_action);
-						newAction.action = "findFoodMoveTo"; 
-						var searchRange = (300 * room_width/1500); //The lengths creatures will look continuously for food should depend on the room size.
+					} else if (foodFound == pointer_null) {
+						if (floor(x) == floor(targetX)) and (floor(y) == floor(targetY)) { //If no food is found on the way and you reach the target coordinates, keep searching.
+							var newAction = instance_create_depth(0, 0, 5000, obj_action);
+							newAction.action = "findFoodMoveTo"; 
+							var searchRange = (300 * room_width/1500); //The lengths creatures will look continuously for food should depend on the room size.
 				
-						targetX =  x + random_range(-1 * searchRange, searchRange);
-						targetY = y + random_range(-1* searchRange, searchRange);
+							targetX =  x + random_range(-1 * searchRange, searchRange);
+							targetY = y + random_range(-1* searchRange, searchRange);
 				
-						if (targetX > room_width- creatureWidth/8){  //If it is attempting to, it recalibrates its targets to not allow it to.
-							targetX = room_width - (creatureWidth/8);
-						} else if (targetX < 0 + creatureWidth/8) {
-							targetX = creatureWidth/8;
-						} else if (targetY > room_height - creatureHeight/8) {
-							targetY = room_height - creatureHeight/8;
-						} else if (targetY < creatureHeight/8) {
-							targetY = 0 + (creatureHeight/8);	
+							if (targetX > room_width- creatureWidth/8){  //If it is attempting to, it recalibrates its targets to not allow it to.
+								targetX = room_width - (creatureWidth/8);
+							} else if (targetX < 0 + creatureWidth/8) {
+								targetX = creatureWidth/8;
+							} else if (targetY > room_height - creatureHeight/8) {
+								targetY = room_height - creatureHeight/8;
+							} else if (targetY < creatureHeight/8) {
+								targetY = 0 + (creatureHeight/8);	
+							}
+				
+							newAction.arg1 = targetX;
+							newAction.arg2 = targetY;
+				
+							newAction.priority = actionToUndergo.priority;
+							ds_list_add(actionsQueue, newAction);
+							ds_list_delete(actionsQueue, 0);
+							instance_destroy(actionToUndergo);
 						}
-				
-						newAction.arg1 = targetX;
-						newAction.arg2 = targetY;
-				
-						newAction.priority = actionToUndergo.priority;
-						ds_list_add(actionsQueue, newAction);
-						ds_list_delete(actionsQueue, 0);
-						instance_destroy(actionToUndergo);
-				
 					}
 				} else if (actionToUndergo.action == "eat") {
 					toEat = actionToUndergo.arg1;
@@ -323,9 +332,8 @@ if (initialized == true) and (global.paused == false) {
 
 					
 					if (foodFound == pointer_null) { //If you found no food, create a findFoodMoveTo_C event (carnivore)
-						show_debug_message("food found is a null pointer");
-						/*
-						newAction.action = "findFoodMoveTo_C"; 
+						var newAction = instance_create_depth(0, 0, 5000, obj_action);
+						newAction.action = "findFoodMoveTo"; 
 						var searchRange = (300 * room_width/1500); //The lengths creatures will look continuously for food should depend on the room size.
 				
 						targetX =  x + random_range(-1 * searchRange, searchRange);
@@ -348,14 +356,7 @@ if (initialized == true) and (global.paused == false) {
 						ds_list_add(actionsQueue, newAction);
 						ds_list_delete(actionsQueue, 0);
 						instance_destroy(actionToUndergo);
-						*/
-						
-					} else if (foodFound.dead == false) { //If you found living food, hunt it
-						newAction.action = "eat";
-						newAction.arg1 = foodFound;
-						newAction.priority = actionToUndergo.priority; //Since there are findFood events of varying priorities, set this priority equal to the findFood action's priority.
-						ds_list_add(actionsQueue, newAction);
-					} else { //If you found a corpse, go to it and eat it.
+					} else { //If you found a corpse or a living creature, go to it and eat it.
 						newAction.action = "eat";
 						newAction.arg1 = foodFound;
 						newAction.priority = actionToUndergo.priority; //Since there are findFood events of varying priorities, set this priority equal to the findFood action's priority.
@@ -379,10 +380,16 @@ if (initialized == true) and (global.paused == false) {
 	} else if (dead == false) { //If the creature is dead, set dead to true. Remove the creature from the species' "creature" list, and add it to the global corpseList.
 		ds_list_delete(creatureListReference, ds_list_find_index(creatureListReference, id)); //Delete the creature from the "species" list, since it's dead and its averages should no longer be taken account for in reproduction.
 		ds_list_add(global.corpseList, id); 
+		
+		if (ds_list_size(creatureListReference) == 0) {
+			show_debug_message("species went extinct: " + string(speciesReference.name));
+		}
+		
 		dead = true;
 	} else {
 		if (currentFood <= 0) { //Delete the creature from the game once it is dead and eaten.
 			ds_list_delete(global.corpseList, ds_list_find_index(global.corpseList, id));	
+
 			instance_destroy(id);
 		}
 	}

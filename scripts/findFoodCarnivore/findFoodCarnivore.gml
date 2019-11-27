@@ -24,9 +24,11 @@ if (creature.aggressivity < 0.75) { //If the creature is very aggressive (0.75 o
 		var currentCorpse = ds_list_find_value(global.corpseList, i);
 		var distanceFromCurrent = sqrt(sqr(creature.x - currentCorpse.x) + sqr(creature.y - currentCorpse.y));
 		
-		if (distanceFromCurrent < closestCorpseDistance) { //Go for the closest corpse.
-				closestCorpseFound = currentCorpse;
-				closestCorpseDistance = distanceFromCurrent;
+		if (distanceFromCurrent <= sightRange) {
+			if (distanceFromCurrent < closestCorpseDistance) { //Go for the closest corpse.
+					closestCorpseFound = currentCorpse;
+					closestCorpseDistance = distanceFromCurrent;
+			}
 		}
 		
 	}
@@ -66,7 +68,7 @@ if (closestCorpseFound == pointer_null) { // If no corpses are found or the crea
 								}
 								
 							} else {
-								show_debug_message("Target creature " + targetCreature.species + " avoided detection.");	
+								//show_debug_message("Target creature " + targetCreature.species + " avoided detection.");	
 							}
 							
 						}
@@ -82,9 +84,7 @@ if (closestCorpseFound == pointer_null) { // If no corpses are found or the crea
 }
 
 if (closestCorpseFound != pointer_null) {
-	show_debug_message("returning corpse");
 	return closestCorpseFound;
 } else {
-	show_debug_message("returning creature");
 	return mostViableCreature;
 }
