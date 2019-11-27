@@ -53,6 +53,11 @@ maxHunger = 0; // Maximum hunger depends on size.
 hunger = 0; // Current amount of hunger.
 flashingRed = false;
 
+attackCooldown = 0; //cooldown counter between attacks
+attackCooldownSteps = 50; //rough amount of steps of cooldown between attacks (plus or minus 30%). This is a constant.
+attackCooldownOrigSteps = 0; //amount of steps of cooldown between an attack, with the plus or minus 30% taken in account.
+xOffset = 0; //Offset of drawing from x-coordinate. This is used for attack animation.
+
 initialized = false; //This is set to true in alarm[0], which is called after instantiateCreature finishes setting all of the creature's characteristics.
 //Until initialized, the creature will have no behavior.
 

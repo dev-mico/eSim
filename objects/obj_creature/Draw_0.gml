@@ -167,11 +167,11 @@ headOffsetY *= scaleFactor;
 //Finally, draw everything.
 
 if (dead == false) { //If the creature is alive you have to draw it differently than if its dead.
-	draw_sprite_ext(bodySprite, sprite_body, x, y, localScaleFactor, scaleFactor, 0, localSpriteColor, 1);
-	draw_sprite_ext(headSprite, sprite_head, (x +headOffsetX), (y + headOffsetY), localScaleFactor * headScaleX, scaleFactor * headScaleY, 0, localSpriteColor, 1);
+	draw_sprite_ext(bodySprite, sprite_body, x + xOffset, y, localScaleFactor, scaleFactor, 0, localSpriteColor, 1);
+	draw_sprite_ext(headSprite, sprite_head, (x +headOffsetX + xOffset), (y + headOffsetY), localScaleFactor * headScaleX, scaleFactor * headScaleY, 0, localSpriteColor, 1);
 
 	if (sprite_arm != -1) {
-		draw_sprite_ext(armSprite, sprite_arm, (x +armOffsetX), (y + armOffsetY), localScaleFactor * armScaleX, scaleFactor * armScaleY, 0, localSpriteColor, 1);
+		draw_sprite_ext(armSprite, sprite_arm, (x +armOffsetX + xOffset), (y + armOffsetY), localScaleFactor * armScaleX, scaleFactor * armScaleY, 0, localSpriteColor, 1);
 	}
 
 	if (showPerceptionView == true) {

@@ -20,7 +20,39 @@ if (initialized == true) and (global.paused == false) {
 				alarm[3] = room_speed*starvationSeconds/global.timeScale; //use the same values as the starvation speed, for balance
 			}
 		}
-		
+	
+		if (attackCooldown > 0) {
+			//1 means facing right, -1 means facing left
+			if (facing == 1) {//1 means facing right, -1 means facing left
+				
+				if (attackCooldown > attackCooldownOrigSteps - 13) {
+					xOffset += global.timeScale * scaleFactor;
+					if (xOffset > 13 * scaleFactor) {
+						xOffset = 13 * scaleFactor;	
+					}
+				} else if (attackCooldown > attackCooldownOrigSteps - 26) {
+					xOffset -= global.timeScale * scaleFactor;
+					if (xOffset < 0) {
+						xOffset = 0;	
+					}
+				}
+				
+			} else {
+				
+				if (attackCooldown > attackCooldownOrigSteps - 13) {
+					xOffset -= global.timeScale * scaleFactor;
+					if (xOffset < -13 * scaleFactor) {
+						xOffset = -13 * scaleFactor;	
+					}
+				} else if (attackCooldown > attackCooldownOrigSteps - 26) {
+					xOffset += global.timeScale * scaleFactor;
+					if (xOffset > 0) {
+						xOffset = 0;	
+					}
+				}
+				
+			}
+		}
 		
 		if (starveCountingDown == false) { //If the alarm for starvation is not currently counting down
 			alarm[1] = room_speed*starvationSeconds/global.timeScale; //Multiply starvationSeconds by room_speed to convert from seconds to steps. Alarm 1 will count down starvationSeconds before depleting a little bit of the creature's hunger.
@@ -225,22 +257,65 @@ if (initialized == true) and (global.paused == false) {
 					}
 				} else if (actionToUndergo.action == "eat") {
 					toEat = actionToUndergo.arg1;
+			
+					
+					if (diet == 1) or (instance_exists(toEat) == true){
+						var distanceFromToEat = sqrt(sqr(x - toEat.x) + sqr(y - toEat.y));
 						
-					if (x != toEat.x) or (y != toEat.y) {
-						moveTowards(id, movementSpeed, toEat.x, toEat.y);	
-					} else {
-						var hungerToBeFilled = maxHunger - hunger; //How hungry the creature is
-				
-						if (hungerToBeFilled > toEat.currentFood) { //If there is less food on the bush than how hungry the creature is
-							hunger += toEat.currentFood;
-							toEat.currentFood = 0;
-						} else { //Otherwise, do this
-							hunger += hungerToBeFilled;
-							toEat.currentFood -= hungerToBeFilled;
+						if (distanceFromToEat <= viewRange) {
+						
+							if (x != toEat.x) or (y != toEat.y) {//Move towards your eating target
+								moveTowards(id, movementSpeed, toEat.x, toEat.y);	
+							} else {//If you are at your target, eat.
+								var hungerToBeFilled = maxHunger - hunger; //How hungry the creature is
+								
+								if (toEat.object_index == foodBush.object_index) { 
+								
+									if (hungerToBeFilled > toEat.currentFood) { //If there is less food on the bush than how hungry the creature is
+										hunger += toEat.currentFood;
+										toEat.currentFood = 0;
+									} else { //Otherwise, do this
+										hunger += hungerToBeFilled;
+										toEat.currentFood -= hungerToBeFilled;
+									}
+									
+									ds_list_delete(actionsQueue, 0);
+									instance_destroy(actionToUndergo); //After you eat, remove the 'eat' function.
+									
+								} else {
+									
+									if (toEat.dead == true) {
+										
+										if (hungerToBeFilled > toEat.currentFood) { //If there is less food on the corpse than how hungry the creature is
+											hunger += toEat.currentFood;
+											toEat.currentFood = 0;
+										} else { //Otherwise, do this
+											hunger += hungerToBeFilled;
+											toEat.currentFood -= hungerToBeFilled;
+										}
+									
+										ds_list_delete(actionsQueue, 0);
+										instance_destroy(actionToUndergo); //After you eat, remove the 'eat' function.
+									
+									} else { //If the target isn't dead, attack it 
+										
+										attackCreature(id, toEat);
+										
+									}
+									
+								}
+								
+							}	
+							
+						} else { //If the food escaped you as an omnivore or carnivore, remove the "eat" action.
+							ds_list_delete(actionsQueue, 0);
+							instance_destroy(actionToUndergo); 
 						}
+		
+					} else { //If the instance no longer exists or has escaped the creature's line of sight, delete the "eat" function.
 						ds_list_delete(actionsQueue, 0);
-						instance_destroy(actionToUndergo); //After you eat, remove the 'eat' function.
-					}	
+						instance_destroy(actionToUndergo); 
+					}
 					
 				} else if (actionToUndergo.action == "findFoodCarnivore") {
 					var foodFound = findFoodCarnivore(id, viewRange);	
@@ -305,5 +380,10 @@ if (initialized == true) and (global.paused == false) {
 		ds_list_delete(creatureListReference, ds_list_find_index(creatureListReference, id)); //Delete the creature from the "species" list, since it's dead and its averages should no longer be taken account for in reproduction.
 		ds_list_add(global.corpseList, id); 
 		dead = true;
-	} 
+	} else {
+		if (currentFood <= 0) { //Delete the creature from the game once it is dead and eaten.
+			ds_list_delete(global.corpseList, ds_list_find_index(global.corpseList, id));	
+			instance_destroy(id);
+		}
+	}
 }
