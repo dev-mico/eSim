@@ -354,8 +354,6 @@ if (initialized == true) and (global.paused == false) {
 				
 						newAction.priority = actionToUndergo.priority;
 						ds_list_add(actionsQueue, newAction);
-						ds_list_delete(actionsQueue, 0);
-						instance_destroy(actionToUndergo);
 					} else { //If you found a corpse or a living creature, go to it and eat it.
 						newAction.action = "eat";
 						newAction.arg1 = foodFound;

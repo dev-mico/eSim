@@ -18,7 +18,7 @@ var carnivore = -1;
 if (instance_exists(creature) == true) { //Failsafe, in case a creature is deleted while this runs.
 	var highestPriorityAction = instance_create_depth(0, 0, 5000, obj_action);
 
-	if (creature.hunger < (creature.maxHunger/10)) { //Maximum priority search for food once hunger hits 20% threshold
+	if (creature.hunger < (creature.maxHunger/5)) { //Maximum priority search for food once hunger hits 20% threshold
 		
 		if (creature.diet == herbivore or creature.diet == omnivore) {
 			highestPriorityAction.action = "findFood";	
@@ -46,6 +46,10 @@ if (instance_exists(creature) == true) { //Failsafe, in case a creature is delet
 	} else {
 		highestPriorityAction.action = "idle";
 		highestPriorityAction.priority = 0;
+	}
+	
+	if (highestPriorityAction.action != "idle") { //If you have an action that isn't idling,
+		removeIdleActions(creature.actionsQueue); //Remove the idle action so that after the creature completes its action it doesn't try to return to its previous location.
 	}
 
 	return highestPriorityAction;
