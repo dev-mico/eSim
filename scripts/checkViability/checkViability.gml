@@ -43,9 +43,7 @@ if (beingAttacked == false) { //If the creature isn't being attacked by the targ
 	
 	var fightChance = fightLikelihood(targetCreature, creature); //Get the likelihood of the target fighting back against the creature.
 	var flightChance = 100 - fightChance;
-	
-	show_debug_message("Well, the fight chance for " + targetCreature.species + " against " + creature.species + " is " + string(fightChance));
-	
+		
 	//Now, factor in the chance of running vs. fighting below.
 	
 	viability -= (diffDexerity*flightChance/100);

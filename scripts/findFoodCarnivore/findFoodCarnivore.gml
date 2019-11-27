@@ -19,6 +19,7 @@ closestCorpseDistance = 99999999;
 
 
 if (creature.aggressivity < 0.75) { //If the creature is very aggressive (0.75 or more), it will never scavenge. If it is not this aggressive, however, it will scavenge (try to find an already dead corpse) first before trying to hunt.
+	
 	for (var i = 0; i < ds_list_size(global.corpseList); i++) {
 		var currentCorpse = ds_list_find_value(global.corpseList, i);
 		var distanceFromCurrent = sqrt(sqr(creature.x - currentCorpse.x) + sqr(creature.y - currentCorpse.y));
@@ -34,8 +35,9 @@ if (creature.aggressivity < 0.75) { //If the creature is very aggressive (0.75 o
 if (closestCorpseFound == pointer_null) { // If no corpses are found or the creature chooses not to look for any, have the creature consider hunting a living creature.
 	
 	mostViableCreature = pointer_null;
-	highestViability = 0; //"Viability" will determine whether or not a creature is a viable target for hunting.
+	highestViability = -9999999999; //"Viability" will determine whether or not a creature is a viable target for hunting.
 	//This is determined by the creature and target's combat-relevant characteristics, as well as the creature's aggressivity, the amount of creatures in the other species, its distance away, etc.
+	//Set to an extremely low number so that it will be overridden, a quick fix to avoid needing a fencepost fix.
 	
 	for (var i = 0; i < ds_list_size(global.speciesList); i++) { // For every species
 	
@@ -80,7 +82,9 @@ if (closestCorpseFound == pointer_null) { // If no corpses are found or the crea
 }
 
 if (closestCorpseFound != pointer_null) {
+	show_debug_message("returning corpse");
 	return closestCorpseFound;
 } else {
+	show_debug_message("returning creature");
 	return mostViableCreature;
 }

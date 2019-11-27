@@ -225,7 +225,7 @@ if (initialized == true) and (global.paused == false) {
 					}
 				} else if (actionToUndergo.action == "eat") {
 					toEat = actionToUndergo.arg1;
-
+						
 					if (x != toEat.x) or (y != toEat.y) {
 						moveTowards(id, movementSpeed, toEat.x, toEat.y);	
 					} else {
@@ -240,9 +240,56 @@ if (initialized == true) and (global.paused == false) {
 						}
 						ds_list_delete(actionsQueue, 0);
 						instance_destroy(actionToUndergo); //After you eat, remove the 'eat' function.
-					}			
+					}	
+					
 				} else if (actionToUndergo.action == "findFoodCarnivore") {
-					findFoodCarnivore(id, viewRange);	
+					var foodFound = findFoodCarnivore(id, viewRange);	
+					var newAction = instance_create_depth(0, 0, 5000, obj_action);
+
+					
+					if (foodFound == pointer_null) { //If you found no food, create a findFoodMoveTo_C event (carnivore)
+						show_debug_message("food found is a null pointer");
+						/*
+						newAction.action = "findFoodMoveTo_C"; 
+						var searchRange = (300 * room_width/1500); //The lengths creatures will look continuously for food should depend on the room size.
+				
+						targetX =  x + random_range(-1 * searchRange, searchRange);
+						targetY = y + random_range(-1* searchRange, searchRange);
+				
+						if (targetX > room_width- creatureWidth/8){  //If it is attempting to, it recalibrates its targets to not allow it to.
+							targetX = room_width - (creatureWidth/8);
+						} else if (targetX < 0 + creatureWidth/8) {
+							targetX = creatureWidth/8;
+						} else if (targetY > room_height - creatureHeight/8) {
+							targetY = room_height - creatureHeight/8;
+						} else if (targetY < creatureHeight/8) {
+							targetY = 0 + (creatureHeight/8);	
+						}
+				
+						newAction.arg1 = targetX;
+						newAction.arg2 = targetY;
+				
+						newAction.priority = actionToUndergo.priority;
+						ds_list_add(actionsQueue, newAction);
+						ds_list_delete(actionsQueue, 0);
+						instance_destroy(actionToUndergo);
+						*/
+						
+					} else if (foodFound.dead == false) { //If you found living food, hunt it
+						newAction.action = "eat";
+						newAction.arg1 = foodFound;
+						newAction.priority = actionToUndergo.priority; //Since there are findFood events of varying priorities, set this priority equal to the findFood action's priority.
+						ds_list_add(actionsQueue, newAction);
+					} else { //If you found a corpse, go to it and eat it.
+						newAction.action = "eat";
+						newAction.arg1 = foodFound;
+						newAction.priority = actionToUndergo.priority; //Since there are findFood events of varying priorities, set this priority equal to the findFood action's priority.
+						ds_list_add(actionsQueue, newAction);
+					}
+					
+					ds_list_delete(actionsQueue, 0);
+					instance_destroy(actionToUndergo);
+					
 				} else {
 					show_error("Action '" + actionToUndergo.action + "' is not an action with behavior.", true);	
 				}
