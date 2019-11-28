@@ -26,8 +26,10 @@ if (creature.aggressivity < 0.75) { //If the creature is very aggressive (0.75 o
 		
 		if (distanceFromCurrent <= sightRange) {
 			if (distanceFromCurrent < closestCorpseDistance) { //Go for the closest corpse.
+				if (point_in_rectangle(currentCorpse.x, currentCorpse.y, creature.creatureWidth/8, creature.creatureHeight/8, room_width - creature.creatureWidth/8, room_height - creature.creatureHeight/8) == true) { //Check the corpse is accessible
 					closestCorpseFound = currentCorpse;
 					closestCorpseDistance = distanceFromCurrent;
+				}
 			}
 		}
 		
@@ -63,8 +65,10 @@ if (closestCorpseFound == pointer_null) { // If no corpses are found or the crea
 								var targetViability = checkViability(creature, targetCreature); //checkViability will get how viable a target is for hunting based on a variety of factors.
 							
 								if (targetViability > highestViability) { //If you find a more viable target for hunting, set that target as priority.
-									highestViability = targetViability;
-									mostViableCreature = targetCreature;
+									if (point_in_rectangle(targetCreature.x, targetCreature.y, creature.creatureWidth/8, creature.creatureHeight/8, room_width - creature.creatureWidth/8, room_height - creature.creatureHeight/8) == true) { //Check the target is accessible; if it is, make it the most viable.
+										highestViability = targetViability;
+										mostViableCreature = targetCreature;
+									}
 								}
 								
 							} else {

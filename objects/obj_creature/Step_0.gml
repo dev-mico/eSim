@@ -13,7 +13,7 @@ if (x < 0) or (x > room_width) or (y < 0) or (y > room_height) { //Failsafe: If 
 	instance_destroy(id);
 }
 
-if (initialized == true) and (global.paused == false) {
+if (initialized == true) and (global.paused == false) and (instance_exists(id)) { //Must check the instance exists: This is a game maker quirk that runs the step event for what I assume to be 1 step after the creature is deleted.
 	if (creatureHealth > 0) and (dead == false) { //Check if creature is alive
 		if (creatureHealth < creatureMaxHealth) and (hunger > (maxHunger/100 * 60)){ //If the creature has above 60% hunger and the creature is hurt, heal the creature by 2% of its max health each step.
 			if (!alarm[3]) {
@@ -271,7 +271,7 @@ if (initialized == true) and (global.paused == false) {
 					if (instance_exists(toEat) == true){
 						var distanceFromToEat = sqrt(sqr(x - toEat.x) + sqr(y - toEat.y));
 						
-						if (distanceFromToEat <= viewRange) {
+						if (distanceFromToEat <= viewRange) and (point_in_rectangle(toEat.x, toEat.y, creatureWidth/8, creatureHeight/8, room_width - creatureWidth/8, room_height - creatureHeight/8) == true) { //Check you can still see and access the target creature
 						
 							if (x != toEat.x) or (y != toEat.y) {//Move towards your eating target
 								moveTowards(id, movementSpeed, toEat.x, toEat.y);	
@@ -353,7 +353,7 @@ if (initialized == true) and (global.paused == false) {
 								
 							}	
 							
-						} else { //If the food escaped you as an omnivore or carnivore, remove the "eat" action.
+						} else { //If the food escaped you, remove the "eat" action.
 							ds_list_delete(actionsQueue, 0);
 							instance_destroy(actionToUndergo); 
 						}
@@ -408,23 +408,38 @@ if (initialized == true) and (global.paused == false) {
 					var fight = 0;
 					var flee = 1;
 					
-					if (attacker.dead == false) { //If the attacker is alive and hunting the creature
-						//ADD THE CHECK FOR IF THE ATTACKER IS STILL HUNTING YOU
+					if (attacker.dead == false) and (ds_list_size(attacker.actionsQueue) > 0) {
 					
-						if (fightOrFlee == fight) {
-							show_debug_message("the creature of " + attacker.species + " can catch da smoke no cap on my momma.");	
-						} else if (fightOrFlee == flee) {
-							show_debug_message("shiiit, im gonna get my ass whooped. i'd rather run from " + attacker.species);
-						} else { //If you haven't run the fight or flight calculations yet, run them and then change the action accordingly.
-							fightOrFlee = fightOrFlight(id, attacker);
-							actionToUndergo.arg2 = fightOrFlee; //Update the action
-						}
+						if (ds_list_find_value(attacker.actionsQueue, 0).action == "eat") and (ds_list_find_value(attacker.actionsQueue, 0).arg1 == id) { //If the attacker is alive, hunting, and hunting the creature
+					
+							if (fightOrFlee == fight) { //Attack the attacker back
+								//show_debug_message("the creature of " + attacker.species + " can catch da smoke no cap on my momma.");	
+								if (x != attacker.x) or (y != attacker.y) {
+									show_debug_message("moving towards attacker");
+									moveTowards(id, movementSpeed, attacker.x, attacker.y);	
+								}
+							
+								if (point_in_rectangle(x, y, attacker.x - 5, attacker.y - 5, attacker.x + 5, attacker.y + 5) == true) { //This block allows moving targets to be hit			
+									show_debug_message("da attacker gettin hit");
+									attackCreature(id, attacker);
+								}
+							
+							} else if (fightOrFlee == flee) {
+								moveAwayFrom(id, movementSpeed, attacker.x, attacker.y);
+								show_debug_message("shiiit, im gonna get my ass whooped. i'd rather run from " + attacker.species);
+							} else { //If you haven't run the fight or flight calculations yet, run them and then change the action accordingly.
+								fightOrFlee = fightOrFlight(id, attacker);
+								actionToUndergo.arg2 = fightOrFlee; //Update the action
+							}
 						
+						} else { //Either the attacker is dead, or you have escaped the attacker. Either way, remove the fightOrFlight action.
+							ds_list_delete(actionsQueue, 0);
+							instance_destroy(actionToUndergo);
+						}
 					} else { //Either the attacker is dead, or you have escaped the attacker. Either way, remove the fightOrFlight action.
 						ds_list_delete(actionsQueue, 0);
 						instance_destroy(actionToUndergo);
 					}
-					
 				} else {
 					show_error("Action '" + actionToUndergo.action + "' is not an action with behavior.", true);	
 				}
