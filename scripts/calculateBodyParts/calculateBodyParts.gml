@@ -74,6 +74,7 @@ var bunnyHead = 3;
 var tRexHead = 4;
 var deerHead = 5;
 var deerHeadAntlers = 6;
+var duckHead = 7;
 
 var wolfBody = 0;
 var boarBody = 1;
@@ -96,6 +97,7 @@ dexerityHeads[1] = bunnyHead;
 dexerityHeads[2] = tRexHead;
 dexerityHeads[4] = deerHead;
 dexerityHeads[5] = deerHeadAntlers;
+dexerityHeads[6] = duckHead;
 
 defenseHeads[0] = angryReptileHead;
 defenseHeads[1] = boarHead;
@@ -103,21 +105,25 @@ defenseHeads[1] = boarHead;
 perceptionHeads[0] = wolfHead;
 perceptionHeads[1] = bunnyHead;
 perceptionHeads[2] = deerHead;
-perceptionHeads[3] = deerHeadAntlers;
+perceptionHeads[3] = duckHead;
 
 staminaHeads[0] = angryReptileHead;
 staminaHeads[1] = boarHead;
+staminaHeads[2] = deerHead;
+staminaHeads[3] = deerHeadAntlers;
 
 herbivoreHeads[0] = bunnyHead;
 herbivoreHeads[1] = boarHead;
 herbivoreHeads[2] = deerHead;
 herbivoreHeads[3] = deerHeadAntlers;
+herbivoreHeads[4] = duckHead;
 
 omnivoreHeads[0] = boarHead;
 omnivoreHeads[1] = wolfHead;
 omnivoreHeads[2] = angryReptileHead;
 omnivoreHeads[3] = deerHead;
 omnivoreHeads[4] = deerHeadAntlers;
+omnivoreHeads[5] = duckHead;
 
 carnivoreHeads[0] = tRexHead;
 carnivoreHeads[1] = wolfHead;

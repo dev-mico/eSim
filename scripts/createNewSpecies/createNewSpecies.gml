@@ -57,7 +57,7 @@ newSpecies.avg_defense = avg_defense;
 newSpecies.avg_perception = avg_perception;
 newSpecies.avg_stamina = avg_stamina;
 newSpecies.name = name;
-newSpecies.avg_aggressivity = random(1) - 0.5;
+newSpecies.avg_aggressivity = random_range(-70, 70)/100;
 newSpecies.avg_development = developmentAmount;
 newSpecies.avg_color = make_colour_rgb(random_range(30,220), random_range(30, 240), random_range(30 ,200)); //randomize creature color
 newSpecies.creatures = ds_list_create();
@@ -86,5 +86,7 @@ show_debug_message("Head: " + string(bodyParts[0]));
 show_debug_message("Body: " + string(bodyParts[1]));
 show_debug_message("Arms: " + string(bodyParts[2]));*/
 
+
 newSpecies.persistent = true; //Temporarily make it persistent so it isn't deleted upon room change
 ds_list_add(global.speciesList, newSpecies);
+show_debug_message("Species list size: " + string(ds_list_size(global.speciesList)));

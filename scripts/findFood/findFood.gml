@@ -9,25 +9,6 @@
 var creature = argument[0];
 var sightRange = argument[1];
 
-var viewXLeft = creature.x - sightRange;
-var viewXRight = creature.x + sightRange;
-var viewYTop = creature.y - sightRange;
-var viewYBottom = creature.y + sightRange;
-
-
-if (viewXLeft < creature.creatureWidth/8) {
-	viewXLeft = creature.creatureWidth/8;	
-}
-if (viewXRight > (room_width - (creature.creatureWidth/8))) {
-	viewXRight = room_width - (creature.creatureWidth/8);
-}
-if (viewYTop < creature.creatureHeight/8) {
-	viewYTop = creature.creatureHeight/8;	
-}
-if (viewYBottom > room_height - (creature.creatureHeight/8)) {
-	viewYBottom = room_height - (creature.creatureHeight/8);	
-}
-
 closestFoodBush = pointer_null; //The closest food bush will be here
 closestDistance = 99999999999; //Set this to a high value to avoid unnecessary fringe cases. Slight performance improvement
 

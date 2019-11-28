@@ -95,6 +95,14 @@
             }
         },
         {
+            "Key": "192e347b-c1b9-42ab-b7cb-b39499dd182d",
+            "Value": {
+                "id": "a74a51d4-6abc-4128-8134-e84709add0ff",
+                "resourcePath": "scripts\\removeIdleActions\\removeIdleActions.yy",
+                "resourceType": "GMScript"
+            }
+        },
+        {
             "Key": "1b3bc70b-cec5-4854-89e4-64a224349bb9",
             "Value": {
                 "id": "01d3d280-0b1b-445a-8fa7-fb3d325cfd45",
@@ -119,11 +127,27 @@
             }
         },
         {
+            "Key": "240db6c5-15a3-4177-9373-0d88485ab030",
+            "Value": {
+                "id": "a789c529-5022-4d94-a126-a0ff4df01c42",
+                "resourcePath": "scripts\\fightOrFlight\\fightOrFlight.yy",
+                "resourceType": "GMScript"
+            }
+        },
+        {
             "Key": "24ef98ae-abce-47ae-9892-b237b2dc9250",
             "Value": {
                 "id": "9e24c8a1-b1e0-4a88-b4b7-a96100ff5ca4",
                 "resourcePath": "objects\\obj_pauseButton\\obj_pauseButton.yy",
                 "resourceType": "GMObject"
+            }
+        },
+        {
+            "Key": "25c288c1-a125-43a1-8116-d511761f2fa2",
+            "Value": {
+                "id": "a0942244-7e90-431b-a7db-1d3c8a44d2ba",
+                "resourcePath": "scripts\\checkViability\\checkViability.yy",
+                "resourceType": "GMScript"
             }
         },
         {
@@ -159,11 +183,27 @@
             }
         },
         {
+            "Key": "384a5539-beac-4767-a255-179eacd7ee4f",
+            "Value": {
+                "id": "aa0f7333-7b52-46bc-b969-3d57175879b1",
+                "resourcePath": "scripts\\attackCreature\\attackCreature.yy",
+                "resourceType": "GMScript"
+            }
+        },
+        {
             "Key": "3ba44685-4d62-4bd2-a9d4-40a99bc2339d",
             "Value": {
                 "id": "13812d7a-3559-4ec1-b35c-8b7f22ca0cf8",
                 "resourcePath": "sprites\\pauseButtonSprite\\pauseButtonSprite.yy",
                 "resourceType": "GMSprite"
+            }
+        },
+        {
+            "Key": "3c0fd2bd-2a09-4839-a692-5f8754506655",
+            "Value": {
+                "id": "12d92b2a-31aa-48eb-9b8b-da2928f71ebc",
+                "resourcePath": "scripts\\findFoodCarnivore\\findFoodCarnivore.yy",
+                "resourceType": "GMScript"
             }
         },
         {
@@ -252,6 +292,14 @@
                 "id": "52eb965f-d86e-4a04-b2d9-a5e9c9cf5977",
                 "resourcePath": "views\\5d438767-ef9a-4eaf-8697-27d9c73181c0.yy",
                 "resourceType": "GMFolder"
+            }
+        },
+        {
+            "Key": "5e646dd5-a7ed-40ef-99c3-41a34c0a1d37",
+            "Value": {
+                "id": "931cad78-8702-48ec-9163-03fd2d51fe2f",
+                "resourcePath": "scripts\\moveAwayFrom\\moveAwayFrom.yy",
+                "resourceType": "GMScript"
             }
         },
         {
@@ -371,6 +419,14 @@
             "Value": {
                 "id": "5fa1281c-3555-4b23-ab04-c25a756973a8",
                 "resourcePath": "scripts\\checkNeeds\\checkNeeds.yy",
+                "resourceType": "GMScript"
+            }
+        },
+        {
+            "Key": "97f0c17d-d428-4baf-825f-3b874b96ea8c",
+            "Value": {
+                "id": "cf923d1d-3fc3-40c9-bca2-43ea9aeabb21",
+                "resourcePath": "scripts\\fightLikelihood\\fightLikelihood.yy",
                 "resourceType": "GMScript"
             }
         },
@@ -671,6 +727,14 @@
             }
         },
         {
+            "Key": "f06c8870-66d9-4ad3-97b7-b69681d8cfdb",
+            "Value": {
+                "id": "b214f085-08ea-4b1f-a025-14cb907d5a24",
+                "resourcePath": "scripts\\detectsCreature\\detectsCreature.yy",
+                "resourceType": "GMScript"
+            }
+        },
+        {
             "Key": "f070b36d-a3e8-41c6-8d1f-dfe6f36b0312",
             "Value": {
                 "id": "96bf52e2-30ff-4856-b0b1-29abf0f30d0f",
@@ -739,19 +803,27 @@
         "cbfe6772-f3ee-4f1a-8940-e0feae5ce515",
         "e0669333-b5ad-4238-9b6d-5dc563f6a6e7",
         "3723aff7-0e5f-4e39-acff-eafd698c9815",
-        "c69121e5-5f7b-45ea-bc87-5c4f35cc322b",
         "138deb3a-7d01-4dd9-97c9-42adde25b97d",
+        "c69121e5-5f7b-45ea-bc87-5c4f35cc322b",
         "6aa395ac-e481-4ba2-85f8-690c82517a0c",
         "5af5a622-16e5-4dd2-81f1-3137e678bce3",
         "12d0c044-a3eb-47b6-8f73-5b72de75aab0",
         "52bb3ea5-b0e5-48b8-9c30-1a595e892537",
         "07422b2e-5a9c-48c0-918e-e3a6ab62508a",
         "e77029b4-5b6d-4d66-bb5c-8b5a2538b1a6",
+        "5e646dd5-a7ed-40ef-99c3-41a34c0a1d37",
         "907a38db-a18a-4bef-abcb-7f5d6dbd2de3",
         "2e636253-3311-4513-a3b0-51fa8a27ebe8",
         "ede1546b-3684-47d2-97f2-9a172d79359f",
         "92f3dc5d-e27d-4482-9196-318f6d80f3ef",
-        "ab7bff32-55b8-40ef-a273-762e32bdd186"
+        "ab7bff32-55b8-40ef-a273-762e32bdd186",
+        "3c0fd2bd-2a09-4839-a692-5f8754506655",
+        "25c288c1-a125-43a1-8116-d511761f2fa2",
+        "240db6c5-15a3-4177-9373-0d88485ab030",
+        "97f0c17d-d428-4baf-825f-3b874b96ea8c",
+        "f06c8870-66d9-4ad3-97b7-b69681d8cfdb",
+        "384a5539-beac-4767-a255-179eacd7ee4f",
+        "192e347b-c1b9-42ab-b7cb-b39499dd182d"
     ],
     "tutorial": ""
 }

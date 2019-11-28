@@ -5,6 +5,7 @@ for (var i = 0; i < array_length_1d(String); i+=1) { // for each string in the a
 	while(string_width(String[i])*scaleX >= sprite_width - 5) { // scaling the width of the text 
 		scaleX -= .01;
 	}
+	draw_set_font(font);
 	draw_text_ext_transformed_colour(x+2, y + yStep, String[i], 10, sprite_width+500, scaleX, scaleY, 0, font_color, font_color, font_color, font_color, 1);
 	yStep += 15;
 	scaleX = 1; // resets scale for new line

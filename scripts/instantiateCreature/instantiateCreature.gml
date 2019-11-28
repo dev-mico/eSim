@@ -12,6 +12,7 @@ if (species.object_index == Species) { //First, check you actually have a specie
 	//Set the base values below
 	creature = instance_create_layer(creatureX, creatureY, "CreatureLayer", obj_creature);
 	creature.species = species.name;
+	creature.speciesReference = species;
 	creature.sprite_body = species.avg_sprite_body;
 	creature.sprite_head = species.avg_sprite_head;
 	creature.sprite_arm = species.avg_sprite_arm;
@@ -23,6 +24,7 @@ if (species.object_index == Species) { //First, check you actually have a specie
 	creature.dexerity = species.avg_dexerity;
 	creature.stamina = species.avg_stamina;
 	creature.diet = species.avg_diet;
+	creature.aggressivity = species.avg_aggressivity;
 
 	/*All code below here will slightly variate the creature's characteristics.
 	  Variation will be based on total development and a variation factor, which will increase if there is a mutation.
@@ -96,22 +98,23 @@ if (species.object_index == Species) { //First, check you actually have a specie
 
 	ds_list_add(species.creatures, creature); //Must add the instantiated creature to the list of creatures in the Species object.
 	creature.creatureListReference = species.creatures; //Add the reference to the species' list, so that when the creature dies, you can remove it from the list of creatures.
-	show_debug_message("Reference: " + string(creature.creatureListReference));
 	recalculateSpeciesAverages(species); //Recalculate species' avg values, taking in account the new creature.
 
 	creature.alarm[0] = 1; //Initialization of creature occurs in obj_creature's alarm 0 event.
 
 	/*
 	Debugging code below (show all characteristics of each creature)
-	show_debug_message(creature.species);
-	show_debug_message("---------");
+	show_debug_message("Creature of " + creature.species + " species.");
+	show_debug_message("--------------------");
 	show_debug_message("Attack: " + string(creature.attack));
 	show_debug_message("Defense: " + string(creature.defense));
 	show_debug_message("Dexerity: " + string(creature.dexerity));
 	show_debug_message("Perception: " + string(creature.perception));
 	show_debug_message("Stamina: " + string(creature.stamina));
+	show_debug_message("Aggressivity: " + string(creature.aggressivity));
 	show_debug_message("");
 	*/
+
 } else { //If what is passed in is not a species
 	show_error("Argument passed into instantiateCreature is not a creature, it is a " + object_get_name(species.object_index), true);
 }

@@ -1,5 +1,7 @@
 /// @description Species is the overarching data of a species, not the individual instances. It stores average characteristics such as the average attack, defense, etc.
 
+extinct = false;
+
 avg_attack = 0;
 avg_defense = 0;
 avg_dexerity = 0;

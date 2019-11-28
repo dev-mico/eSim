@@ -20,4 +20,26 @@ viewRange = perception * 25; //How far the creature can see, including perceivin
 maxHunger = scaleFactor* 200; //Hunger is based on size.
 hunger = maxHunger; 
 
+currentFood = maxHunger * 5; //One dead creature will be able to feed 5 of itself.
+
 initialized = true;
+
+/*
+	Debugging code below (show all characteristics of each creature)
+	*/
+	show_debug_message("Creature of " + species + " species.");
+	show_debug_message("--------------------");
+	show_debug_message("Attack: " + string(attack));
+	show_debug_message("Defense: " + string(defense));
+	show_debug_message("Dexerity: " + string(dexerity));
+	show_debug_message("Perception: " + string(perception));
+	show_debug_message("Stamina: " + string(stamina));
+	show_debug_message("Aggressivity: " + string(aggressivity));
+	if (diet == 0) {
+		show_debug_message("Diet: Omnivore");
+	} else if (diet == -1) {
+		show_debug_message("Diet: Carnivore");
+	} else {
+		show_debug_message("Diet: Herbivore");
+	}
+	show_debug_message(" ");

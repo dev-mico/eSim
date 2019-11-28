@@ -6,6 +6,8 @@ randomize(); //This will randomize game maker's seed so that random generation w
 speciesAmount = round(global.initialSpeciesAmount * (global.worldSize/1500)); //Amount of species to create. Scales with world size.
 initialDevelopment = global.initialDevelopmentAmount; //Initial development. This is the # of points to be distributed among the 5 attributes.
 
+
+
 room_goto(SimulationRoom);
 
 global.speciesList = ds_list_create(); //Creates a 'dslist,' which has all the functionality of a java ArrayList, Queue, and Stack combined.
@@ -13,6 +15,9 @@ global.speciesList = ds_list_create(); //Creates a 'dslist,' which has all the f
 // allow the species' to be accessed through their ID.
 
 for (var i = 0; i < speciesAmount; i++) { 
+	if (global.initialDevelopmentAmount < 1) {
+		initialDevelopment = irandom_range(10, 100);
+	}
 	createNewSpecies(initialDevelopment, global.initialDiet); 
 }
 
