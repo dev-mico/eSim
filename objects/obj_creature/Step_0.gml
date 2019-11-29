@@ -415,12 +415,10 @@ if (initialized == true) and (global.paused == false) and (instance_exists(id)) 
 							if (fightOrFlee == fight) { //Attack the attacker back
 								//show_debug_message("the creature of " + attacker.species + " can catch da smoke no cap on my momma.");	
 								if (x != attacker.x) or (y != attacker.y) {
-									show_debug_message("moving towards attacker");
 									moveTowards(id, movementSpeed, attacker.x, attacker.y);	
 								}
 							
 								if (point_in_rectangle(x, y, attacker.x - 5, attacker.y - 5, attacker.x + 5, attacker.y + 5) == true) { //This block allows moving targets to be hit			
-									show_debug_message("da attacker gettin hit");
 									attackCreature(id, attacker);
 								}
 							
@@ -429,6 +427,62 @@ if (initialized == true) and (global.paused == false) and (instance_exists(id)) 
 								show_debug_message("shiiit, im gonna get my ass whooped. i'd rather run from " + attacker.species);
 							} else { //If you haven't run the fight or flight calculations yet, run them and then change the action accordingly.
 								fightOrFlee = fightOrFlight(id, attacker);
+								actionToUndergo.arg2 = fightOrFlee; //Update the action
+								
+								//Next, create "protectOrFlee" events on all the other members of the species so they protect you.
+								for (var i = 0; i < ds_list_size(creatureListReference); i++) {
+									var currentCreature = ds_list_find_value(creatureListReference, i);
+									
+									if (currentCreature != id) { //Only add the event to other creatures of your species, not this one
+										var newAction = instance_create_layer(0, 0, "InvisibleObjects", obj_action);
+										newAction.priority = 80; //High priority, but not AS high priority.
+										newAction.action = "protectOrNot";
+										newAction.arg1 = attacker;
+										newAction.arg2 = -1;
+										newAction.arg3 = id;
+										
+										ds_list_add(currentCreature.actionsQueue, newAction);
+									}
+								}
+							}
+						
+						} else { //Either the attacker is dead, or you have escaped the attacker. Either way, remove the fightOrFlight action.
+							ds_list_delete(actionsQueue, 0);
+							instance_destroy(actionToUndergo);
+						}
+					} else { //Either the attacker is dead, or you have escaped the attacker. Either way, remove the fightOrFlight action.
+						ds_list_delete(actionsQueue, 0);
+						instance_destroy(actionToUndergo);
+					}
+				} else if (actionToUndergo.action == "protectOrNot") {
+					//protectOrNot functions nearly identically to fightOrFlight, with two exceptions. First, it uses a "toProtect" to check whether to continue fighting.
+					//Secondly, if you aren't fighting, the action will be deleted since I don't want the creature to run from another creature's attacker.
+					var attacker = actionToUndergo.arg1;
+					var fightOrFlee = actionToUndergo.arg2;
+					var toProtect = actionToUndergo.arg3;
+					
+					var fight = 0;
+					var flee = 1;
+					
+					if (attacker.dead == false) and (ds_list_size(attacker.actionsQueue) > 0) {
+					
+						if (ds_list_find_value(attacker.actionsQueue, 0).action == "eat") and (ds_list_find_value(attacker.actionsQueue, 0).arg1 == toProtect) { //If the attacker is alive, hunting, and hunting the creature that we are protecting
+					
+							if (fightOrFlee == fight) { //Attack the attacker back
+								//show_debug_message("the creature of " + attacker.species + " can catch da smoke no cap on my momma.");	
+								if (x != attacker.x) or (y != attacker.y) {
+									moveTowards(id, movementSpeed, attacker.x, attacker.y);	
+								}
+							
+								if (point_in_rectangle(x, y, attacker.x - 5, attacker.y - 5, attacker.x + 5, attacker.y + 5) == true) { //This block allows moving targets to be hit			
+									attackCreature(id, attacker);
+								}
+							
+							} else if (fightOrFlee == flee) { //You don't have to flee from someone else's attacker: Just delete the fightOrProtect action.
+								ds_list_delete(actionsQueue, 0);
+								instance_destroy(actionToUndergo);
+							} else { //If you haven't run the fight or flight calculations yet, run them and then change the action accordingly.
+								fightOrFlee = protectOrFlee(id, attacker, toProtect);
 								actionToUndergo.arg2 = fightOrFlee; //Update the action
 							}
 						

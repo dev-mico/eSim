@@ -3,14 +3,7 @@
 * The function takes in account the creature's aggressivity when determining whether the creature will hunt for food or scavenge, as well as 
 * using aggressivity and the creature's traits to determine how bold it is in hunting larger creatures.
 */
-
-
-// TO BE IMPLEMENTED: TAKE IN ACCOUNT DEXERITY IN DETECTION
-// TO BE IMPLEMENTED: TAKE IN ACCOUNT DEXERITY IN DETECTION
-// TO BE IMPLEMENTED: TAKE IN ACCOUNT DEXERITY IN DETECTION
-// TO BE IMPLEMENTED: TAKE IN ACCOUNT DEXERITY IN DETECTION
-// TO BE IMPLEMENTED: TAKE IN ACCOUNT DEXERITY IN DETECTION
-
+ 
 var creature = argument[0];
 var sightRange = argument[1];
 
