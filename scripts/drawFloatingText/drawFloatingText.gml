@@ -14,6 +14,8 @@ var color = argument3;
 var scaleX = argument4;
 var scaleY = argument5;
 
+
+
 var font = fontFloatingText;
 
 var textDrawer = instance_create_layer(X, Y, "GUILayer", obj_floatTextDrawer);

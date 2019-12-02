@@ -19,6 +19,10 @@ avg_sprite_body = 0;
 avg_sprite_arm = 0;
 avg_development = 0;
 
+reproductionCountdownMax = 30000; //steps to count down before reproduction, maximum
+reproductionCountdownMinimum = 5000; //minimum
+reproductionCountdown = 0; //countdown between reproduction
+
 creatures = ds_list_create(); //All instantiated creatures will be added to this list, so that the Species object can access individual creatures.
 
 //All these variables above will be set by another script.

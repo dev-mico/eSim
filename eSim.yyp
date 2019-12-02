@@ -279,6 +279,14 @@
             }
         },
         {
+            "Key": "599f1bcb-7cda-4fe2-a56c-ec38fb14c455",
+            "Value": {
+                "id": "3f8f4a1d-499d-4f69-9169-119bb3ae53f0",
+                "resourcePath": "objects\\obj_egg\\obj_egg.yy",
+                "resourceType": "GMObject"
+            }
+        },
+        {
             "Key": "5af5a622-16e5-4dd2-81f1-3137e678bce3",
             "Value": {
                 "id": "3a6284b8-dfb9-459a-972b-13a96e39891e",
@@ -348,6 +356,14 @@
                 "id": "17ae4960-2987-413e-86a8-7f1c1b6f4214",
                 "resourcePath": "sprites\\armSprite\\armSprite.yy",
                 "resourceType": "GMSprite"
+            }
+        },
+        {
+            "Key": "77d093eb-412d-4d81-aa00-15552dcb1016",
+            "Value": {
+                "id": "30956ac0-b1a8-44bf-a5a5-18bf2d5cd35a",
+                "resourcePath": "scripts\\instantiateCreature_Parent\\instantiateCreature_Parent.yy",
+                "resourceType": "GMScript"
             }
         },
         {
@@ -543,6 +559,14 @@
             }
         },
         {
+            "Key": "c084a2af-0b76-42e6-b0af-4d5df563d7b5",
+            "Value": {
+                "id": "10951564-92d1-4dca-8c67-96fe2f4b207c",
+                "resourcePath": "sprites\\eggSprite\\eggSprite.yy",
+                "resourceType": "GMSprite"
+            }
+        },
+        {
             "Key": "c146de89-282c-433b-b204-9952c2b63ead",
             "Value": {
                 "id": "b5b997ca-09bb-49b3-abc2-2b9457b572f1",
@@ -612,14 +636,6 @@
                 "id": "7fde3147-66cb-4dd3-a5ce-169d826b5d0a",
                 "resourcePath": "fonts\\fontMainMenuSubSubheader\\fontMainMenuSubSubheader.yy",
                 "resourceType": "GMFont"
-            }
-        },
-        {
-            "Key": "d5897f4f-ffd8-42e4-9d25-41757cd83e67",
-            "Value": {
-                "id": "1c4fb28e-219d-4bd1-b68a-d6dc6da1da7e",
-                "resourcePath": "objects\\obj_scalableTextBox\\obj_scalableTextBox.yy",
-                "resourceType": "GMObject"
             }
         },
         {
@@ -711,6 +727,14 @@
             }
         },
         {
+            "Key": "ec74a536-584f-460b-93e5-8e600b6a7983",
+            "Value": {
+                "id": "16e63afb-93d3-4e6e-bbc6-759a7ca41607",
+                "resourcePath": "scripts\\reproduce\\reproduce.yy",
+                "resourceType": "GMScript"
+            }
+        },
+        {
             "Key": "ed6cc698-3aad-4cd8-b6a9-16a86a9c9d66",
             "Value": {
                 "id": "f0eaff50-8b01-4c12-a0b5-4186aee7de38",
@@ -799,6 +823,14 @@
             }
         },
         {
+            "Key": "f9e27aa2-822d-497e-93a1-ef992434dbb8",
+            "Value": {
+                "id": "02735adc-3858-4e9d-9159-cfad1c977015",
+                "resourcePath": "scripts\\findFoodOmnivore\\findFoodOmnivore.yy",
+                "resourceType": "GMScript"
+            }
+        },
+        {
             "Key": "fae42f16-13b2-453f-a12c-bccbbf2149cd",
             "Value": {
                 "id": "b1c95e4e-3979-4aff-8f06-3e8dee02c96d",
@@ -817,6 +849,7 @@
         "5af5a622-16e5-4dd2-81f1-3137e678bce3",
         "12d0c044-a3eb-47b6-8f73-5b72de75aab0",
         "52bb3ea5-b0e5-48b8-9c30-1a595e892537",
+        "77d093eb-412d-4d81-aa00-15552dcb1016",
         "07422b2e-5a9c-48c0-918e-e3a6ab62508a",
         "e77029b4-5b6d-4d66-bb5c-8b5a2538b1a6",
         "5e646dd5-a7ed-40ef-99c3-41a34c0a1d37",
@@ -832,7 +865,9 @@
         "97f0c17d-d428-4baf-825f-3b874b96ea8c",
         "f06c8870-66d9-4ad3-97b7-b69681d8cfdb",
         "384a5539-beac-4767-a255-179eacd7ee4f",
-        "192e347b-c1b9-42ab-b7cb-b39499dd182d"
+        "192e347b-c1b9-42ab-b7cb-b39499dd182d",
+        "f9e27aa2-822d-497e-93a1-ef992434dbb8",
+        "ec74a536-584f-460b-93e5-8e600b6a7983"
     ],
     "tutorial": ""
 }
