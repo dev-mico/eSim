@@ -13,16 +13,20 @@ if (x < 0) or (x > room_width) or (y < 0) or (y > room_height) { //Failsafe: If 
 	instance_destroy(id);
 }
 
+		
+if (mouse_check_button_pressed(mb_left) == true) { //Mouse click check
+	if (initialized == true) and (dead == false) {
+		if (point_in_rectangle(mouse_x, mouse_y, x - creatureWidth, y - creatureHeight, x + creatureWidth, y + creatureHeight) == true) {
+			playSound(1);
+			global.highlightedCreature = id;
+			show_debug_message("creature selected: " + string(global.highlightedCreature));
+		}
+	}
+}
+
 if (initialized == true) and (global.paused == false) and (instance_exists(id)) { //Must check the instance exists: This is a game maker quirk that runs the step event for what I assume to be 1 step after the creature is deleted.
 	if (creatureHealth > 0) and (dead == false) { //Check if creature is alive
-		
-		if (mouse_check_button_pressed(mb_left) == true) { //Mouse click check
-			if (point_in_rectangle(mouse_x, mouse_y, x - creatureWidth, y - creatureHeight, x + creatureWidth, y + creatureHeight) == true) {
-				playSound(1);
-				global.highlightedCreature = id;
-				show_debug_message("creature selected: " + string(global.highlightedCreature));
-			}
-		}
+
 		
 		
 		if (creatureHealth < creatureMaxHealth) and (hunger > (maxHunger/100 * 60)){ //If the creature has above 60% hunger and the creature is hurt, heal the creature by 2% of its max health each step.

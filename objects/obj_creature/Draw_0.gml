@@ -173,8 +173,8 @@ if (initialized == true) {
 	if (dead == false) { //If the creature is alive you have to draw it differently than if its dead.
 				
 		if (global.highlightedCreature == id) {
-			draw_sprite_ext(bodySprite, sprite_body, x + xOffset, y, 1.5 * localScaleFactor, 1.5 * scaleFactor, 0, c_aqua, 0.6);
-			draw_sprite_ext(headSpriteOutline, sprite_head, (x +headOffsetX + xOffset), (y + headOffsetY), localScaleFactor * (headScaleX * 1.5), scaleFactor * (headScaleY * 1.5), 0, c_aqua, 0.6);
+			draw_sprite_ext(bodySpriteOutline, sprite_body, x + xOffset, y, 1.5 * localScaleFactor, 1.5 * scaleFactor, 0, c_aqua, 1);
+			draw_sprite_ext(headSpriteOutline, sprite_head, (x + headOffsetX +  xOffset), (y + headOffsetY), localScaleFactor * (headScaleX * 1.5), scaleFactor * (headScaleY * 1.5), 0, c_aqua, 1);
 		}
 		
 		draw_sprite_ext(bodySprite, sprite_body, x + xOffset, y, localScaleFactor, scaleFactor, 0, localSpriteColor, 1);
