@@ -15,8 +15,9 @@ topOffset = 100; //Offset of buttons from the title screen
 
 //button names. Slider: will create a slider with whatever text goes after it.
 button[0] = "Slider:Food Scarcity";
-button[1] = "Scroller:Initial Diet";
-button[2] = "Return to Options";
+button[1] = "Slider:Creature Density Limit";
+button[2] = "Scroller:Initial Diet";
+button[3] = "Return to Options";
 
 buttonCount = array_length_1d(button); //How many items are in this menu
 

@@ -32,9 +32,9 @@ for (var i = 0; i < buttonCount; i++) {
 		draw_text(menu_x, (menu_y + Y_Offset), text); //Draw the text after Slider: above the slider
 		sliderCount += 1;
 		
-		if (button[i] == "Slider:Species Amount") { //Draw the species amount slider
+		if (button[i] == "Slider:Species Density") { //Draw the species amount slider
 			draw_sprite(VolumeSliderBase, global.initialSpeciesAmount - 1, menu_x, (menu_y + Y_Offset + (sprite_get_height(0) + button_h))); // Add the the slider's height with the buffer to account for the new slider, and draw the slider.
-		} else if (button[i] = "Slider:Creature Amount") {
+		} else if (button[i] = "Slider:Creature Density") {
 			draw_sprite(VolumeSliderBase, global.initialCreatureAmount - 1, menu_x, (menu_y + Y_Offset + (sprite_get_height(0) + button_h)));
 		} else if (button[i] = "Slider:Initial Development") {
 			draw_sprite(VolumeSliderBase, (global.initialDevelopmentAmount + 5)/10, menu_x, (menu_y + Y_Offset + (sprite_get_height(0) + button_h)));

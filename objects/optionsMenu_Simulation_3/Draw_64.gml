@@ -40,8 +40,8 @@ for (var i = 0; i < buttonCount; i++) {
 		
 		if (button[i] == "Slider:Food Scarcity") { //Draw the species amount slider
 			draw_sprite(VolumeSliderBase, global.foodScarcity - 1, menu_x, (menu_y + Y_Offset + (sprite_get_height(0) + button_h))); // Add the the slider's height with the buffer to account for the new slider, and draw the slider.
-		} else if (button[i] = "Slider:Initial Diet") {
-			//draw_sprite(VolumeSliderBase, global.initialDiet - 1, menu_x, (menu_y + Y_Offset + (sprite_get_height(0) + button_h)));
+		} else if (button[i] = "Slider:Creature Density Limit") {
+			draw_sprite(VolumeSliderBase, global.creatureLimit - 1, menu_x, (menu_y + Y_Offset + (sprite_get_height(0) + button_h)));
 		}
 	} else if (string_count("Scroller:", button[i]) > 0) { //If the button is a "scroller" menu
 			text = string_delete(button[i], 1, 9); //Remove "Scroller:" from the text. THIS METHOD IS NOT 0-BASED INDEX

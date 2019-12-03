@@ -23,7 +23,7 @@ lastSelected = menuIndex;
 
 //Code for shifting slider below
 
-if (button[lastSelected] == "Slider:Species Amount") { //If currently on the slider, execute the slider's function. The slider's visual will automatically adjust.
+if (button[lastSelected] == "Slider:Species Density") { //If currently on the slider, execute the slider's function. The slider's visual will automatically adjust.
 	var slider_move = keyboard_check_pressed(vk_right) - keyboard_check_pressed(vk_left); //If right is pressed returns 1. If left is pressed, return -1. Otherwise, return 0. 
 	
 	if (slider_move != 0) { //If the slider was moved
@@ -35,7 +35,7 @@ if (button[lastSelected] == "Slider:Species Amount") { //If currently on the sli
 		}
 	}
 	
-} else if (button[lastSelected] == "Slider:Creature Amount") { //If currently on the slider, execute the slider's function. The slider's visual will automatically adjust.
+} else if (button[lastSelected] == "Slider:Creature Density") { //If currently on the slider, execute the slider's function. The slider's visual will automatically adjust.
 	var slider_move = keyboard_check_pressed(vk_right) - keyboard_check_pressed(vk_left); //If right is pressed returns 1. If left is pressed, return -1. Otherwise, return 0. 
 	
 	if (slider_move != 0) { //If the slider was moved
