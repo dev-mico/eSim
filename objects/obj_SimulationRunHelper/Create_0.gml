@@ -70,3 +70,7 @@ for (var i = 0; i < ds_list_size(global.speciesList); i++) { //Create the initia
 		instantiateCreature(species, (startX + (30 * random_range(-1, 1))), (startY + (30 * random_range(-1, 1))) );
 	}
 }
+
+speciesCreationCountdown = 0;
+speciesCreationCountdownMax = 10000;
+speciesCreationCountdownMin = 5000;

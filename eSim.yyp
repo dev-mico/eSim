@@ -239,6 +239,14 @@
             }
         },
         {
+            "Key": "48186e59-1324-4b80-9cd5-49fcaa5491b2",
+            "Value": {
+                "id": "e1aa14ab-e140-4205-806d-3061477f7647",
+                "resourcePath": "objects\\obj_creatureMenuBackground\\obj_creatureMenuBackground.yy",
+                "resourceType": "GMObject"
+            }
+        },
+        {
             "Key": "491245ec-ac0d-467a-8827-40e7a85268e5",
             "Value": {
                 "id": "e8170861-2c72-4d5c-b3ba-80df3422e3aa",
@@ -532,6 +540,14 @@
                 "id": "987710bd-29e8-4a75-9fdf-931fb5e3ee35",
                 "resourcePath": "sounds\\MainTheme\\MainTheme.yy",
                 "resourceType": "GMSound"
+            }
+        },
+        {
+            "Key": "b363e4bd-7b77-45d5-a33e-a88bb4bd3a33",
+            "Value": {
+                "id": "ec94f2f7-6416-4d33-98e7-9284b256b067",
+                "resourcePath": "sprites\\headSpriteOutline\\headSpriteOutline.yy",
+                "resourceType": "GMSprite"
             }
         },
         {

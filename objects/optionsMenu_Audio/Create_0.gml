@@ -15,7 +15,7 @@ topOffset = 150; //Offset of buttons from the title screen
 
 //button names. Slider: will create a slider with whatever text goes after it.
 button[0] = "Slider:Music Volume";
-button[1] = "Slider:SFX Volume";
+button[1] = "Slider:Sound Effects Volume";
 button[2] = "Return to Options";
 
 buttonCount = array_length_1d(button); //How many items are in this menu

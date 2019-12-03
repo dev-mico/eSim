@@ -35,7 +35,7 @@ for (var i = 0; i < buttonCount; i++) {
 		if (button[i] == "Slider:Music Volume") { //Draw the music slider, based on volume
 			var volume = inst_MUSICLOOPER.musicVolume;
 			draw_sprite(VolumeSliderBase, volume/10, menu_x, (menu_y + Y_Offset + (sprite_get_height(0) + button_h))); // Add the the slider's height with the buffer to account for the new slider, and draw the slider.
-		} else if (button[i] = "Slider:SFX Volume") {
+		} else if (button[i] = "Slider:Sound Effects Volume") {
 			var volume = inst_SFXPLAYER.SFXVolume;
 			draw_sprite(VolumeSliderBase, volume/10, menu_x, (menu_y + Y_Offset + (sprite_get_height(0) + button_h)));
 		}

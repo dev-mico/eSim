@@ -33,7 +33,7 @@ if (button[lastSelected] == "Slider:Music Volume") { //If currently on the slide
 			inst_MUSICLOOPER.musicVolume += 10*slider_move;
 		}
 	}
-} else if (button[lastSelected] == "Slider:SFX Volume") { //If currently on the slider, execute the slider's function. The slider's visual will automatically adjust.
+} else if (button[lastSelected] == "Slider:Sound Effects Volume") { //If currently on the slider, execute the slider's function. The slider's visual will automatically adjust.
 	var slider_move = keyboard_check_pressed(vk_right) - keyboard_check_pressed(vk_left); //If right is pressed returns 1. If left is pressed, return -1. Otherwise, return 0. 
 	var volume = inst_SFXPLAYER.SFXVolume;
 	
