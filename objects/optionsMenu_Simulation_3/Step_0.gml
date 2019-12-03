@@ -22,9 +22,9 @@ if (menuIndex < 0) {
 lastSelected = menuIndex;
 
 //Code for shifting slider below
+var slider_move = keyboard_check_pressed(vk_right) - keyboard_check_pressed(vk_left); //If right is pressed returns 1. If left is pressed, return -1. Otherwise, return 0. 
 
 if (button[lastSelected] == "Slider:Food Scarcity") { //If currently on the slider, execute the slider's function. The slider's visual will automatically adjust.
-	var slider_move = keyboard_check_pressed(vk_right) - keyboard_check_pressed(vk_left); //If right is pressed returns 1. If left is pressed, return -1. Otherwise, return 0. 
 	
 	if (slider_move != 0) { //If the slider was moved
 		playSound(1);
@@ -36,7 +36,7 @@ if (button[lastSelected] == "Slider:Food Scarcity") { //If currently on the slid
 	}
 	
 } else if (button[lastSelected] == "Slider:World Size") { //If currently on the slider, execute the slider's function. The slider's visual will automatically adjust.
-	var slider_move = keyboard_check_pressed(vk_right) - keyboard_check_pressed(vk_left); //If right is pressed returns 1. If left is pressed, return -1. Otherwise, return 0. 
+
 	
 	if (slider_move != 0) { //If the slider was moved
 		playSound(1);
@@ -45,5 +45,17 @@ if (button[lastSelected] == "Slider:Food Scarcity") { //If currently on the slid
 		} else if (slider_move == -1) and (global.worldSize > 500) {
 			global.worldSize -= 500;
 		}
+	}
+} else if (button[lastSelected] == "Slider:Creature Density Limit") {
+	if (slider_move != 0) {
+		scrollerSubimage = 2;
+		playSound(1);
+		global.creatureLimit += slider_move;
+		if (global.creatureLimit < 1) {
+			global.creatureLimit = 1;	
+		} else if (global.creatureLimit > 11) {
+			global.creatureLimit = 11;	
+		}
+		alarm[0] = 5;
 	}
 }

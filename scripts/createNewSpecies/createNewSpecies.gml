@@ -87,6 +87,9 @@ show_debug_message("Body: " + string(bodyParts[1]));
 show_debug_message("Arms: " + string(bodyParts[2]));*/
 
 
+newSpecies.reproductionCountdownMax = 15000; //steps to count down before reproduction, maximum
+newSpecies.reproductionCountdownMinimum = 1500; //minimum
+newSpecies.reproductionCountdown = irandom_range(newSpecies.reproductionCountdownMinimum, newSpecies.reproductionCountdownMax);
+
 newSpecies.persistent = true; //Temporarily make it persistent so it isn't deleted upon room change
 ds_list_add(global.speciesList, newSpecies);
-show_debug_message("Species list size: " + string(ds_list_size(global.speciesList)));

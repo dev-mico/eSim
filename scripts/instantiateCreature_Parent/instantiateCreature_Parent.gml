@@ -1,31 +1,33 @@
 //@description: Instantiate a creature of a given species, and initialize all its variables.
 //@author: Marcos Lacouture
 
-//Precondition: instantiateCreature() is passed with a species as a parameter, followed by an x and y coordinate for the creature to be spawned at.
-//Postcondition: A creature is instantiated, and its variation from the species' averages is taken in account.
+//Precondition: instantiateCreature_Parent() is called with a species as a parameter, followed by an x and y coordinate for the creature to be spawned at, followed by the creature's parent.
+//Postcondition: A creature is instantiated, and its variation from the species' averages is taken in account and averaged with the parent's characteristics.
 
-var species = argument[0];
-var creatureX = argument[1];
-var creatureY = argument[2];
+var species = argument0;
+var creatureX = argument1;
+var creatureY = argument2;
+var parent = argument3;
 
 if (species.object_index == Species) { //First, check you actually have a species object passed in.
 	//Set the base values below
-	var creature = instance_create_layer(creatureX, creatureY, "CreatureLayer", obj_creature);
+	creature = instance_create_layer(creatureX, creatureY, "CreatureLayer", obj_creature);
 	creature.species = species.name;
 	creature.speciesReference = species;
-	creature.sprite_body = species.avg_sprite_body;
-	creature.sprite_head = species.avg_sprite_head;
-	creature.sprite_arm = species.avg_sprite_arm;
-	creature.sprite_color = species.avg_color;
+	creature.sprite_body = parent.sprite_body;
+	creature.sprite_head = parent.sprite_head;
+	creature.sprite_arm = parent.sprite_arm;
+	creature.sprite_color = parent.sprite_color;
 
-	creature.attack = species.avg_attack;
-	creature.defense = species.avg_defense;
-	creature.perception = species.avg_perception;
-	creature.dexerity = species.avg_dexerity;
-	creature.stamina = species.avg_stamina;
-	creature.diet = species.avg_diet;
-	creature.aggressivity = species.avg_aggressivity;
-
+	creature.attack = (species.avg_attack+parent.attack)/2; //These characteristics are based on averages
+	creature.defense = (species.avg_defense+parent.defense)/2;
+	creature.perception = (species.avg_perception+parent.perception)/2;
+	creature.dexerity = (species.avg_dexerity+parent.dexerity)/2;
+	creature.stamina = (species.avg_stamina+parent.stamina)/2;
+	creature.aggressivity = (species.avg_aggressivity + parent.aggressivity)/2;
+	
+	creature.diet = parent.diet; //Inherit the parent's diet
+	
 	/*All code below here will slightly variate the creature's characteristics.
 	  Variation will be based on total development and a variation factor, which will increase if there is a mutation.
 	  Mutations are rare instances where a creature's variation from its parents is greater than the average variation. If a mutation occurs, a physical characteristic (head, body, or arms) will be recalculated as well,
@@ -38,7 +40,7 @@ if (species.object_index == Species) { //First, check you actually have a specie
 		mutated = true;
 	}
 
-	var VARIATIONBASELINE = 15; //This is a constant for readability, so its easy to tweak. 
+	var VARIATIONBASELINE = 30; //This is a constant for readability, so its easy to tweak. 
 	//This is the 'baseline' for variation: I.e: At this variation's avg_development, you will have a maximum of 1 point of variation per characteristic.
 
 	var pointVariation = species.avg_development/VARIATIONBASELINE; //If you have VARIATIONBASELINE total development, you will have a maximum of 1 point of variation per characteristic. 
@@ -124,5 +126,5 @@ if (species.object_index == Species) { //First, check you actually have a specie
 	*/
 
 } else { //If what is passed in is not a species
-	show_error("Argument passed into instantiateCreature is not a creature, it is a " + object_get_name(species.object_index), true);
+	show_error("Argument passed into instantiateCreature_Parent is not a creature, it is a " + object_get_name(species.object_index), true);
 }
