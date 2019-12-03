@@ -71,6 +71,7 @@ for (var i = 0; i < ds_list_size(global.speciesList); i++) { //Create the initia
 	}
 }
 
-speciesCreationCountdown = 0;
+
 speciesCreationCountdownMax = 10000;
 speciesCreationCountdownMin = 5000;
+speciesCreationCountdown = 250;

@@ -93,3 +93,5 @@ newSpecies.reproductionCountdown = irandom_range(newSpecies.reproductionCountdow
 
 newSpecies.persistent = true; //Temporarily make it persistent so it isn't deleted upon room change
 ds_list_add(global.speciesList, newSpecies);
+
+return newSpecies;
