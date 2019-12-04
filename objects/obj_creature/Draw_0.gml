@@ -70,6 +70,11 @@ if (initialized == true) or (initialized == false) {
 				headScaleY = 1.2;
 				headOffsetX = 30;
 				headOffsetY = -9;
+			} else if (sprite_head == 8) {// rhino head
+				headOffsetX = 32;
+				headOffsetY = -5;
+				headScaleX = 1.2;
+				headScaleY = 0.85;
 			}
 	} else if (sprite_body == 1) {
 		sprite_arm = -1; //Failsafe: This body cannot have an arm as it is a quadripedal body.
@@ -112,7 +117,12 @@ if (initialized == true) or (initialized == false) {
 				headScaleX = 1.5;
 				headOffsetX = 28;
 				headOffsetY = -10;
-			} 
+			} else if (sprite_head == 8) {
+				headOffsetX = 28;
+				headOffsetY = 0;
+				headScaleX = 1.4;
+				headScaleY = 1.2;
+			}
 	} else if (sprite_body == 2) {
 		if (sprite_head == 0) {
 				headOffsetX = 5;
@@ -153,6 +163,11 @@ if (initialized == true) or (initialized == false) {
 				headOffsetY = -26;
 				headScaleX = 1;
 				headScaleY = 1;
+			} else if (sprite_head == 8) {
+				headOffsetX = 9;
+				headOffsetY = -25;
+				headScaleX = 0.75;
+				headScaleY = 0.6;
 			}
 		
 			//Second if statements for drawing arms below
@@ -203,6 +218,11 @@ if (initialized == true) or (initialized == false) {
 			headOffsetY = -0.5;
 			headScaleX = 1.45;
 			headScaleY = 1.45;
+		} else if (sprite_head == 8) {
+			headOffsetX = 20;
+			headOffsetY = 0;
+			headScaleX = 1;
+			headScaleY = 0.85;
 		}
 	}
 
