@@ -4,7 +4,7 @@
 /// @description Draw the creature based on its characteristics
 //@author Marcos Lacouture
 
-if (initialized == true) {
+if (initialized == true) or (initialized == false) {
 	var headOffsetX = 0;
 	var headOffsetY = 0;
 	var headScaleX = 1; //Some heads need to be rescaled to fit their bodies.
@@ -161,6 +161,49 @@ if (initialized == true) {
 				armScaleY = 1;
 				armOffsetY = 3;
 			}
+	} else if (sprite_body == 3) { //spider body
+		sprite_arm = -1;
+		if (sprite_head == 0) {
+			headOffsetX = 18;
+			headOffsetY = 0;
+			headScaleX = 1.2;
+			headScaleY = 1.2;
+		} else if (sprite_head == 1) {
+			headOffsetX = 18;
+			headOffsetY = 0;
+			headScaleX = 1;
+			headScaleY = 0.85;
+		} else if (sprite_head == 2) {
+			headOffsetX = 18;
+			headOffsetY = 2;
+			headScaleX = 1.4;
+			headScaleY = 1.4;
+		} else if (sprite_head == 3) {
+			headOffsetX = 18;
+			headOffsetY = 0;
+			headScaleX = 1.35;
+			headScaleY = 1.2;
+		} else if (sprite_head == 4) {
+			headOffsetX = 18;
+			headOffsetY = 2;
+			headScaleX = 1.4;
+			headScaleY = 1.4;
+		}  else if (sprite_head == 5) {
+			headOffsetX = 18;
+			headOffsetY = 0;
+			headScaleX = 1.35;
+			headScaleY = 1.25;
+		} else if (sprite_head == 6) {
+			headOffsetX = 18;
+			headOffsetY = -6;
+			headScaleX = 1.35;
+			headScaleY = 1.25
+		} else if (sprite_head == 7) {
+			headOffsetX = 19;
+			headOffsetY = -0.5;
+			headScaleX = 1.45;
+			headScaleY = 1.45;
+		}
 	}
 
 	//Next, scale everything.

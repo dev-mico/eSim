@@ -79,6 +79,7 @@ var duckHead = 7;
 var wolfBody = 0;
 var boarBody = 1;
 var tRexBody = 2;
+var spiderBody = 3;
 
 var tRexArm = 0;
 
@@ -132,16 +133,18 @@ carnivoreHeads[3] = boarHead;
 
 attackBodies[0] = wolfBody;
 attackBodies[1] = tRexBody;
+attackBodies[2] = spiderBody;
 
 dexerityBodies[0] = wolfBody;
+dexerityBodies[1] = spiderBody;
 
 defenseBodies[0] = boarBody;
 
-perceptionBodies[0] = tRexBody;
+perceptionBodies[0] = spiderBody;
 perceptionBodies[1] = wolfBody;
-perceptionBodies[2] = boarBody;
 
 staminaBodies[0] = boarBody;
+
 //--------------------------------------------
 
 var sprite_body = 0;
