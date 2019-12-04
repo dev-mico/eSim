@@ -10,6 +10,8 @@ scaleFactor = stamina/45 + defense/35 + dexerity/65 + perception/100 + attack/45
 creatureWidth *= scaleFactor;
 creatureHeight *= scaleFactor;
 
+clickBoxSize *= scaleFactor;
+
 creatureMaxHealth = defense * 10;
 creatureHealth = creatureMaxHealth;
 

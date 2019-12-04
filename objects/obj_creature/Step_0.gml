@@ -18,6 +18,10 @@ if (x < 0) or (x > room_width) or (y < 0) or (y > room_height) { //Failsafe: If 
 	}
 }
 
+adjusted_mouse_x = mouse_x //- camera_get_view_x(view_camera[0]);
+adjusted_mouse_y = mouse_y //- camera_get_view_y(view_camera[0]);
+
+
 if (inGame == false) {
 	if (point_in_rectangle(x, y, 0, 0, room_width, room_height) == true) {
 		inGame = true;
@@ -27,7 +31,7 @@ if (inGame == false) {
 		
 if (mouse_check_button_pressed(mb_left) == true) { //Mouse click check
 	if (initialized == true) and (dead == false) {
-		if (point_in_rectangle(mouse_x, mouse_y, x - creatureWidth, y - creatureHeight, x + creatureWidth, y + creatureHeight) == true) {
+		if (point_in_rectangle(mouse_x, mouse_y, x - clickBoxSize, y - clickBoxSize, x + clickBoxSize, y + clickBoxSize) == true) {
 			playSound(1);
 			global.highlightedCreature = id;
 			show_debug_message("creature selected: " + string(global.highlightedCreature));

@@ -4,6 +4,9 @@
 
 showPerceptionView = false; //Debug code: When set to true, every creature's view range will be displayed in a red box.
 
+drawClickBox = false; //Draw the click box
+clickBoxSize = 30; //Size of "click box", like a hit box for clicking the creature
+
 //All variables below are defined in instantiateCreature.
 
 species = "";
@@ -72,5 +75,6 @@ initialized = false; //This is set to true in alarm[0], which is called after in
 //Until initialized, the creature will have no behavior.
 
 
-
+adjusted_mouse_x = mouse_x - camera_get_view_x(view_camera[0]);
+adjusted_mouse_y = mouse_y - camera_get_view_y(view_camera[0]);
 	

@@ -4,6 +4,8 @@
 /// @description Draw the creature based on its characteristics
 //@author Marcos Lacouture
 
+
+
 if (initialized == true) or (initialized == false) {
 	var headOffsetX = 0;
 	var headOffsetY = 0;
@@ -234,7 +236,13 @@ if (initialized == true) or (initialized == false) {
 	//Finally, draw everything.
 
 	if (dead == false) { //If the creature is alive you have to draw it differently than if its dead.
-				
+		
+		if (drawClickBox == true) {
+			draw_set_colour(c_teal);
+			draw_rectangle(x - clickBoxSize, y - clickBoxSize, x + clickBoxSize, y + clickBoxSize, false);
+			draw_set_colour(c_white);
+		}
+		
 		if (global.highlightedCreature == id) { //If the creature is selected, draw the outline first.
 			var outlineScaleFactor = 1.3; //local constant for readability
 			draw_sprite_ext(bodySpriteOutline, sprite_body, x + xOffset, y, outlineScaleFactor * localScaleFactor, outlineScaleFactor * scaleFactor, 0, c_aqua, 1);
@@ -253,7 +261,7 @@ if (initialized == true) or (initialized == false) {
 			draw_rectangle(x - viewRange, y - viewRange, x + viewRange, y + viewRange,true);
 			draw_set_colour(c_white);
 		}
-
+		
 	} else {
 		draw_sprite_ext(bodySprite, sprite_body, x, y, localScaleFactor, (scaleFactor*-1), 0, c_gray, 1);
 		draw_sprite_ext(headSprite, sprite_head, (x +headOffsetX), (y - headOffsetY), localScaleFactor * headScaleX, (scaleFactor*-1) * headScaleY, 0, c_gray, 1);
