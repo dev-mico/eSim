@@ -29,9 +29,9 @@ if (species.object_index == Species) { //First, check you actually have a specie
 	creature.diet = parent.diet; //Inherit the parent's diet
 	
 	/*All code below here will slightly variate the creature's characteristics.
-	  Variation will be based on total development and a variation factor, which will increase if there is a mutation.
-	  Mutations are rare instances where a creature's variation from its parents is greater than the average variation. If a mutation occurs, a physical characteristic (head, body, or arms) will be recalculated as well,
-	  To represent the mutation in visual terms. Color and diet will also be recalculated.
+		Variation will be based on total development and a variation factor, which will increase if there is a mutation.
+		Mutations are rare instances where a creature's variation from its parents is greater than the average variation. If a mutation occurs, a physical characteristic (head, body, or arms) will be recalculated as well,
+		To represent the mutation in visual terms. Color and diet will also be recalculated.
 	*/
 
 	var mutated = false; 

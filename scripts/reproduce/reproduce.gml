@@ -4,6 +4,14 @@
 var species = argument0;
 
 var parent = ds_list_find_value(species.creatures, random(ds_list_size(species.creatures) - 0.5))
+
+while (instance_exists(parent) == false) { //If, for some reason, a deleted parent isn't removed from it's species' creatures
+	
+	ds_list_delete(species.creatures, ds_list_find_index(species.creatures, parent)); //Remove the parent from the species list
+	parent = ds_list_find_value(species.creatures, random(ds_list_size(species.creatures) - 0.5));
+	
+}
+
 //Get a random creature for the parent
 
 //Create an egg

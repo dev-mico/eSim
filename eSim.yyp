@@ -567,6 +567,14 @@
             }
         },
         {
+            "Key": "bb2ba6f6-f757-4a1b-af9b-11d12a4e23d2",
+            "Value": {
+                "id": "e6770eff-fa0c-426a-b39a-ec48eb10e527",
+                "resourcePath": "rooms\\OptionsScreen_Simulation_4\\OptionsScreen_Simulation_4.yy",
+                "resourceType": "GMRoom"
+            }
+        },
+        {
             "Key": "bfbdefc2-e942-4226-b77f-0916bd833ac4",
             "Value": {
                 "id": "36c742b3-90d3-44be-8892-135d162c035d",
@@ -860,6 +868,14 @@
                 "id": "b1c95e4e-3979-4aff-8f06-3e8dee02c96d",
                 "resourcePath": "views\\fae42f16-13b2-453f-a12c-bccbbf2149cd.yy",
                 "resourceType": "GMFolder"
+            }
+        },
+        {
+            "Key": "fb2b8933-33dc-461d-a995-5c9c00230a5e",
+            "Value": {
+                "id": "5c370d43-82f2-4eb5-8aef-65330373b683",
+                "resourcePath": "objects\\optionsMenu_Simulation_4\\optionsMenu_Simulation_4.yy",
+                "resourceType": "GMObject"
             }
         }
     ],

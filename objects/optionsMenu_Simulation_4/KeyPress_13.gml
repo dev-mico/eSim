@@ -1,7 +1,4 @@
-if (button[menuIndex] == "More Options") {
-	playSound(1);
-	room_goto(OptionsScreen_Simulation_4);
-} else if (button[menuIndex] == "Return to Options") {
+if (button[menuIndex] == "Return to Options") {
 	playSound(1);
 	room_goto(OptionsScreen);
 }  else if (button[menuIndex] == "Scroller:Initial Diet") {
