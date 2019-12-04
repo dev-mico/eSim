@@ -8,6 +8,14 @@ showPerceptionView = false; //Debug code: When set to true, every creature's vie
 
 species = "";
 
+if (point_in_rectangle(x, y, 0, 0, room_width, room_height) == true) {
+	inGame = true;
+} else {
+	inGame = false; //If the creature is migrating in, make sure it isn't deleted
+}
+
+
+
 creatureListReference = pointer_null; //Reference to the "creature" list in the species object.
 speciesReference = pointer_null; //Reference to the Species object of the creature.
 

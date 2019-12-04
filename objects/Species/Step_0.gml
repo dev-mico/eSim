@@ -9,4 +9,7 @@ if (ds_list_size(creatures) > 0) { //If the species isn't extinct
 			reproductionCountdown = irandom_range(reproductionCountdownMinimum, reproductionCountdownMax);
 		}
 	}
+} else { //Delete the species object once it's extinct
+	ds_list_delete(global.speciesList, ds_list_find_index(global.speciesList, id)); 
+	instance_destroy(id);
 }
