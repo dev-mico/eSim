@@ -190,6 +190,10 @@ species.avg_sprite_body = avg_sprite_body;
 species.avg_sprite_arm = avg_sprite_arm;
 species.avg_development = avg_development;
 
+ds_map_destroy(headTally);
+ds_map_destroy(bodyTally);
+ds_map_destroy(armTally);
+
 /*
 Debug code for showing everything works below
 

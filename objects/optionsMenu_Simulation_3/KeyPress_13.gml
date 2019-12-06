@@ -17,7 +17,7 @@ if (button[menuIndex] == "More Options") {
 		} else if (diets[currentDietIndex] == "Random Diet") {
 			global.initialDiet = 2;
 		}
-		show_debug_message(global.initialDiet);
+		//show_debug_message(global.initialDiet);
 	} else {
 		scrollerOpen = true;	
 	}

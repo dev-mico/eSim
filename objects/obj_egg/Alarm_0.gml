@@ -16,3 +16,6 @@ color = make_colour_rgb(color_red, color_blue, color_green);
 scaleFactor = parent.scaleFactor;
 
 initialized = true;
+
+x = parent.x;
+y = parent.y;

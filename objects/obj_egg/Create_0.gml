@@ -1,7 +1,4 @@
 /// @description obj_egg is an object that is instantiated as a means of creating a new creature.
-
-show_debug_message("Egg created");
-
 initialized = false;
 
 species = pointer_null;

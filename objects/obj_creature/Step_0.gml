@@ -13,13 +13,16 @@ if (x < 0) or (x > room_width) or (y < 0) or (y > room_height) { //Failsafe: If 
 	if (inGame == true) { //This is so that creatures migrating in won't be deleted.
 		
 		ds_list_delete(creatureListReference, ds_list_find_index(creatureListReference, id)); //Creature must be removed from the creature list as well. 
+		
+		for (var i = 0; i < ds_list_size(actionsQueue); i++) { //Free up memory from obj_actions
+			instance_destroy(ds_list_find_index(actionsQueue, i));	
+		}
+		
+		ds_list_destroy(actionsQueue)
 		instance_destroy(id);
 	
 	}
 }
-
-adjusted_mouse_x = mouse_x //- camera_get_view_x(view_camera[0]);
-adjusted_mouse_y = mouse_y //- camera_get_view_y(view_camera[0]);
 
 
 if (inGame == false) {
@@ -34,7 +37,7 @@ if (mouse_check_button_pressed(mb_left) == true) { //Mouse click check
 		if (point_in_rectangle(mouse_x, mouse_y, x - clickBoxSize, y - clickBoxSize, x + clickBoxSize, y + clickBoxSize) == true) {
 			playSound(1);
 			global.highlightedCreature = id;
-			show_debug_message("creature selected: " + string(global.highlightedCreature));
+			//show_debug_message("creature selected: " + string(global.highlightedCreature));
 		}
 	}
 }
@@ -93,6 +96,9 @@ if (initialized == true) and (global.paused == false) and (instance_exists(id)) 
 		
 		for (var i = 0; i < ds_list_size(actionsQueue); i++) { //Check if the highest priority action is in the action queue
 			if (ds_list_find_value(actionsQueue, i).priority == highestPriorityAction.priority) {
+				instance_destroy(highestPriorityAction);
+				highestPriorityAction = ds_list_find_value(actionsQueue, i);
+				
 				containsHighestAction = true;
 			}
 		}
@@ -498,7 +504,6 @@ if (initialized == true) and (global.paused == false) and (instance_exists(id)) 
 							
 							} else if (fightOrFlee == flee) {
 								moveAwayFrom(id, movementSpeed, attacker.x, attacker.y);
-								show_debug_message("shiiit, im gonna get my ass whooped. i'd rather run from " + attacker.species);
 							} else { //If you haven't run the fight or flight calculations yet, run them and then change the action accordingly.
 								fightOrFlee = fightOrFlight(id, attacker);
 								actionToUndergo.arg2 = fightOrFlee; //Update the action
@@ -595,11 +600,18 @@ if (initialized == true) and (global.paused == false) and (instance_exists(id)) 
 		}
 		
 		dead = true;
-	} else {
-		if (currentFood <= 0) { //Delete the creature from the game once it is dead and eaten.
+	} else {		
+		corpseCountdown -= global.timeScale;
+		if (currentFood <= 0) or (corpseCountdown <= 0) { //Delete the creature from the game once it is dead and eaten.
 			ds_list_delete(global.corpseList, ds_list_find_index(global.corpseList, id));	
-
+	
+			for (var i = 0; i < ds_list_size(actionsQueue); i++) { //Free up memory from obj_actions
+				instance_destroy(ds_list_find_index(actionsQueue, i));	
+			}
+		
+			ds_list_destroy(actionsQueue)
 			instance_destroy(id);
+
 		}
 	}
 }

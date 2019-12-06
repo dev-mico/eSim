@@ -74,7 +74,4 @@ searchWidth = 500; //How wide a search for food will be (in a 1500x1500 room).
 initialized = false; //This is set to true in alarm[0], which is called after instantiateCreature finishes setting all of the creature's characteristics.
 //Until initialized, the creature will have no behavior.
 
-
-adjusted_mouse_x = mouse_x - camera_get_view_x(view_camera[0]);
-adjusted_mouse_y = mouse_y - camera_get_view_y(view_camera[0]);
-	
+corpseCountdown = irandom_range(5000, 12500); //Countdown to corpse auto-disappearing
