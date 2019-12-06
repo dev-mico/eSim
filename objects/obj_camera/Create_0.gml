@@ -1,6 +1,7 @@
 /// @description Insert description here
 // You can write your code in this editor
 
+following = pointer_null;
 target = obj_camera;
 orig_x_size  = room_width;
 orig_y_size = room_height;

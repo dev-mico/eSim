@@ -36,7 +36,11 @@ if (mouse_check_button_pressed(mb_left) == true) { //Mouse click check
 	if (initialized == true) and (dead == false) {
 		if (point_in_rectangle(mouse_x, mouse_y, x - clickBoxSize, y - clickBoxSize, x + clickBoxSize, y + clickBoxSize) == true) {
 			playSound(1);
-			global.highlightedCreature = id;
+			if (global.highlightedCreature == id) {
+				inst_PLAYERCAMERA.following = global.highlightedCreature;
+			} else {
+				global.highlightedCreature = id;
+			}
 			//show_debug_message("creature selected: " + string(global.highlightedCreature));
 		}
 	}
@@ -597,6 +601,7 @@ if (initialized == true) and (global.paused == false) and (instance_exists(id)) 
 		
 		if (global.highlightedCreature == id) { //If this creature is highlighted, make it not highlighted
 			global.highlightedCreature = pointer_null;
+			inst_PLAYERCAMERA.following = pointer_null;
 		}
 		
 		dead = true;

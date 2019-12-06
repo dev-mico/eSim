@@ -8,8 +8,10 @@ var parentExists = false;
 
 while (parentExists == false) { //If, for some reason, a deleted parent isn't removed from it's species' creatures
 	
-	if (parent != pointer_null) and (instance_exists(parent) == true) {
-		parentExists = true;
+	if (parent != pointer_null) {
+		if (instance_exists(parent) == true) {
+			parentExists = true;
+		}
 	
 	} else {
 		ds_list_delete(species.creatures, ds_list_find_index(species.creatures, parent)); //Remove the parent from the species list
