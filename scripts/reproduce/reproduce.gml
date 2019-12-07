@@ -4,20 +4,22 @@
 var species = argument0;
 
 var parent = ds_list_find_value(species.creatures, random(ds_list_size(species.creatures) - 0.5))
-var parentExists = false;
+var parentExists = pointer_null;
 
-while (parentExists == false) { //If, for some reason, a deleted parent isn't removed from it's species' creatures
+if (parent != pointer_null) { //Make sure the parent exists and is not null
+	parentExists = instance_exists(parent);
+}
+
+while (parentExists == false) and (ds_list_size(species.creatures) > 0) { //If the parent is null or does not exist, choose a different parent until it does exist.	
+	
+	ds_list_delete(species.creatures, ds_list_find_index(species.creatures, parent)); //Remove the parent from the species list
+	parent = ds_list_find_value(species.creatures, random(ds_list_size(species.creatures) - 0.5));
 	
 	if (parent != pointer_null) {
-		if (instance_exists(parent) == true) {
-			parentExists = true;
-		}
-	
-	} else {
-		ds_list_delete(species.creatures, ds_list_find_index(species.creatures, parent)); //Remove the parent from the species list
-		parent = ds_list_find_value(species.creatures, random(ds_list_size(species.creatures) - 0.5));
-		
+		parentExists = instance_exists(parent);
 	}
+
+
 }
 
 //Get a random creature for the parent

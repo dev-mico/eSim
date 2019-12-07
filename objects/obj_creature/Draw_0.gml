@@ -34,7 +34,7 @@ if (initialized == true) or (initialized == false) {
 	//Calculate offsets in these if statements below. All these values are manually calibrated so that each body part looks good. Don't worry about this code.
 
 
-	if (sprite_body == 0) { 
+	if (sprite_body == 0) {  // Boar body
 		sprite_arm = -1; //Failsafe: This body cannot have an arm as it is a quadripedal body.
 			if (sprite_head == 0) { //Wolf head
 				headOffsetX = 33;
@@ -78,7 +78,7 @@ if (initialized == true) or (initialized == false) {
 				headScaleX = 1.2;
 				headScaleY = 0.85;
 			}
-	} else if (sprite_body == 1) {
+	} else if (sprite_body == 1) { //Wolf body
 		sprite_arm = -1; //Failsafe: This body cannot have an arm as it is a quadripedal body.
 		if (sprite_head == 0) {
 				headScaleY= 1.5;
@@ -125,7 +125,7 @@ if (initialized == true) or (initialized == false) {
 				headScaleX = 1.4;
 				headScaleY = 1.2;
 			}
-	} else if (sprite_body == 2) {
+	} else if (sprite_body == 2) { // T Rex Body
 		if (sprite_head == 0) {
 				headOffsetX = 5;
 				headOffsetY = -22;
@@ -226,6 +226,149 @@ if (initialized == true) or (initialized == false) {
 			headScaleX = 1;
 			headScaleY = 0.85;
 		}
+	} else if (sprite_body == 4) { //Camel body
+		sprite_arm = -1; //Failsafe: This body cannot have an arm as it is a quadripedal body.
+		if (sprite_head == 0) {
+				headScaleY= 1.25;
+				headScaleX = 1.25;
+				headOffsetX = 25;
+				headOffsetY = -8;
+			} else if (sprite_head == 1) {
+				headOffsetX = 28;
+				headOffsetY = -4;
+				headScaleX = 1;
+				headScaleY = 1;
+			} else if (sprite_head == 2) {
+				headOffsetX = 24;
+				headOffsetY = -8;
+				headScaleY = 1.25;
+				headScaleX = 1.25;
+			} else if (sprite_head == 3) {
+				headScaleY= 1.35;
+				headScaleX = 1;
+				headOffsetX = 23;
+				headOffsetY = -8;
+			} else if (sprite_head == 4) {
+				headOffsetX = 24;
+				headOffsetY = -4;
+				headScaleY = 1.35;
+				headScaleX = 1.25;
+			} else if (sprite_head == 5) {
+				headScaleY= 1.35;
+				headScaleX = 1.35;
+				headOffsetX = 23;
+				headOffsetY = -12;
+			} else if (sprite_head == 6) {
+				headScaleY= 1.35;
+				headScaleX = 1.35;
+				headOffsetX = 23;
+				headOffsetY = -18;
+			} else if (sprite_head == 7) {
+				headScaleY= 1.4;
+				headScaleX = 1.4;
+				headOffsetX = 23;
+				headOffsetY = -12;
+			} else if (sprite_head == 8) {
+				headOffsetX = 28;
+				headOffsetY = -4;
+				headScaleX = 1;
+				headScaleY = 1;
+			}
+	} else if (sprite_body == 5) { //Camel body
+		sprite_arm = -1; //Failsafe: This body cannot have an arm as it is a quadripedal body.
+			if (sprite_head == 0) {
+				headScaleY= 1.25;
+				headScaleX = 1.25;
+				headOffsetX = 25;
+				headOffsetY = -18;
+			} else if (sprite_head == 1) {
+				headOffsetX = 28;
+				headOffsetY = -4;
+				headScaleX = 1;
+				headScaleY = 1;
+			} else if (sprite_head == 2) {
+				headOffsetX = 24;
+				headOffsetY = -8;
+				headScaleY = 1.25;
+				headScaleX = 1.25;
+			} else if (sprite_head == 3) {
+				headScaleY= 1.35;
+				headScaleX = 1.2;
+				headOffsetX = 23;
+				headOffsetY = -16;
+			} else if (sprite_head == 4) {
+				headOffsetX = 24;
+				headOffsetY = -4;
+				headScaleY = 1.35;
+				headScaleX = 1.25;
+			} else if (sprite_head == 5) {
+				headScaleY= 1.35;
+				headScaleX = 1.35;
+				headOffsetX = 23;
+				headOffsetY = -16;
+			} else if (sprite_head == 6) {
+				headScaleY= 1.35;
+				headScaleX = 1.35;
+				headOffsetX = 23;
+				headOffsetY = -22;
+			} else if (sprite_head == 7) {
+				headScaleY= 1.35;
+				headScaleX = 1.3;
+				headOffsetX = 26;
+				headOffsetY = -18;
+			} else if (sprite_head == 8) {
+				headOffsetX = 28;
+				headOffsetY = -4;
+				headScaleX = 1;
+				headScaleY = 1;
+			}
+	} else if (sprite_body == 6) { //Snake body
+		sprite_arm = -1;
+		if (sprite_head == 0) {
+				headOffsetX = 13;
+				headOffsetY = -22;
+				headScaleX = 0.8;
+				headScaleY = 0.9;
+			} else if (sprite_head == 1) {
+				headOffsetX = 15;
+				headOffsetY = -25;
+				headScaleX = 0.75;
+				headScaleY = 0.6;
+			} else if (sprite_head == 2) {
+				headOffsetX = 14;
+				headOffsetY = -25;
+				headScaleX = 1;
+				headScaleY = 1;
+			} else if (sprite_head == 3) {
+				headOffsetX = 15;
+				headOffsetY = -28;
+				headScaleX = 1.1;
+				headScaleY = 1.25;
+			} else if (sprite_head == 4) {
+				headOffsetX = 16;
+				headOffsetY = -20;
+				headScaleX = 0.9;
+			}  else if (sprite_head == 5) {
+				headOffsetX = 14.5;
+				headOffsetY = -28;
+				headScaleX = 1.25;
+				headScaleY = 1.1;
+			} else if (sprite_head == 6) {
+				headOffsetX = 14.5;
+				headOffsetY = -28;
+				headScaleX = 1.1;
+				headScaleY = 0.9;
+			} else if (sprite_head == 7) {
+				headOffsetX = 14.5;
+				headOffsetY = -26;
+				headScaleX = 1;
+				headScaleY = 1;
+			} else if (sprite_head == 8) {
+				headOffsetX = 16;
+				headOffsetY = -25;
+				headScaleX = 0.75;
+				headScaleY = 0.6;
+			}
 	}
 
 	//Next, scale everything.
@@ -271,3 +414,4 @@ if (initialized == true) or (initialized == false) {
 		}
 	}
 }
+

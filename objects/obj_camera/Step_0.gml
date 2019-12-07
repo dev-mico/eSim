@@ -14,8 +14,12 @@ target_zoom += mouse_input/16;
 target_zoom = clamp(target_zoom, minimum_zoom/100, (room_width * (1/(orig_x_size))));
 
 if (following != pointer_null) {
-	x = following.x;
-	y = following.y;
+	if (instance_exists(following)) {
+		x = following.x;
+		y = following.y;
+	} else {
+		following = pointer_null;	
+	}
 }
 
 x = clamp(x, camera_get_view_width(cam_id)/2, room_width - camera_get_view_width(cam_id) * .5);

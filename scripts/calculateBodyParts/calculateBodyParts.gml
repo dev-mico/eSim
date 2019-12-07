@@ -81,6 +81,9 @@ var wolfBody = 0;
 var boarBody = 1;
 var tRexBody = 2;
 var spiderBody = 3;
+var camelBody = 4;
+var horseBody = 5;
+var snakeBody = 6;
 
 var tRexArm = 0;
 
@@ -140,16 +143,23 @@ carnivoreHeads[4] = rhinoHead;
 attackBodies[0] = wolfBody;
 attackBodies[1] = tRexBody;
 attackBodies[2] = spiderBody;
+attackBodies[3] = snakeBody;
 
 dexerityBodies[0] = wolfBody;
 dexerityBodies[1] = spiderBody;
+dexerityBodies[2] = horseBody;
+dexerityBodies[3] = snakeBody;
 
 defenseBodies[0] = boarBody;
+defenseBodies[1] = camelBody;
 
 perceptionBodies[0] = spiderBody;
 perceptionBodies[1] = wolfBody;
+perceptionBodies[2] = snakeBody;
 
 staminaBodies[0] = boarBody;
+staminaBodies[2] = camelBody;
+staminaBodies[3] = horseBody;
 
 //--------------------------------------------
 

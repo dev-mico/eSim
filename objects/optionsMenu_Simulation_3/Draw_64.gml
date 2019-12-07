@@ -11,7 +11,7 @@ draw_set_font(fontMainMenuSubheader);
 draw_text(menu_x, menu_y + 120, "The evolution simulator designed to illustrate AI");
 
 draw_set_font(fontMainMenuSubSubheader);
-draw_text(menu_x, menu_y + 152, "Developed by Marcos Lacouture, Teddy Arrasavelli and Jonathan Lai");
+draw_text(menu_x, menu_y + 152, "Developed by Marcos Lacouture, Teddy Arrasavelli and Bret Craig");
 
 draw_set_font(fontMainMenu);
 

@@ -18,7 +18,8 @@ for (var i = 0; i < speciesAmount; i++) {
 	if (global.initialDevelopmentAmount < 1) {
 		initialDevelopment = irandom_range(10, 100);
 	}
-	createNewSpecies(initialDevelopment, global.initialDiet); 
+	var species = createNewSpecies(initialDevelopment, global.initialDiet); 
+	species.alarm[0] = 5;
 }
 
 

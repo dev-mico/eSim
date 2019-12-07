@@ -315,42 +315,48 @@ if (initialized == true) and (global.paused == false) and (instance_exists(id)) 
 						if (distanceFromToEat <= viewRange) and (point_in_rectangle(toEat.x, toEat.y, creatureWidth/8, creatureHeight/8, room_width - creatureWidth/8, room_height - creatureHeight/8) == true) { //Check you can still see and access the target creature
 						
 							if (x != toEat.x) or (y != toEat.y) {//Move towards your eating target
-								moveTowards(id, movementSpeed, toEat.x, toEat.y);	
+								if (point_in_rectangle(toEat.x, toEat.y, creatureWidth/8, creatureHeight/8, room_width -creatureWidth/8, room_height - creatureHeight/8) == true) {
+									moveTowards(id, movementSpeed, toEat.x, toEat.y);	
 								
-								if (toEat.object_index == obj_creature.object_index) {  //This code allows moving targets to be attacked, and will create the target's fight or flight action.
+								
+									if (toEat.object_index == obj_creature.object_index) {  //This code allows moving targets to be attacked, and will create the target's fight or flight action.
 									
-									if (point_in_rectangle(x, y, toEat.x - 5, toEat.y - 5, toEat.x + 5, toEat.y + 5) == true) { //This block allows moving targets to be hit
-										if (toEat.dead == false) {
+										if (point_in_rectangle(x, y, toEat.x - 5, toEat.y - 5, toEat.x + 5, toEat.y + 5) == true) { //This block allows moving targets to be hit
+											if (toEat.dead == false) {
 											
-											attackCreature(id, toEat);
+												attackCreature(id, toEat);
 											
-										}
-									}
-									
-									//This block creates a fightOrFlight action on the target creature, if the creature can see you and detects you.
-									if (distanceFromToEat <= toEat.viewRange) and (detectsCreature(toEat, id) == true) { //Check the creature detects you
-										var containsFightOrFlight = false;
-									
-										for (var i = 0; i < ds_list_size(toEat.actionsQueue); i++) { //Check if a fightOrFlight event exists, and if the fightOrFlight event is about this creature; i.e, if there's another fightOrFlight event for another creature, still make this one..
-											var currentAction = ds_list_find_value(toEat.actionsQueue, i);
-										
-											if (currentAction.action == "fightOrFlight") { //If the fightOrFlight event exists 
-												if (currentAction.arg1 == id) { //If the existing fightOrFlight event is about this creature, don't create a new one.
-													containsFightOrFlight = true;	
-												}
 											}
 										}
 									
-										if (containsFightOrFlight = false) { //If you didn't find a fightOrFlight event about this creature, create one.
-											var newAction = instance_create_depth(0, 0, 5000, obj_action);
-											newAction.action = "fightOrFlight";
-											newAction.arg1 = id;
-											newAction.arg2 = -1; //-1 so that the creature runs fightOrFlight calculations, and decide if it wants to fight or flee.
-											newAction.priority = 95; //Second-highest priority action of all actions: fight or flight.
-											ds_list_add(toEat.actionsQueue, newAction);
-										}
-									}
+										//This block creates a fightOrFlight action on the target creature, if the creature can see you and detects you.
+										if (distanceFromToEat <= toEat.viewRange) and (detectsCreature(toEat, id) == true) { //Check the creature detects you
+											var containsFightOrFlight = false;
 									
+											for (var i = 0; i < ds_list_size(toEat.actionsQueue); i++) { //Check if a fightOrFlight event exists, and if the fightOrFlight event is about this creature; i.e, if there's another fightOrFlight event for another creature, still make this one..
+												var currentAction = ds_list_find_value(toEat.actionsQueue, i);
+										
+												if (currentAction.action == "fightOrFlight") { //If the fightOrFlight event exists 
+													if (currentAction.arg1 == id) { //If the existing fightOrFlight event is about this creature, don't create a new one.
+														containsFightOrFlight = true;	
+													}
+												}
+											}
+									
+											if (containsFightOrFlight = false) { //If you didn't find a fightOrFlight event about this creature, create one.
+												var newAction = instance_create_depth(0, 0, 5000, obj_action);
+												newAction.action = "fightOrFlight";
+												newAction.arg1 = id;
+												newAction.arg2 = -1; //-1 so that the creature runs fightOrFlight calculations, and decide if it wants to fight or flee.
+												newAction.priority = 95; //Second-highest priority action of all actions: fight or flight.
+												ds_list_add(toEat.actionsQueue, newAction);
+											}
+										}
+									
+									}
+								} else { // If the creature is inaccessible, abort the eat action.
+									ds_list_delete(actionsQueue, ds_list_find_index(actionsQueue, actionToUndergo));
+									instance_destroy(actionToUndergo);
 								}
 								
 							} else {//If you are at your target, eat.
@@ -496,7 +502,7 @@ if (initialized == true) and (global.paused == false) and (instance_exists(id)) 
 							if (fightOrFlee == fight) { //Attack the attacker back
 								//show_debug_message("the creature of " + attacker.species + " can catch da smoke no cap on my momma.");	
 								if (x != attacker.x) or (y != attacker.y) {
-									if (point_in_rectangle(attacker.x, attacker.y, creatureWidth/8, creatureHeight/8, room_width - creatureWidth/8, room_height - creatureHeight/8) == true) { //If the creature can access the attacker
+									if (point_in_rectangle(attacker.x, attacker.y, creatureWidth/8 + 1, creatureHeight/8 + 1, room_width - creatureWidth/8 - 1, room_height - creatureHeight/8 - 1) == true) { //If the creature can access the attacker
 										moveTowards(id, movementSpeed, attacker.x, attacker.y);	
 									}
 								}
