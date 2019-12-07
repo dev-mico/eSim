@@ -1,6 +1,5 @@
 /// @description Migration is managed here
 
-display_set_gui_size(camera_get_view_width(view_camera[0]), camera_get_view_height(view_camera[0]));
 
 if (global.paused == false) {
 	if (ds_list_size(global.speciesList) < global.speciesLimit) { //Do not migrate in new species if you are at your limit

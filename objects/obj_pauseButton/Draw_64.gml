@@ -1,4 +1,7 @@
 //@description Draw the GUI depending on whether the game is paused and whether its selected.
+
+display_set_gui_size(camera_get_view_width(view_camera[0]), camera_get_view_height(view_camera[0]));
+
 var scaleX = camera_get_view_width(view_camera[0])/1500;
 var scaleY = camera_get_view_width(view_camera[0])/1500;
 

@@ -855,6 +855,14 @@
             }
         },
         {
+            "Key": "f80dc904-8f60-40de-a713-955ad9ff1614",
+            "Value": {
+                "id": "411e8140-ef96-4377-802b-06e5f7547c53",
+                "resourcePath": "objects\\obj_textBox\\obj_textBox.yy",
+                "resourceType": "GMObject"
+            }
+        },
+        {
             "Key": "f9e27aa2-822d-497e-93a1-ef992434dbb8",
             "Value": {
                 "id": "02735adc-3858-4e9d-9159-cfad1c977015",
