@@ -26,8 +26,8 @@ scaleFactor = 0.75; //1 = 100% size, 0.9 is 90%. The sprites are generally too b
 
 dead = false;
 
-sprite_body = 6;
-sprite_head = 1 ;
+sprite_body = 1;
+sprite_head = 9;
 sprite_arm = 1;
 sprite_color = make_colour_rgb(255, 160, 100) 
 

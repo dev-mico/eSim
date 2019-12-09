@@ -77,6 +77,11 @@ if (initialized == true) or (initialized == false) {
 				headOffsetY = -5;
 				headScaleX = 1.2;
 				headScaleY = 0.85;
+			} else if (sprite_head == 9) { // Puppy head
+				headScaleX = 1.2;
+				headScaleY = 1.2;
+				headOffsetX = 33;
+				headOffsetY = -12;
 			}
 	} else if (sprite_body == 1) { //Wolf body
 		sprite_arm = -1; //Failsafe: This body cannot have an arm as it is a quadripedal body.
@@ -124,6 +129,11 @@ if (initialized == true) or (initialized == false) {
 				headOffsetY = 0;
 				headScaleX = 1.4;
 				headScaleY = 1.2;
+			} else if (sprite_head == 9) {
+				headScaleY= 1.65;
+				headScaleX = 1.80;
+				headOffsetX = 25;
+				headOffsetY = -5;
 			}
 	} else if (sprite_body == 2) { // T Rex Body
 		if (sprite_head == 0) {
@@ -170,6 +180,11 @@ if (initialized == true) or (initialized == false) {
 				headOffsetY = -25;
 				headScaleX = 0.75;
 				headScaleY = 0.6;
+			} else if (sprite_head == 9) {
+				headOffsetX = 6.5;
+				headOffsetY = -28;
+				headScaleX = 1.25;
+				headScaleY = 1.1;
 			}
 		
 			//Second if statements for drawing arms below
@@ -225,6 +240,11 @@ if (initialized == true) or (initialized == false) {
 			headOffsetY = 0;
 			headScaleX = 1;
 			headScaleY = 0.85;
+		} else if (sprite_head == 9) {
+			headOffsetX = 18;
+			headOffsetY = -3;
+			headScaleX = 1.35;
+			headScaleY = 1.25;
 		}
 	} else if (sprite_body == 4) { //Camel body
 		sprite_arm = -1; //Failsafe: This body cannot have an arm as it is a quadripedal body.
@@ -273,6 +293,11 @@ if (initialized == true) or (initialized == false) {
 				headOffsetY = -4;
 				headScaleX = 1;
 				headScaleY = 1;
+			} else if (sprite_head == 9) {
+				headScaleY= 1.35;
+				headScaleX = 1.35;
+				headOffsetX = 23;
+				headOffsetY = -12;
 			}
 	} else if (sprite_body == 5) { //Camel body
 		sprite_arm = -1; //Failsafe: This body cannot have an arm as it is a quadripedal body.
@@ -321,7 +346,12 @@ if (initialized == true) or (initialized == false) {
 				headOffsetY = -4;
 				headScaleX = 1;
 				headScaleY = 1;
-			}
+			} else if (sprite_head == 9) {
+				headScaleY= 1.35;
+				headScaleX = 1.35;
+				headOffsetX = 23;
+				headOffsetY = -16;
+			} 
 	} else if (sprite_body == 6) { //Snake body
 		sprite_arm = -1;
 		if (sprite_head == 0) {
@@ -368,6 +398,11 @@ if (initialized == true) or (initialized == false) {
 				headOffsetY = -25;
 				headScaleX = 0.75;
 				headScaleY = 0.6;
+			} else if (sprite_head == 9) {
+				headOffsetX = 14.5;
+				headOffsetY = -28;
+				headScaleX = 1.25;
+				headScaleY = 1.1;
 			}
 	}
 

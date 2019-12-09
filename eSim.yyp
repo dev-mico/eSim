@@ -71,14 +71,6 @@
             }
         },
         {
-            "Key": "12d0c044-a3eb-47b6-8f73-5b72de75aab0",
-            "Value": {
-                "id": "6248d63f-82a3-4308-8fe7-c874388c2d9b",
-                "resourcePath": "scripts\\migrateSpeciesIn\\migrateSpeciesIn.yy",
-                "resourceType": "GMScript"
-            }
-        },
-        {
             "Key": "138deb3a-7d01-4dd9-97c9-42adde25b97d",
             "Value": {
                 "id": "2944c75c-6731-4222-b09f-e8f06a360837",
@@ -235,14 +227,6 @@
             "Value": {
                 "id": "05960f56-4920-48f8-92bc-30fa808005a3",
                 "resourcePath": "objects\\optionsMenu_Simulation_3\\optionsMenu_Simulation_3.yy",
-                "resourceType": "GMObject"
-            }
-        },
-        {
-            "Key": "48186e59-1324-4b80-9cd5-49fcaa5491b2",
-            "Value": {
-                "id": "e1aa14ab-e140-4205-806d-3061477f7647",
-                "resourcePath": "objects\\obj_creatureMenuBackground\\obj_creatureMenuBackground.yy",
                 "resourceType": "GMObject"
             }
         },
@@ -855,14 +839,6 @@
             }
         },
         {
-            "Key": "f80dc904-8f60-40de-a713-955ad9ff1614",
-            "Value": {
-                "id": "411e8140-ef96-4377-802b-06e5f7547c53",
-                "resourcePath": "objects\\obj_textBox\\obj_textBox.yy",
-                "resourceType": "GMObject"
-            }
-        },
-        {
             "Key": "f9e27aa2-822d-497e-93a1-ef992434dbb8",
             "Value": {
                 "id": "02735adc-3858-4e9d-9159-cfad1c977015",
@@ -895,7 +871,6 @@
         "c69121e5-5f7b-45ea-bc87-5c4f35cc322b",
         "6aa395ac-e481-4ba2-85f8-690c82517a0c",
         "5af5a622-16e5-4dd2-81f1-3137e678bce3",
-        "12d0c044-a3eb-47b6-8f73-5b72de75aab0",
         "52bb3ea5-b0e5-48b8-9c30-1a595e892537",
         "77d093eb-412d-4d81-aa00-15552dcb1016",
         "07422b2e-5a9c-48c0-918e-e3a6ab62508a",
