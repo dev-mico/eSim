@@ -12,7 +12,8 @@ var targetSize = targetCreature.scaleFactor;
 var targetDexerity = targetCreature.dexerity;
 var perception = creature.perception;
 
-targetDetectionOdds*= (targetSize/2);
+//targetDetectionOdds*= (targetSize/2); //Rework this
+targetDetectionOdds = targetDetectionOdds + (targetDetectionOdds * ((targetSize/8) - creature.scaleFactor));
 
 
 var oddsChangeFactor = (perception - (targetDexerity * 1.5))/10; //The change factor. This is a percentage value, and will 

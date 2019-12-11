@@ -655,6 +655,14 @@
             }
         },
         {
+            "Key": "d856b03c-46ec-4410-836c-fce3c8a120d4",
+            "Value": {
+                "id": "deb48109-bab8-415b-848f-d7a14430eefd",
+                "resourcePath": "sprites\\treeSprite\\treeSprite.yy",
+                "resourceType": "GMSprite"
+            }
+        },
+        {
             "Key": "d8b4e066-6f00-49a9-a6dd-3611f4ea664c",
             "Value": {
                 "id": "a7df5b8a-4922-4fd3-8048-e160bda1c0a1",

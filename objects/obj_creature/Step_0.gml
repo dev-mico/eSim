@@ -315,7 +315,7 @@ if (initialized == true) and (global.paused == false) and (instance_exists(id)) 
 						if (distanceFromToEat <= viewRange) and (point_in_rectangle(toEat.x, toEat.y, creatureWidth/8, creatureHeight/8, room_width - creatureWidth/8, room_height - creatureHeight/8) == true) { //Check you can still see and access the target creature
 						
 							if (x != toEat.x) or (y != toEat.y) {//Move towards your eating target
-								if (point_in_rectangle(toEat.x, toEat.y, creatureWidth/8, creatureHeight/8, room_width -creatureWidth/8, room_height - creatureHeight/8) == true) {
+								if (point_in_rectangle(toEat.x, toEat.y, creatureWidth/8 + 1, creatureHeight/8 + 1, room_width -creatureWidth/8 - 1, room_height - creatureHeight/8 - 1) == true) {
 									moveTowards(id, movementSpeed, toEat.x, toEat.y);	
 								
 								
@@ -323,9 +323,33 @@ if (initialized == true) and (global.paused == false) and (instance_exists(id)) 
 									
 										if (point_in_rectangle(x, y, toEat.x - 5, toEat.y - 5, toEat.x + 5, toEat.y + 5) == true) { //This block allows moving targets to be hit
 											if (toEat.dead == false) {
-											
+												
 												attackCreature(id, toEat);
-											
+												
+												
+												
+												var containsFightOrFlight = false; // Creature is detected regardless of dexerity once it attacks another creature. Create a fightOrFlight event on the target if it doesn't already exist.
+									
+												for (var i = 0; i < ds_list_size(toEat.actionsQueue); i++) { //Check if a fightOrFlight event exists, and if the fightOrFlight event is about this creature; i.e, if there's another fightOrFlight event for another creature, still make this one..
+													var currentAction = ds_list_find_value(toEat.actionsQueue, i);
+										
+													if (currentAction.action == "fightOrFlight") { //If the fightOrFlight event exists 
+														if (currentAction.arg1 == id) { //If the existing fightOrFlight event is about this creature, don't create a new one.
+															containsFightOrFlight = true;	
+														}
+													}
+												}
+									
+												if (containsFightOrFlight = false) { //If you didn't find a fightOrFlight event about this creature, create one.
+													var newAction = instance_create_depth(0, 0, 5000, obj_action);
+													newAction.action = "fightOrFlight";
+													newAction.arg1 = id;
+													newAction.arg2 = -1; //-1 so that the creature runs fightOrFlight calculations, and decide if it wants to fight or flee.
+													newAction.priority = 95; //Second-highest priority action of all actions: fight or flight.
+													ds_list_add(toEat.actionsQueue, newAction);
+												}
+												
+												
 											}
 										}
 									

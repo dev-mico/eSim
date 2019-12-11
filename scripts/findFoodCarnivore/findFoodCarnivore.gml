@@ -19,7 +19,7 @@ if (creature.aggressivity < 0.75) { //If the creature is very aggressive (0.75 o
 		
 		if (distanceFromCurrent <= sightRange) {
 			if (distanceFromCurrent < closestCorpseDistance) { //Go for the closest corpse.
-				if (point_in_rectangle(currentCorpse.x, currentCorpse.y, creature.creatureWidth/8, creature.creatureHeight/8, room_width - creature.creatureWidth/8, room_height - creature.creatureHeight/8) == true) { //Check the corpse is accessible
+				if (point_in_rectangle(currentCorpse.x, currentCorpse.y, creature.creatureWidth/8 + 1.5, creature.creatureHeight/8 + 1.5, room_width - creature.creatureWidth/8 - 1.5, room_height - creature.creatureHeight/8 - 1.5) == true) { //Check the corpse is accessible
 					closestCorpseFound = currentCorpse;
 					closestCorpseDistance = distanceFromCurrent;
 				}

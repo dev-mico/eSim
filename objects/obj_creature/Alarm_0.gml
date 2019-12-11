@@ -3,14 +3,18 @@
 
 //All individual subcharacteristics will be calculated below (things such as movement speed, size, etc.) based on the characteristics of the creature.
 
-
 dexerity = max(1, dexerity); //Make sure none of the creature's characteristics are negative
 defense = max(0.1, defense);
 stamina = max(0.1, stamina);
 attack = max(0.1, attack);
 perception = max(0.1, perception);
 
-movementSpeed = dexerity/8;
+movementSpeed = dexerity/8; //Factor in size to speed calculation
+movementSpeed -= (2 * (scaleFactor-1)); //Factor in size
+if (movementSpeed < 1) {
+	movementSpeed = 1;	
+}
+
 
 scaleFactor = stamina/45 + defense/35 + dexerity/65 + perception/100 + attack/45; //Certain characteristics have more weight in determining size than others.
 creatureWidth *= scaleFactor;
@@ -28,7 +32,7 @@ viewRange = perception * 25; //How far the creature can see, including perceivin
 maxHunger = scaleFactor* 200; //Hunger is based on size.
 hunger = maxHunger; 
 
-currentFood = maxHunger * 5; //One dead creature will be able to feed 5 of itself.
+currentFood = maxHunger * 3; //One dead creature will be able to feed 3 of itself.
 
 initialized = true;
 

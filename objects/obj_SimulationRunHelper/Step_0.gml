@@ -17,18 +17,19 @@ if (global.paused == false) {
 			}
 		
 			avgDevelopment /= ds_list_size(global.speciesList); //After this, divide by the amount of species to find the average development.
-			avgDevelopment *= random_range(0.8, 1.2); //+- 20% development, so it's not too much
+			avgDevelopment = irandom_range(5, avgDevelopment); //Prevent there being a ton of giant creatures by making smaller creatures more prevalent
+			avgDevelopment *= random_range(0.4, 1.6); //+- 60% development- this results in a lot of variety, specifically when there are larger creatuers
 			
-			if (avgDevelopment = 0) { //Don't make the simulation just stop after nothing is left
+			if (avgDevelopment <= 0) { //Don't make the simulation just stop after nothing is left
 				avgDevelopment = global.initialDevelopmentAmount;	
 			}
 		
-		
+
 			avgCreatureAmount /= ds_list_size(global.speciesList); //Do the same with the creature amount
 			avgCreatureAmount *= random_range(0.8, 1.2);
 			avgCreatureAmount = round(avgCreatureAmount); //Create an integer number of creatures by rounding this number
 		
-	
+			
 		
 			newSpecies = createNewSpecies(avgDevelopment, 2); //2 means random diet
 		

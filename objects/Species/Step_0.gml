@@ -11,8 +11,18 @@ if (room == SimulationRoom) {
 			}
 		}
 	} else { //Delete the species object once it's extinct
-		ds_list_delete(global.speciesList, ds_list_find_index(global.speciesList, id)); 
-		ds_list_destroy(creatures);
-		instance_destroy(id);
+		var eggOfSpecies = false;
+		
+		with (obj_egg) { //Species is not yet extinct if an egg exists of the species.
+			if (species == id) {
+				eggOfSpecies = true;	
+			}
+		}
+		
+		if (eggOfSpecies == false) {
+			ds_list_delete(global.speciesList, ds_list_find_index(global.speciesList, id)); 
+			ds_list_destroy(creatures);
+			instance_destroy(id);
+		}
 	}
 }
