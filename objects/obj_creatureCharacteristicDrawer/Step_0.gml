@@ -23,6 +23,8 @@ if (highlightedCreature == pointer_null) {
 	String[7] = pointer_null;
 	
 	String[8] = pointer_null;
+	
+	String[9] = pointer_null;
 } else if (instance_exists(highlightedCreature)) {
 	String[0] = "Species: " + string(highlightedCreature.species);
 
@@ -53,37 +55,43 @@ if (highlightedCreature == pointer_null) {
 		String[7] = "Not a mutant";
 	}
 	
+	String[8] = "Aggressivity: " + string(highlightedCreature.aggressivity);
+	
 	if (ds_list_size(highlightedCreature.actionsQueue) > 0) { // Detect what action the creature is doing and display it
 		
 		var currentActionReference = ds_list_find_value(highlightedCreature.actionsQueue, 0);
 		var currentAction = currentActionReference.action;
-	
-		String[8] = currentAction;
+		
+		String[9] = currentAction;
 		if (currentAction == "idle" or currentAction == "idleMoveTo" or currentAction == "idleWait") {
-			String[8] = "Idling";
+			String[9] = "Idling";
 		} else if (currentAction == "findFood" or currentAction == "findFoodMoveTo") {
-			String[8] = "Looking for food";	
+			String[9] = "Looking for food";	
 		}  else if (currentAction == "eat") {
-			if (currentActionReference.arg1.object_index == foodBush.object_index) { //Check what the creature is eating
-				String[8] = "Eating food";	
-			} else { //If the creature is eating a creature, check if it's hunting it or just eating a corpse
-				if (currentActionReference.arg1.dead == false) { //If it's alive, display "hunting"
-					String[8] = "Hunting creature";
-				} else { //Otherwise, display "eating corpse"
-					String[8] = "Eating corpse";
+			
+			if (instance_exists(currentActionReference.arg1)) { //Check the creature still exists
+				if (currentActionReference.arg1.object_index == foodBush.object_index) { //Check what the creature is eating
+					String[9] = "Eating food";	
+				} else { //If the creature is eating a creature, check if it's hunting it or just eating a corpse
+					if (currentActionReference.arg1.dead == false) { //If it's alive, display "hunting"
+						String[9] = "Hunting creature";
+					} else { //Otherwise, display "eating corpse"
+						String[9] = "Eating corpse";
+					}
 				}
 			}
+			
 		} else if (currentAction == "fightOrFlight" or currentAction == "fightOrFlightProtect") {
 			var fightOrFlee = currentActionReference.arg2;
 			
 			if (fightOrFlee == 0) { //If it's fighting back
-				String[8] = "Fighting back against attacker";
+				String[9] = "Fighting back against attacker";
 			} else { //Otherwise, if it's running
-				String[8] = "Running from attacker";	
+				String[9] = "Running from attacker";	
 			}
 		}
 	} else {
-		String[8] = "Idling";	
+		String[9] = "Idling";	
 	}
 } else {
 	global.highlightedCreature = pointer_null;	
