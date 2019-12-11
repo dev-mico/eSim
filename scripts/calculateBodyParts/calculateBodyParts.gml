@@ -80,6 +80,7 @@ var puppyHead = 9;
 var mutantDeerHead = 10;
 var mutantReptileHead = 11;
 var mutantWolfHead = 12;
+var bearHead = 13;
 
 var wolfBody = 0;
 var boarBody = 1;
@@ -100,6 +101,7 @@ attackHeads[0] = tRexHead;
 attackHeads[1] = wolfHead;
 attackHeads[2] = angryReptileHead;
 attackHeads[3] = rhinoHead;
+attackHeads[4] = bearHead;
 
 
 dexerityHeads[0] = wolfHead;
@@ -113,6 +115,7 @@ dexerityHeads[6] = puppyHead;
 defenseHeads[0] = angryReptileHead;
 defenseHeads[1] = boarHead;
 defenseHeads[2] = rhinoHead;
+defenseHeads[3] = bearHead;
 
 perceptionHeads[0] = mutantWolfHead;
 perceptionHeads[1] = mutantReptileHead;
@@ -124,6 +127,7 @@ staminaHeads[1] = boarHead;
 staminaHeads[2] = deerHead;
 staminaHeads[3] = deerHeadAntlers;
 staminaHeads[4] = puppyHead;
+staminaHeads[5] = bearHead;
 
 herbivoreHeads[0] = bunnyHead;
 herbivoreHeads[1] = boarHead;
@@ -145,6 +149,7 @@ omnivoreHeads[7] = puppyHead;
 omnivoreHeads[8] = mutantReptileHead;
 omnivoreHeads[9] = mutantDeerHead;
 omnivoreHeads[10] = mutantWolfHead;
+omnivoreHeads[11] = bearHead;
 
 carnivoreHeads[0] = tRexHead;
 carnivoreHeads[1] = wolfHead;
@@ -152,6 +157,7 @@ carnivoreHeads[2] = angryReptileHead;
 carnivoreHeads[3] = boarHead;
 carnivoreHeads[4] = rhinoHead;
 carnivoreHeads[5] = mutantWolfHead;
+carnivoreHeads[6] = bearHead;
 
 attackBodies[0] = wolfBody;
 attackBodies[1] = tRexBody;

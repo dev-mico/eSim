@@ -82,59 +82,69 @@ if (initialized == true) or (initialized == false) {
 				headScaleY = 1.2;
 				headOffsetX = 33;
 				headOffsetY = -12;
+			} else if (sprite_head == 13) { //Bear head
+				headOffsetX = 32;
+				headOffsetY = -5;
+				headScaleX = 1;
+				headScaleY = 0.75;
 			}
 	} else if (sprite_body == 1) { //Wolf body
 		sprite_arm = -1; //Failsafe: This body cannot have an arm as it is a quadripedal body.
 		if (sprite_head == 0) or (sprite_head == 12) {
-				headScaleY= 1.5;
-				headOffsetX = 25;
-				headOffsetY = -5;
-			} else if (sprite_head == 1) {
-				headOffsetX = 25;
-				headOffsetY = 2;
-				headScaleX = 1;
-				headScaleY = 1;
-			} else if (sprite_head == 2) or (sprite_head == 11) {
-				headOffsetX = 20;
-				headOffsetY = 0;
-				headScaleY = 1.75;
-				headScaleX = 1.5;
-			} else if (sprite_head == 3) {
-				headScaleY= 1.65;
-				headScaleX = 1.15;
-				headOffsetX = 25;
-				headOffsetY = -5;
-			} else if (sprite_head == 4) {
-				headOffsetX = 24;
-				headOffsetY = 0;
-				headScaleY = 1.55;
-				headScaleX = 1.5;
-			} else if (sprite_head == 5) or (sprite_head == 10) {
-				headScaleY= 1.65;
-				headScaleX = 1.80;
-				headOffsetX = 25;
-				headOffsetY = -5;
-			} else if (sprite_head == 6) {
-				headScaleY= 1.65;
-				headScaleX = 1.80;
-				headOffsetX = 25;
-				headOffsetY = -9;
-			} else if (sprite_head == 7) {
-				headScaleY= 1.65;
-				headScaleX = 1.5;
-				headOffsetX = 28;
-				headOffsetY = -10;
-			} else if (sprite_head == 8) {
-				headOffsetX = 28;
-				headOffsetY = 0;
-				headScaleX = 1.4;
-				headScaleY = 1.2;
-			} else if (sprite_head == 9) {
-				headScaleY= 1.65;
-				headScaleX = 1.80;
-				headOffsetX = 25;
-				headOffsetY = -5;
-			}
+			headScaleY= 1.5;
+			headOffsetX = 25;
+			headOffsetY = -5;
+		} else if (sprite_head == 1) {
+			headOffsetX = 25;
+			headOffsetY = 2;
+			headScaleX = 1;
+			headScaleY = 1;
+		} else if (sprite_head == 2) or (sprite_head == 11) {
+			headOffsetX = 20;
+			headOffsetY = 0;
+			headScaleY = 1.75;
+			headScaleX = 1.5;
+		} else if (sprite_head == 3) {
+			headScaleY= 1.65;
+			headScaleX = 1.15;
+			headOffsetX = 25;
+			headOffsetY = -5;
+		} else if (sprite_head == 4) {
+			headOffsetX = 24;
+			headOffsetY = 0;
+			headScaleY = 1.55;
+			headScaleX = 1.5;
+		} else if (sprite_head == 5) or (sprite_head == 10) {
+			headScaleY= 1.65;
+			headScaleX = 1.80;
+			headOffsetX = 25;
+			headOffsetY = -5;
+		} else if (sprite_head == 6) {
+			headScaleY= 1.65;
+			headScaleX = 1.80;
+			headOffsetX = 25;
+			headOffsetY = -9;
+		} else if (sprite_head == 7) {
+			headScaleY= 1.65;
+			headScaleX = 1.5;
+			headOffsetX = 28;
+			headOffsetY = -10;
+		} else if (sprite_head == 8) {
+			headOffsetX = 28;
+			headOffsetY = 0;
+			headScaleX = 1.4;
+			headScaleY = 1.2;
+		} else if (sprite_head == 9) {
+			headScaleY= 1.65;
+			headScaleX = 1.80;
+			headOffsetX = 25;
+			headOffsetY = -5;
+		} else if (sprite_head == 13) {
+			headOffsetX = 25;
+			headOffsetY = -3;
+			headScaleX = 1.2;
+			headScaleY = 1.2;
+		}
 	} else if (sprite_body == 2) { // T Rex Body
 		if (sprite_head == 0) or (sprite_head == 12) {
 				headOffsetX = 5;
@@ -186,6 +196,12 @@ if (initialized == true) or (initialized == false) {
 				headScaleX = 1.25;
 				headScaleY = 1.1;
 			}
+			else if (sprite_head == 13) {
+				headOffsetX = 9;
+				headOffsetY = -25;
+				headScaleX = 0.75;
+				headScaleY = 0.6;
+			} 
 		
 			//Second if statements for drawing arms below
 			if (sprite_arm == 0) {
@@ -245,7 +261,12 @@ if (initialized == true) or (initialized == false) {
 			headOffsetY = -3;
 			headScaleX = 1.35;
 			headScaleY = 1.25;
-		}
+		} else if (sprite_head == 13) {
+			headOffsetX = 18;
+			headOffsetY = 0;
+			headScaleX = 1;
+			headScaleY = 0.85;
+		} 
 	} else if (sprite_body == 4) { //Camel body
 		sprite_arm = -1; //Failsafe: This body cannot have an arm as it is a quadripedal body.
 		if (sprite_head == 0) or (sprite_head == 12) {
@@ -298,7 +319,12 @@ if (initialized == true) or (initialized == false) {
 				headScaleX = 1.35;
 				headOffsetX = 23;
 				headOffsetY = -12;
-			}
+			}  else if (sprite_head == 13) {
+				headOffsetX = 24;
+				headOffsetY = -6;
+				headScaleX = 0.8;
+				headScaleY = 0.8;
+			} 
 	} else if (sprite_body == 5) { //Camel body
 		sprite_arm = -1; //Failsafe: This body cannot have an arm as it is a quadripedal body.
 			if (sprite_head == 0) or (sprite_head == 12) {
@@ -351,6 +377,11 @@ if (initialized == true) or (initialized == false) {
 				headScaleX = 1.35;
 				headOffsetX = 23;
 				headOffsetY = -16;
+			}  else if (sprite_head == 13) {
+				headOffsetX = 24;
+				headOffsetY = -6;
+				headScaleX = 0.8;
+				headScaleY = 0.8;
 			} 
 	} else if (sprite_body == 6) { //Snake body
 		sprite_arm = -1;
@@ -403,6 +434,11 @@ if (initialized == true) or (initialized == false) {
 				headOffsetY = -28;
 				headScaleX = 1.25;
 				headScaleY = 1.1;
+			} else if (sprite_head == 13) {
+				headOffsetX = 15;
+				headOffsetY = -25;
+				headScaleX = 0.75;
+				headScaleY = 0.6;
 			}
 	}
 

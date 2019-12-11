@@ -40,6 +40,7 @@ if (mouse_check_button_pressed(mb_left) == true) { //Mouse click check
 				inst_PLAYERCAMERA.following = global.highlightedCreature;
 			} else {
 				global.highlightedCreature = id;
+				inst_PLAYERCAMERA.following = pointer_null;
 			}
 			//show_debug_message("creature selected: " + string(global.highlightedCreature));
 		}

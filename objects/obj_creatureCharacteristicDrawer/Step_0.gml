@@ -7,6 +7,7 @@ var highlightedCreature = global.highlightedCreature;
 
 if (highlightedCreature == pointer_null) {
 	String[0] = "No Creature Selected";
+	
 
 	String[1] = pointer_null;
 
@@ -26,7 +27,7 @@ if (highlightedCreature == pointer_null) {
 	
 	String[9] = pointer_null;
 } else if (instance_exists(highlightedCreature)) {
-	String[0] = "Species: " + string(highlightedCreature.species);
+	String[0] = string(highlightedCreature.species);
 
 	String[1] = "Attack: " + string(highlightedCreature.attack);
 
@@ -41,18 +42,23 @@ if (highlightedCreature == pointer_null) {
 	var diet = "";
 	if (highlightedCreature.diet == -1) {
 		diet = "Carnivore";
+		textColor[6] = c_red;
 	} else if (highlightedCreature.diet == 0) {
 		diet = "Omnivore";
+		textColor[6] = c_yellow;
 	} else {
 		diet = "Herbivore";
+		textColor[6] = make_colour_rgb(0, 255, 0);
 	}
 	
 	String[6] = "Diet: " + diet;
 
 	if (highlightedCreature.mutated == true) {
 		String[7] = "Mutant!";
+		textColor[7] = c_lime;
 	} else {
 		String[7] = "Not a mutant";
+		textColor[7] = c_white;
 	}
 	
 	String[8] = "Aggressivity: " + string(highlightedCreature.aggressivity);
@@ -65,18 +71,23 @@ if (highlightedCreature == pointer_null) {
 		String[9] = currentAction;
 		if (currentAction == "idle" or currentAction == "idleMoveTo" or currentAction == "idleWait") {
 			String[9] = "Idling";
+			textColor[9] = c_white;
 		} else if (currentAction == "findFood" or currentAction == "findFoodMoveTo") {
 			String[9] = "Looking for food";	
+			textColor[9] = textColor[4]; //Same as perception color, since it uses perception
 		}  else if (currentAction == "eat") {
 			
 			if (instance_exists(currentActionReference.arg1)) { //Check the creature still exists
 				if (currentActionReference.arg1.object_index == foodBush.object_index) { //Check what the creature is eating
 					String[9] = "Eating food";	
+					textColor[9] = c_silver;
 				} else { //If the creature is eating a creature, check if it's hunting it or just eating a corpse
 					if (currentActionReference.arg1.dead == false) { //If it's alive, display "hunting"
 						String[9] = "Hunting creature";
+						textColor[9] = textColor[1]; //Same as attack since this action uses attack
 					} else { //Otherwise, display "eating corpse"
 						String[9] = "Eating corpse";
+						textColor[9] = c_silver; //Gray since it doesn't really use anything, but isn't idling either
 					}
 				}
 			}
@@ -86,12 +97,15 @@ if (highlightedCreature == pointer_null) {
 			
 			if (fightOrFlee == 0) { //If it's fighting back
 				String[9] = "Fighting back against attacker";
+				textColor[9] = textColor[2]; //Same as defense
 			} else { //Otherwise, if it's running
 				String[9] = "Running from attacker";	
+				textColor[9] = textColor[3];
 			}
 		}
 	} else {
-		String[9] = "Idling";	
+		String[9] = "Idling";
+		textColor[9] = c_white;
 	}
 } else {
 	global.highlightedCreature = pointer_null;	

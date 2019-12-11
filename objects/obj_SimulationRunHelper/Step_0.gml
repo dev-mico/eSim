@@ -26,7 +26,7 @@ if (global.paused == false) {
 		
 
 			avgCreatureAmount /= ds_list_size(global.speciesList); //Do the same with the creature amount
-			avgCreatureAmount *= random_range(0.8, 1.2);
+			avgCreatureAmount *= random_range(0.8, 1.3); //Increase high range to make up for the lack of larger creatures
 			avgCreatureAmount = round(avgCreatureAmount); //Create an integer number of creatures by rounding this number
 		
 			
@@ -37,28 +37,7 @@ if (global.paused == false) {
 
 			var enterFromConstant = 60; //constant for readability. How far outside of the game world creatures will spawn, and how far in they'll move into the game world.
 		
-			//Next, create the creatures from each species.
-		/*	var newAction = instance_create_layer(0, 0, "InvisibleObjects", obj_action);
-			newAction.priority = 100;
-			newAction.action = "idleMoveTo"; //Create an Idle moveTo action. This is a low-priority action that makes the creature walk around a bit while its idle.
-			newAction.arg1 = 30;
-			newAction.arg2 = 30;
-		
-			var targetX = X + (random_range(-20, 20));
-			var targetY = Y + (random_range(-20, 20));
-		
-			if (targetX > room_width- creatureWidth/8){  //If it is attempting to, it recalibrates its targets to not allow it to.
-				targetX = room_width - (creatureWidth/8);
-			} else if (targetX < 0 + creatureWidth/8) {
-				targetX = creatureWidth/8;
-			} else if (targetY > room_height - creatureHeight/8) {
-				targetY = room_height - creatureHeight/8;
-			} else if (targetY < creatureHeight/8) {
-				targetY = 0 + (creatureHeight/8);	
-			}
-		
-			newAction.arg1 = targetX;
-			newAction.arg2 = targetY;*/
+			//Next, create the creatures from the species
 		
 			var packX = 0; //packX and packY are the pack's starting X and Y positions (outside of the game world)
 			var packY = 0;

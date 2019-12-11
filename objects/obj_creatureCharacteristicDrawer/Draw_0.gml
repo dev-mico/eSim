@@ -64,7 +64,7 @@ for (var i = 0; i < array_length_1d(String); i+=1) { // for each string in the a
 
 			}
 
-		} else if(string_width(String[i])*buttonscaleX <= sprite_width*buttonscaleX - 32*buttonscaleX) {
+		}/* else if(string_width(String[i])*buttonscaleX <= sprite_width*buttonscaleX - 32*buttonscaleX) {
 		
 		
 			while(string_width(String[i])*scaleX <= sprite_width*buttonscaleX - 32*buttonscaleX) { // scaling the width of the text 
@@ -73,13 +73,13 @@ for (var i = 0; i < array_length_1d(String); i+=1) { // for each string in the a
 
 			}
 
-		}
+		}*/
 
 
 
 		draw_text_ext_transformed_colour(vx + (18*buttonscaleX), vy + yStep, String[i], 10, -1, scaleX, buttonscaleY, 0,
 
-			font_color, font_color, font_color, font_color, 0.75); // -1 is the width limit, this way it 
+			textColor[i], textColor[i], textColor[i], textColor[i], 1); // -1 is the width limit, this way it 
 
 																// never reaches that limit
 

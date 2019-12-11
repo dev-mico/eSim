@@ -1,23 +1,44 @@
 sprite = textBoxSprite; // change this accordingly
 
-String[0] = "Species: ";
+textColor[0] = c_white;
 
-String[1] = "Attack: ";
+textColor[1] = c_red;
+String[0] = "No Creature Selected";
 
-String[2] = "Defense: ";
+String[1] = pointer_null;
 
-String[3] = "Dexerity: ";
+String[2] = pointer_null;
 
-String[4] = "Perception: ";
+String[3] = pointer_null;
 
-String[5] = "Stamina: ";
+String[4] = pointer_null;
 
-String[6] = "Diet: ";
+String[5] = pointer_null;
 
-String[7] = "Not a mutant";
+String[6] = pointer_null;
 
-String[8] = "Idling";
+String[7] = pointer_null;
+	
+String[8] = pointer_null;
+	
+String[9] = pointer_null;
 
+
+textColor[2] = c_lime;
+
+textColor[3] = make_colour_rgb(0, 255, 200);
+
+textColor[4] = make_colour_rgb(255, 200, 100);
+
+textColor[5] = make_colour_rgb(200, 200, 0);
+
+textColor[6] = c_maroon;
+
+textColor[7] = c_green; //This one changes depending on if its a mutant
+
+textColor[8] = c_orange;
+
+textColor[9] = c_white; //This will change depending on the action type
 
 
 /*String[2] = "oranges";

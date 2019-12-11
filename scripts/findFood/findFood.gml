@@ -17,8 +17,8 @@ for (var i = 0; i < ds_list_size(global.foodBushList); i++) { //Check every food
 	var distanceFromFood = sqrt(sqr(creature.x - foodFound.x) + sqr(creature.y - foodFound.y));
 	
 	if (distanceFromFood <= sightRange) and (distanceFromFood < closestDistance) {
-			if ((foodFound.x <  (room_width - (creature.creatureWidth/8) - 1) and foodFound.x > 1 + (creature.creatureWidth/8))) {
-				if ((foodFound.y < room_height - (creature.creatureHeight/8) - 1) and (foodFound.y > creature.creatureHeight/8) + 1) {
+			if ((foodFound.x <  (room_width - (creature.creatureWidth/8) - 1) and (foodFound.x > 1 + (creature.creatureWidth/8)))) {
+				if ((foodFound.y < room_height - (creature.creatureHeight/8) - 1) and (foodFound.y > (creature.creatureHeight/8) + 1)) {
 					if (foodFound.currentFood > 0) { //If the food bush has food in it.
 						closestFoodBush = foodFound;
 						closestDistance = distanceFromFood;
