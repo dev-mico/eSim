@@ -92,7 +92,7 @@ if (highlightedCreature == pointer_null) {
 				}
 			}
 			
-		} else if (currentAction == "fightOrFlight" or currentAction == "fightOrFlightProtect") {
+		} else if (currentAction == "fightOrFlight") {
 			var fightOrFlee = currentActionReference.arg2;
 			
 			if (fightOrFlee == 0) { //If it's fighting back
@@ -102,6 +102,9 @@ if (highlightedCreature == pointer_null) {
 				String[9] = "Running from attacker";	
 				textColor[9] = textColor[3];
 			}
+		} else if (currentAction == "protectOrNot") {
+			String[9] = "Protecting creature";
+			textColor[9] = textColor[2]; //Same as defense
 		}
 	} else {
 		String[9] = "Idling";

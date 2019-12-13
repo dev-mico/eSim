@@ -26,7 +26,7 @@ if (toProtect_fightOrFlee == -1) { //If a fightOrFlight event doesn't exist (ver
 	return false;
 }
 
-var fightlikelihood = fightLikelihood(creature, attacker);
+var fightlikelihood = fightLikelihood(creature, attacker, true);
 
 var randomNumber = random(100);
 

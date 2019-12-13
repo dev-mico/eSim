@@ -23,6 +23,16 @@ prefixes[17] = "Mega";
 prefixes[18] = "Mimo";
 prefixes[19] = "Para";
 prefixes[20] = "Pachy";
+prefixes[21] = "Ichthyo";
+prefixes[22] = "Platy";
+prefixes[23] = "Pro";
+prefixes[24] = "Ptero";
+prefixes[25] = "Strepto";
+prefixes[26] = "Thero";
+prefixes[27] = "Titano";
+prefixes[28] = "Xeno";
+prefixes[29] = "Thylac";
+prefixes[30] = "Stego";
 
 // All suffixes declared below
 suffixes[0] = "cantho";
@@ -46,6 +56,16 @@ suffixes[17] = "rhinus";
 suffixes[18] = "saurus";
 suffixes[19] = "smilus";
 suffixes[20] = "stomus";
+suffixes[21] = "raptor";
+suffixes[22] = "psitta";
+suffixes[23] = "smilus";
+suffixes[24] = "saurus";
+suffixes[25] = "protero";
+suffixes[26] = "pelta";
+suffixes[27] = "ornis";
+suffixes[28] = "onyx";
+suffixes[29] = "odon";
+suffixes[30] = "suchus";
 
 prefix1 = prefixes[random_range(0, array_length_1d(prefixes))];
 prefix2 = prefixes[random_range(0, array_length_1d(prefixes))];

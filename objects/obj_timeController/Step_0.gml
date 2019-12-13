@@ -9,7 +9,7 @@ if (keyboard_check_pressed(period)) {
 		} else {
 			global.timeScale *= 2;	
 		}
-	}
+	} 
 }
 if (keyboard_check_pressed(comma)) {
 	playSound(1);

@@ -4,6 +4,12 @@
 if (global.highlightedCreature != pointer_null) { //If a creature is selected
 	playSound(menuBeep);
 	
+	var followCreature = false;
+	
+	if (inst_PLAYERCAMERA.following = global.highlightedCreature) {
+		followCreature = true;
+	}
+	
 	var creaturesList = global.highlightedCreature.creatureListReference;
 
 	var creatureIndex = ds_list_find_index(creaturesList, global.highlightedCreature);
@@ -25,4 +31,12 @@ if (global.highlightedCreature != pointer_null) { //If a creature is selected
 	} else { // Otherwise, move to the next creature
 		global.highlightedCreature = ds_list_find_value(creaturesList, creatureIndex - 1);
 	}
+	
+	if (followCreature == true) {
+		inst_PLAYERCAMERA.following = global.highlightedCreature;	
+	}
+}  else {
+	playSound(menuBeep);
+	var firstSpecies = ds_list_find_value(global.speciesList, 0);
+	global.highlightedCreature = ds_list_find_value(firstSpecies.creatures, 0);
 }

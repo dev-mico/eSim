@@ -540,7 +540,7 @@ if (initialized == true) and (global.paused == false) and (instance_exists(id)) 
 							} else if (fightOrFlee == flee) {
 								moveAwayFrom(id, movementSpeed, attacker.x, attacker.y);
 							} else { //If you haven't run the fight or flight calculations yet, run them and then change the action accordingly.
-								fightOrFlee = fightOrFlight(id, attacker);
+								fightOrFlee = fightOrFlight(id, attacker, true);
 								actionToUndergo.arg2 = fightOrFlee; //Update the action
 								
 								//Next, create "protectOrFlee" events on all the other members of the species so they protect you.

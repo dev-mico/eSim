@@ -5,9 +5,10 @@
 
 var creature = argument0;
 var attacker = argument1;
+var fightingBack = argument2; //If it's fighting back, set this to true
 
 
-var fightlikelihood = fightLikelihood(creature, attacker);
+var fightlikelihood = fightLikelihood(creature, attacker, fightingBack);
 
 var randomNumber = random(100);
 
