@@ -24,7 +24,7 @@ ground_tilemap_grass = layer_tilemap_get_id(groundLayer);
 
 tilemap_set_width(ground_tilemap_grass, room_width);
 tilemap_set_height(ground_tilemap_grass, room_height);
-show_debug_message(tilemap_get_width(ground_tilemap_grass));
+//show_debug_message(tilemap_get_width(ground_tilemap_grass));
 
 for(var i = 0; i < tilemap_get_width(ground_tilemap_grass)/16; i++) { //This will generate the floor as green regardless of the room's size.
 	for(var j = 0; j < tilemap_get_height(ground_tilemap_grass)/16; j++) {
@@ -70,3 +70,8 @@ for (var i = 0; i < ds_list_size(global.speciesList); i++) { //Create the initia
 		instantiateCreature(species, (startX + (30 * random_range(-1, 1))), (startY + (30 * random_range(-1, 1))) );
 	}
 }
+
+
+speciesCreationCountdownMax = 10000;
+speciesCreationCountdownMin = 2500;
+speciesCreationCountdown = random_range(speciesCreationCountdownMin, speciesCreationCountdownMax);

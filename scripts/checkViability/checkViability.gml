@@ -41,7 +41,7 @@ viability -= ( (viability * 3 / 100) * (distance/50)); //Give distance some weig
 if (beingAttacked == false) { //If the creature isn't being attacked by the target (at least hypothetically), take in account the target's likelihood to fight back and their likelihood to run.
 	//This is essentially a recursive base case of sorts, since this function calls fightLikelihood which calls this function again.
 	
-	var fightChance = fightLikelihood(targetCreature, creature); //Get the likelihood of the target fighting back against the creature.
+	var fightChance = fightLikelihood(targetCreature, creature, false); //Get the likelihood of the target fighting back against the creature.
 	var flightChance = 100 - fightChance;
 		
 	//Now, factor in the chance of running vs. fighting below.

@@ -4,9 +4,20 @@
 
 showPerceptionView = false; //Debug code: When set to true, every creature's view range will be displayed in a red box.
 
+drawClickBox = false; //Draw the click box
+clickBoxSize = 30; //Size of "click box", like a hit box for clicking the creature
+
 //All variables below are defined in instantiateCreature.
 
 species = "";
+
+if (point_in_rectangle(x, y, 0, 0, room_width, room_height) == true) {
+	inGame = true;
+} else {
+	inGame = false; //If the creature is migrating in, make sure it isn't deleted
+}
+
+
 
 creatureListReference = pointer_null; //Reference to the "creature" list in the species object.
 speciesReference = pointer_null; //Reference to the Species object of the creature.
@@ -15,8 +26,8 @@ scaleFactor = 0.75; //1 = 100% size, 0.9 is 90%. The sprites are generally too b
 
 dead = false;
 
-sprite_body = 2;
-sprite_head = 7;
+sprite_body = 6;
+sprite_head = 16;
 sprite_arm = 1;
 sprite_color = make_colour_rgb(255, 160, 100) 
 
@@ -63,6 +74,4 @@ searchWidth = 500; //How wide a search for food will be (in a 1500x1500 room).
 initialized = false; //This is set to true in alarm[0], which is called after instantiateCreature finishes setting all of the creature's characteristics.
 //Until initialized, the creature will have no behavior.
 
-
-
-	
+corpseCountdown = irandom_range(5000, 12500); //Countdown to corpse auto-disappearing

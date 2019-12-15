@@ -1,4 +1,7 @@
-if (button[menuIndex] == "Return to Options") {
+if (button[menuIndex] == "More Options") {
+	playSound(1);
+	room_goto(OptionsScreen_Simulation_4);
+} else if (button[menuIndex] == "Return to Options") {
 	playSound(1);
 	room_goto(OptionsScreen);
 }  else if (button[menuIndex] == "Scroller:Initial Diet") {
@@ -14,7 +17,7 @@ if (button[menuIndex] == "Return to Options") {
 		} else if (diets[currentDietIndex] == "Random Diet") {
 			global.initialDiet = 2;
 		}
-		show_debug_message(global.initialDiet);
+		//show_debug_message(global.initialDiet);
 	} else {
 		scrollerOpen = true;	
 	}

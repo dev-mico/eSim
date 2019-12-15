@@ -11,7 +11,7 @@ draw_set_font(fontMainMenuSubheader);
 draw_text(menu_x, menu_y + 150, "The evolution simulator designed to illustrate AI");
 
 draw_set_font(fontMainMenuSubSubheader);
-draw_text(menu_x, menu_y + 182, "Developed by Marcos Lacouture, Teddy Arrasavelli and Jonathan Lai");
+draw_text(menu_x, menu_y + 182, "Developed by Marcos Lacouture, Teddy Arrasavelli and Bret Craig");
 
 draw_set_font(fontMainMenu);
 
@@ -35,7 +35,7 @@ for (var i = 0; i < buttonCount; i++) {
 		if (button[i] == "Slider:Music Volume") { //Draw the music slider, based on volume
 			var volume = inst_MUSICLOOPER.musicVolume;
 			draw_sprite(VolumeSliderBase, volume/10, menu_x, (menu_y + Y_Offset + (sprite_get_height(0) + button_h))); // Add the the slider's height with the buffer to account for the new slider, and draw the slider.
-		} else if (button[i] = "Slider:SFX Volume") {
+		} else if (button[i] = "Slider:Sound Effects Volume") {
 			var volume = inst_SFXPLAYER.SFXVolume;
 			draw_sprite(VolumeSliderBase, volume/10, menu_x, (menu_y + Y_Offset + (sprite_get_height(0) + button_h)));
 		}
