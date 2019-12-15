@@ -81,6 +81,9 @@ var mutantDeerHead = 10;
 var mutantReptileHead = 11;
 var mutantWolfHead = 12;
 var bearHead = 13;
+var dogHead = 14;
+var pigHead = 15;
+var snakeHead = 16;
 
 var wolfBody = 0;
 var boarBody = 1;
@@ -102,7 +105,7 @@ attackHeads[1] = wolfHead;
 attackHeads[2] = angryReptileHead;
 attackHeads[3] = rhinoHead;
 attackHeads[4] = bearHead;
-
+attackHeads[5] = snakeHead;
 
 dexerityHeads[0] = wolfHead;
 dexerityHeads[1] = bunnyHead;
@@ -110,17 +113,22 @@ dexerityHeads[2] = tRexHead;
 dexerityHeads[3] = deerHead;
 dexerityHeads[4] = deerHeadAntlers;
 dexerityHeads[5] = duckHead;
-dexerityHeads[6] = puppyHead;
+dexerityHeads[6] = dogHead;
+dexerityHeads[7] = snakeHead;
 
 defenseHeads[0] = angryReptileHead;
 defenseHeads[1] = boarHead;
 defenseHeads[2] = rhinoHead;
 defenseHeads[3] = bearHead;
+defenseHeads[4] = puppyHead;
+defenseHeads[5] = pigHead;
 
 perceptionHeads[0] = mutantWolfHead;
 perceptionHeads[1] = mutantReptileHead;
 perceptionHeads[2] = mutantDeerHead;
 perceptionHeads[3] = duckHead;
+perceptionHeads[4] = dogHead;
+perceptionHeads[5] = snakeHead;
 
 staminaHeads[0] = rhinoHead;
 staminaHeads[1] = boarHead;
@@ -128,6 +136,7 @@ staminaHeads[2] = deerHead;
 staminaHeads[3] = deerHeadAntlers;
 staminaHeads[4] = puppyHead;
 staminaHeads[5] = bearHead;
+staminaHeads[6] = pigHead;
 
 herbivoreHeads[0] = bunnyHead;
 herbivoreHeads[1] = boarHead;
@@ -136,7 +145,9 @@ herbivoreHeads[3] = deerHeadAntlers;
 herbivoreHeads[4] = duckHead;
 herbivoreHeads[5] = rhinoHead;
 herbivoreHeads[6] = puppyHead;
+herbivoreHeads[7] = dogHead;
 herbivoreHeads[8] = mutantDeerHead;
+herbivoreHeads[9] = pigHead;
 
 omnivoreHeads[0] = boarHead;
 omnivoreHeads[1] = wolfHead;
@@ -150,6 +161,8 @@ omnivoreHeads[8] = mutantReptileHead;
 omnivoreHeads[9] = mutantDeerHead;
 omnivoreHeads[10] = mutantWolfHead;
 omnivoreHeads[11] = bearHead;
+omnivoreHeads[12] = dogHead;
+omnivoreHeads[13] = snakeHead;
 
 carnivoreHeads[0] = tRexHead;
 carnivoreHeads[1] = wolfHead;
@@ -158,6 +171,7 @@ carnivoreHeads[3] = boarHead;
 carnivoreHeads[4] = rhinoHead;
 carnivoreHeads[5] = mutantWolfHead;
 carnivoreHeads[6] = bearHead;
+carnivoreHeads[7] = snakeHead;
 
 attackBodies[0] = wolfBody;
 attackBodies[1] = tRexBody;

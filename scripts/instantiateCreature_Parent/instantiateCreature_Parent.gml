@@ -93,6 +93,9 @@ if (instance_exists(species) == true) and (instance_exists(parent) == true) { //
 				creature.sprite_head = bodyParts[head];
 			} else if (bodypartToChange == body) {
 				creature.sprite_body = bodyParts[body];
+				if (creature.sprite_body == 2) {
+					creature.sprite_arm = bodyParts[arm];	
+				}
 			} else if (bodypartToChange == arm){
 				creature.sprite_arm = bodyParts[arm];
 			}

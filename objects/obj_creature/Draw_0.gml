@@ -39,7 +39,7 @@ if (initialized == true) or (initialized == false) {
 			if (sprite_head == 0) or (sprite_head == 12) { //Wolf head or mutant wolf head (multiple eyes)
 				headOffsetX = 33;
 				headOffsetY = -5;
-			} else if (sprite_head == 1) { //Boar head
+			} else if (sprite_head ==1) or (sprite_head == 15) { //Boar head and pig head
 				headOffsetX = 32;
 				headOffsetY = -5;
 				headScaleX = 1;
@@ -53,11 +53,11 @@ if (initialized == true) or (initialized == false) {
 				headScaleY = 1.15;
 				headOffsetX = 33;
 				headOffsetY = -5;
-			} else if (sprite_head == 4) { //T-rex head
+			} else if (sprite_head == 4) or (sprite_head == 16) { //T-rex head or snake head
 				headOffsetX = 31;
 				headOffsetY = 3;
 				headScaleY = 1.1;
-			} else if (sprite_head == 5) or (sprite_head == 10) { // Deer head and mutant deer head (multiple eyes)
+			} else if (sprite_head == 5) or (sprite_head == 10) or (sprite_head == 14) { // Deer head, mutant deer head (multiple eyes), and a dog head
 				headScaleX = 1.2;
 				headScaleY = 1.2;
 				headOffsetX = 33;
@@ -94,7 +94,7 @@ if (initialized == true) or (initialized == false) {
 			headScaleY= 1.5;
 			headOffsetX = 25;
 			headOffsetY = -5;
-		} else if (sprite_head == 1) {
+		} else if (sprite_head ==1) or (sprite_head == 15) {
 			headOffsetX = 25;
 			headOffsetY = 2;
 			headScaleX = 1;
@@ -109,12 +109,12 @@ if (initialized == true) or (initialized == false) {
 			headScaleX = 1.15;
 			headOffsetX = 25;
 			headOffsetY = -5;
-		} else if (sprite_head == 4) {
+		} else if (sprite_head == 4) or (sprite_head == 16) {
 			headOffsetX = 24;
 			headOffsetY = 0;
 			headScaleY = 1.55;
 			headScaleX = 1.5;
-		} else if (sprite_head == 5) or (sprite_head == 10) {
+		} else if (sprite_head == 5) or (sprite_head == 10)  or (sprite_head == 14) {
 			headScaleY= 1.65;
 			headScaleX = 1.80;
 			headOffsetX = 25;
@@ -151,7 +151,7 @@ if (initialized == true) or (initialized == false) {
 				headOffsetY = -22;
 				headScaleX = 0.8;
 				headScaleY = 0.9;
-			} else if (sprite_head == 1) {
+			} else if (sprite_head ==1) or (sprite_head == 15) {
 				headOffsetX = 9;
 				headOffsetY = -25;
 				headScaleX = 0.75;
@@ -166,11 +166,11 @@ if (initialized == true) or (initialized == false) {
 				headOffsetY = -28;
 				headScaleX = 0.95;
 				headScaleY = 1.25;
-			} else if (sprite_head == 4) {
+			} else if (sprite_head == 4) or (sprite_head == 16) {
 				headOffsetX = 8;
 				headOffsetY = -20;
 				headScaleX = 0.9;
-			}  else if (sprite_head == 5) or (sprite_head == 10) {
+			}  else if (sprite_head == 5) or (sprite_head == 10) or (sprite_head == 14) {
 				headOffsetX = 6.5;
 				headOffsetY = -28;
 				headScaleX = 1.25;
@@ -216,7 +216,7 @@ if (initialized == true) or (initialized == false) {
 			headOffsetY = 0;
 			headScaleX = 1.2;
 			headScaleY = 1.2;
-		} else if (sprite_head == 1) {
+		} else if (sprite_head ==1) or (sprite_head == 15) {
 			headOffsetX = 18;
 			headOffsetY = 0;
 			headScaleX = 1;
@@ -236,7 +236,7 @@ if (initialized == true) or (initialized == false) {
 			headOffsetY = 2;
 			headScaleX = 1.4;
 			headScaleY = 1.4;
-		}  else if (sprite_head == 5) or (sprite_head == 10) {
+		}  else if (sprite_head == 5) or (sprite_head == 10) or (sprite_head == 14) {
 			headOffsetX = 18;
 			headOffsetY = 0;
 			headScaleX = 1.35;
@@ -266,7 +266,12 @@ if (initialized == true) or (initialized == false) {
 			headOffsetY = 0;
 			headScaleX = 1;
 			headScaleY = 0.85;
-		} 
+		} else if (sprite_head == 16) {
+			headOffsetX = 18;
+			headOffsetY = -2;
+			headScaleX = 1.4;
+			headScaleY = 1.4;
+		}
 	} else if (sprite_body == 4) { //Camel body
 		sprite_arm = -1; //Failsafe: This body cannot have an arm as it is a quadripedal body.
 		if (sprite_head == 0) or (sprite_head == 12) {
@@ -274,7 +279,7 @@ if (initialized == true) or (initialized == false) {
 				headScaleX = 1.25;
 				headOffsetX = 25;
 				headOffsetY = -8;
-			} else if (sprite_head == 1) {
+			} else if (sprite_head ==1) or (sprite_head == 15) {
 				headOffsetX = 28;
 				headOffsetY = -4;
 				headScaleX = 1;
@@ -294,7 +299,7 @@ if (initialized == true) or (initialized == false) {
 				headOffsetY = -4;
 				headScaleY = 1.35;
 				headScaleX = 1.25;
-			} else if (sprite_head == 5) or (sprite_head == 10) {
+			} else if (sprite_head == 5) or (sprite_head == 10) or (sprite_head == 14) {
 				headScaleY= 1.35;
 				headScaleX = 1.35;
 				headOffsetX = 23;
@@ -324,7 +329,13 @@ if (initialized == true) or (initialized == false) {
 				headOffsetY = -6;
 				headScaleX = 0.8;
 				headScaleY = 0.8;
-			} 
+			} else if (sprite_head == 16) {
+				headOffsetX = 24;
+				headOffsetY = -6;
+				headScaleY = 1.35;
+				headScaleX = 1.25;
+			}
+
 	} else if (sprite_body == 5) { //Camel body
 		sprite_arm = -1; //Failsafe: This body cannot have an arm as it is a quadripedal body.
 			if (sprite_head == 0) or (sprite_head == 12) {
@@ -332,7 +343,7 @@ if (initialized == true) or (initialized == false) {
 				headScaleX = 1.25;
 				headOffsetX = 25;
 				headOffsetY = -18;
-			} else if (sprite_head == 1) {
+			} else if (sprite_head ==1) or (sprite_head == 15) {
 				headOffsetX = 28;
 				headOffsetY = -4;
 				headScaleX = 1;
@@ -347,12 +358,12 @@ if (initialized == true) or (initialized == false) {
 				headScaleX = 1.2;
 				headOffsetX = 23;
 				headOffsetY = -16;
-			} else if (sprite_head == 4) {
+			} else if (sprite_head == 4) or (sprite_head == 16) {
 				headOffsetX = 24;
 				headOffsetY = -4;
 				headScaleY = 1.35;
 				headScaleX = 1.25;
-			} else if (sprite_head == 5) or (sprite_head == 10) {
+			} else if (sprite_head == 5) or (sprite_head == 10) or (sprite_head == 14){
 				headScaleY= 1.35;
 				headScaleX = 1.35;
 				headOffsetX = 23;
@@ -390,7 +401,7 @@ if (initialized == true) or (initialized == false) {
 				headOffsetY = -22;
 				headScaleX = 0.8;
 				headScaleY = 0.9;
-			} else if (sprite_head == 1) {
+			} else if (sprite_head ==1) or (sprite_head == 15) {
 				headOffsetX = 15;
 				headOffsetY = -25;
 				headScaleX = 0.75;
@@ -405,11 +416,11 @@ if (initialized == true) or (initialized == false) {
 				headOffsetY = -28;
 				headScaleX = 1.1;
 				headScaleY = 1.25;
-			} else if (sprite_head == 4) {
+			} else if (sprite_head == 4) or (sprite_head == 16) {
 				headOffsetX = 16;
 				headOffsetY = -20;
 				headScaleX = 0.9;
-			}  else if (sprite_head == 5) or (sprite_head == 10) {
+			}  else if (sprite_head == 5) or (sprite_head == 10) or (sprite_head == 14) {
 				headOffsetX = 14.5;
 				headOffsetY = -28;
 				headScaleX = 1.25;

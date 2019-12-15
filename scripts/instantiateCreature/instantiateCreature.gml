@@ -93,6 +93,9 @@ if (instance_exists(species) == true) { //Failsafe: Species may have been delete
 				creature.sprite_head = bodyParts[head];
 			} else if (bodypartToChange == body) {
 				creature.sprite_body = bodyParts[body];
+				if (creature.sprite_body == 2) {
+					creature.sprite_arm = bodyParts[arm];	
+				}
 			} else if (bodypartToChange == arm){
 				creature.sprite_arm = bodyParts[arm];
 			}
