@@ -4,17 +4,18 @@ Repository for my TEALs project, eSim. eSim is an evolution simulator designed t
 Controls
 ------------------------------
 
-  Menus:
+  Menus
+  ------
    eSim controls are straightforward. All menu navigation is done with arrow keys, as well as the "enter" key to "click" something. There    are also several drop-down menus that can be expanded, including things (such as resolution options, for example). These drop-down        menus must be closed to make any changes. An in-depth description of what each option does is available below.
    
    
-  Simulation:
-    In the simulation, there are a variety of controls that need to be explained. 
-    To move the camera, you can use the arrow keys or alternatively, WASD. You can also zoom in and out with a mouse wheel or trackpad as     you would normally.
+  Simulation
+  -------
+   In the simulation, there are a variety of controls that need to be explained.  To move the camera, you can use the arrow keys or alternatively, WASD. You can also zoom in and out with a mouse wheel or trackpad as you would normally.
      
-   By clicking a creature, you will highlight the creature (a light-blue aura will surround it), and its relevant characteristics             (species name, attributes, etc.) will be visible in the top-left corner of a screen. If you double-click a creature, you will follow       it, and your camera will follow it as well. Alternatively, you can use the Q and E keys to navigate through creatures, and press "F"       to lock your camera to follow your selected creature.
+   By clicking a creature, you will highlight the creature (a light-blue aura will surround it), and its relevant characteristics       (species name, attributes, etc.) will be visible in the top-left corner of a screen. If you double-click a creature, you will follow     it, and your camera will follow it as well. Alternatively, you can use the Q and E keys to navigate through creatures, and press "F"     to lock your camera to follow your selected creature.
    
-   eSim also has time control available. To speed up time, press the "." key, and to slow it down, press the "," key on your keyboard. To     pause the simulation, you can press space or the "P" button.
+   eSim also has time control available. To speed up time, press the "." key, and to slow it down, press the "," key on your keyboard. To pause the simulation, you can press space or the "P" button.
     
 
 Menu Explanation
@@ -24,11 +25,15 @@ Menu Explanation
  Specifically, the "Simulation Options" portion has a lot of unique terms. Below is a description of each menu, as well as what each 
  option means.
  
- Audio Options:
+ Audio Options
+ -----------
+ 
    Music Volume: The volume of the background music.
    Sound Effects Volume: The volume of the "beep" sound effect that occurs when you navigate menus, select creatures, etc.
  
- Simulation Options:
+ Simulation Options
+ -------------
+ 
    Species Density: The amount of species that will be generated RELATIVE TO THE WORLD'S SIZE. Recommended to be lower if you increase  world size for performance reasons.
    
    Creature Density: The amount of creatures per species, also RELATIVE TO WORLD SIZE.
