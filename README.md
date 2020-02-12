@@ -27,6 +27,7 @@ Menu Explanation
  -----------
  
    Music Volume: The volume of the background music.
+   
    Sound Effects Volume: The volume of the "beep" sound effect that occurs when you navigate menus, select creatures, etc.
  
  Simulation Options
