@@ -48,3 +48,20 @@ Menu Explanation
    Initial Diet: Dropdown menu. This will set the diet of all the creatures initially created.
    
    Species Density Limit: Throughout the simulation, new species will migrate in from the sides. This option limits how many species can be in the simulation at a time.
+
+Fun Facts
+----------------------------
+
+Some fun facts about the way our simulator works:
+
+   - All creatures have an "aggressivity" value that determines how aggressive/passive they are as hunters, or in the face of a threat. This number can make creatures unreasonably passive (scavengers) or unreasonably aggressive (hunt for sport), and help to give the creatures some personality.
+   
+   - Ocasionally, you'll see mutations occur in newborns. A mutation is when a creature has more deviation from their parents' characterisitics than normal. In addition to this characteristic change, mutations usually observe a color change in the creature, as well as an occasional structure change.
+   
+   -All structures are related to each creature's function! Herbivores look like herbivores, carnivores look like carnivores. Creatures that are more agile are generally thinner than their heavier, high-defense counterparts.
+   
+   - Members of the same species will always protect each other.
+   
+   - When faced with a threat, every creature makes fight or flight deliberations based on a number of things; the attacker's size, the number of creatures in the attacker's species, how fast the attacker is, and more.
+   
+   Overall, there's too much going on behind-the-scenes to explain in totality. Hopefully this can serve to give you an idea of the high amount of work we put into the little details with eSim.
